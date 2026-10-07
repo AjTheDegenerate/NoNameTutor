@@ -7,6 +7,8 @@ import flash3 from "./chapter4Flashcards3";
 import flash4 from "./chapter4Flashcards4";
 import quiz from "./chapter4Quiz";
 import mindMap from "./chapter4MindMap";
+import chapter4Lessons from "./chapter4Lessons";
+import Chapter4Lesson from "./Chapter4Lesson";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -50,6 +52,7 @@ export default function Home() {
   const [showAnswer, setShowAnswer] = useState(false);
   const [quizAnswers, setQuizAnswers] = useState({});
   const [mindFilter, setMindFilter] = useState("All");
+  const [activeLesson, setActiveLesson] = useState(null);
 
   const content = lessons[chapter.id];
   const filtered = useMemo(() => content.filter((x) => (x.title + " " + x.body).toLowerCase().includes(query.toLowerCase())), [content, query]);
@@ -99,7 +102,7 @@ export default function Home() {
               const locked = i > 0 && !done.includes(chapter.id + ":lesson:" + content[i - 1].key);
               return <div className={"path-row " + (completed ? "is-done" : "")} key={lesson.key}>
                 <div className="path-line"><span className="node">{completed ? "✓" : i + 1}</span></div>
-                <article className={"lesson-card " + (locked ? "locked" : "")}><div className="lesson-meta"><span>LESSON {i + 1}</span>{completed && <em>COMPLETED</em>}</div><h3>{lesson.title}</h3><p>{lesson.body}</p><button disabled={locked} onClick={() => complete(key)}>{completed ? "Review lesson" : locked ? "Complete the previous lesson" : "Mark lesson complete →"}</button></article>
+                <article className={"lesson-card " + (locked ? "locked" : "")}><div className="lesson-meta"><span>LESSON {i + 1}</span>{completed && <em>COMPLETED</em>}</div><h3>{lesson.title}</h3><p>{lesson.body}</p><button disabled={locked} onClick={() => setActiveLesson(lesson.key)}>{completed ? "Review lesson →" : locked ? "Complete the previous lesson" : "Start lesson →"}</button></article>
               </div>;
             })}
           </div>
@@ -111,6 +114,8 @@ export default function Home() {
           <div className="rail-card"><span className="kicker">CHAPTER SEARCH</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Find a concept..." />{query && <small className="search-count">{filtered.length} matching lessons</small>}</div>
         </aside>
       </div>
+
+      {activeLesson && chapter.id === "motion" && <section className="overlay-panel"><div className="overlay-inner"><button className="close" onClick={() => setActiveLesson(null)}>× Close</button><Chapter4Lesson lesson={chapter4Lessons.find((x) => x.key === activeLesson)} lessonNumber={chapter4Lessons.findIndex((x) => x.key === activeLesson) + 1} completed={done.includes("motion:lesson:" + activeLesson)} locked={false} onComplete={() => { complete("motion:lesson:" + activeLesson); setActiveLesson(null); }} /></div></section>}
 
       {tab !== "learn" && <section className="overlay-panel"><div className="overlay-inner"><button className="close" onClick={() => setTab("learn")}>× Close</button>
 
