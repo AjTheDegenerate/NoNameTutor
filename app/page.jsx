@@ -12,6 +12,8 @@ import Chapter4Lesson from "./Chapter4Lesson";
 import paperSources from "./paperSources";
 import chapter4QuestionBank from "./chapter4QuestionBank";
 import chapter4Papers from "./chapter4Papers";
+import chapter4Formulas from "./chapter4Formulas";
+import chapter4Derivations from "./chapter4Derivations";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -50,6 +52,7 @@ export default function Home() {
   const [paperMode, setPaperMode] = useState("all");
   const [questionMode, setQuestionMode] = useState("all");
   const [questionAnswers, setQuestionAnswers] = useState({});
+  const [formulaTopic, setFormulaTopic] = useState("all");
 
   const content = lessons[chapter.id];
   const filtered = useMemo(() => content.filter((x) => (x.title + " " + x.body).toLowerCase().includes(query.toLowerCase())), [content, query]);
@@ -147,6 +150,8 @@ export default function Home() {
           <button className={tab === "notes" ? "nav-active" : ""} onClick={() => setTab("notes")}>Notes</button>
           <button className={tab === "papers" ? "nav-active" : ""} onClick={() => setTab("papers")}>Papers</button>
           <button className={tab === "revision" ? "nav-active" : ""} onClick={() => setTab("revision")}>Revision</button>
+          <button className={tab === "formulas" ? "nav-active" : ""} onClick={() => setTab("formulas")}>Formulas</button>
+          <button className={tab === "derivations" ? "nav-active" : ""} onClick={() => setTab("derivations")}>Derivations</button>
         </nav>
         <div className="stats"><span className="streak">🔥 <b>3</b> day streak</span><span className="xp">⚡ <b>{completedConcepts * 10}</b> XP</span><span className="avatar">A</span></div>
       </header>
@@ -160,7 +165,7 @@ export default function Home() {
         <section className="path-panel">
           <div className="path-head"><div><span className="kicker">PHYSICS PATH</span><h2>Build your physics streak</h2></div><span className="progress-chip">{progress}% complete</span></div>
           <div className="chapter-tabs">{chapters.map((c) => <button key={c.id} className={chapter.id === c.id ? "chapter-tab active" : "chapter-tab"} onClick={() => {setChapter(c); setTab("learn");}}><span>{c.number}</span>{c.short}</button>)}</div>
-          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button><button onClick={() => setTab("papers")}>📚 Papers</button><button onClick={() => setTab("revision")}>✍️ Q&A Revision</button></div>}
+          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button><button onClick={() => setTab("papers")}>📚 Papers</button><button onClick={() => setTab("revision")}>✍️ Q&A Revision</button><button onClick={() => setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={() => setTab("derivations")}>∫ Derivations</button></div>}
 
           <div className="path">
             {filtered.map((lesson, i) => {
@@ -195,6 +200,10 @@ export default function Home() {
         {tab === "mindmap" && <><span className="kicker">CHAPTER 4 · MIND MAP</span><h2>Describing Motion Around Us.</h2><div className="mind-filters">{mindGroups.map((g) => <button key={g} className={mindFilter === g ? "selected" : ""} onClick={() => setMindFilter(g)}>{g}</button>)}</div><div className="mind-grid">{filteredMindMap.map(([group,title,body]) => <article key={group + title}><span>{group}</span><h3>{title}</h3><p>{body}</p></article>)}</div></>}
 
         {tab === "papers" && <><span className="kicker">CHAPTER 4 · PAPER BANK</span><h2>Practice with real sources + your papers.</h2><p className="overlay-intro">Official sources stay linked to their authoritative repositories. The three Chapter 4 papers you generated are now integrated directly into the app as in-app PDF documents, clearly marked as NCERT-based rather than historical exam papers.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map((m) => <button key={m} className={paperMode === m ? "selected" : ""} onClick={() => setPaperMode(m)}>{m === "all" ? "All" : m[0].toUpperCase() + m.slice(1)}</button>)}</div><div className="paper-grid">{[...chapter4Papers, ...paperSources].filter((p) => paperMode === "all" || p.modes.includes(paperMode)).map((p) => <article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind === "generated" ? "IN-APP PDF" : p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span>{p.kind === "generated" && <span>{p.pages} page{p.pages === 1 ? "" : "s"}</span>}</div>{p.kind === "generated" ? <div className="paper-actions"><button onClick={() => openPaperPdf(p)}>Open PDF ↗</button><button onClick={() => openPaperPdf(p, true)}>Download PDF</button></div> : <a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a>}</article>)}</div></>}
+
+        {tab === "formulas" && <><span className="kicker">CHAPTER 4 · FORMULA + GRAPH REFERENCE</span><h2>Every formula you need for Motion.</h2><p className="overlay-intro">A compact reference for numerical problems and graph-based questions. Each topic separates the calculation formula from what the graph tells you.</p><div className="formula-filters"><button className={formulaTopic === "all" ? "selected" : ""} onClick={() => setFormulaTopic("all")}>All topics</button>{chapter4Formulas.map((f) => <button key={f.topic} className={formulaTopic === f.topic ? "selected" : ""} onClick={() => setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapter4Formulas.filter((f) => formulaTopic === "all" || f.topic === formulaTopic).map((f) => <article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition && <div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note]) => <div className="formula-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note]) => <div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
+
+        {tab === "derivations" && <><span className="kicker">CHAPTER 4 · DERIVATIONS</span><h2>Derive it on paper. See it on the graph.</h2><p className="overlay-intro">Follow the algebraic derivation and the matching graphical interpretation. These are built from the chapter's definitions and its constant-acceleration graphs.</p><div className="derivation-grid">{chapter4Derivations.map((d) => <article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode === "extension" ? "HIGHER-GRADE EXTENSION" : d.mode === "graph" ? "GRAPH → EQUATION" : "PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((step, i) => <li key={i}>{step}</li>)}</ol><div className="derived-result"><span>RESULT</span><code>{d.result}</code></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch"><span className="axis-y">quantity</span><div className="sketch-area"><i className={"sketch-line " + (d.mode === "paper" ? "rise" : "slope")} /><b>time →</b></div></div></div></div></article>)}</div></>}
 
         {tab === "notes" && <><span className="kicker">CHAPTER 4 · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map((x) => <article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
       </div></section>}
