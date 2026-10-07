@@ -11,6 +11,7 @@ import chapter4Lessons from "./chapter4Lessons";
 import Chapter4Lesson from "./Chapter4Lesson";
 import paperSources from "./paperSources";
 import chapter4QuestionBank from "./chapter4QuestionBank";
+import chapter4Papers from "./chapter4Papers";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -60,6 +61,74 @@ export default function Home() {
 
   function complete(key) {
     setDone((current) => current.includes(key) ? current : [...current, key]);
+  }
+
+  function makePaperPdf(text) {
+    const safe = text
+      .replaceAll("—", "-").replaceAll("–", "-").replaceAll("•", "-")
+      .replaceAll("×", "x").replaceAll("²", "^2").replaceAll("−", "-")
+      .replaceAll("→", "->");
+    const wrap = (line, max = 92) => {
+      const out = [];
+      let rest = line;
+      while (rest.length > max) {
+        let cut = rest.lastIndexOf(" ", max);
+        if (cut < 1) cut = max;
+        out.push(rest.slice(0, cut));
+        rest = rest.slice(cut).trimStart();
+      }
+      out.push(rest);
+      return out;
+    };
+    const lines = safe.split("\n").flatMap((line) => line ? wrap(line) : [""]);
+    const perPage = 56;
+    const pages = [];
+    for (let i = 0; i < lines.length; i += perPage) pages.push(lines.slice(i, i + perPage));
+
+    const esc = (s) => s.replaceAll("\\", "\\\\").replaceAll("(", "\\(").replaceAll(")", "\\)");
+    const objects = [];
+    objects.push("<< /Type /Catalog /Pages 2 0 R >>");
+    const pageRefs = pages.map((_, i) => `${3 + i * 2} 0 R`).join(" ");
+    objects.push(`<< /Type /Pages /Kids [${pageRefs}] /Count ${pages.length} >>`);
+    pages.forEach((page, i) => {
+      const pageObj = 3 + i * 2;
+      const contentObj = 4 + i * 2;
+      let stream = "BT /F1 10 Tf 45 800 Td 12 TL\n";
+      page.forEach((line, n) => {
+        if (n) stream += "T*\n";
+        stream += `(${esc(line)}) Tj\n`;
+      });
+      stream += "ET";
+      objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${3 + pages.length * 2} 0 R >> >> /Contents ${contentObj} 0 R >>`);
+      objects.push(`<< /Length ${stream.length} >>\\nstream\\n${stream}\\nendstream`);
+    });
+    objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
+
+    let pdf = "%PDF-1.4\\n";
+    const offsets = [0];
+    objects.forEach((obj, i) => {
+      offsets.push(pdf.length);
+      pdf += `${i + 1} 0 obj\\n${obj}\\nendobj\\n`;
+    });
+    const xref = pdf.length;
+    pdf += `xref\\n0 ${objects.length + 1}\\n0000000000 65535 f \\n`;
+    for (let i = 1; i <= objects.length; i++) pdf += String(offsets[i]).padStart(10, "0") + " 00000 n \\n";
+    pdf += `trailer\\n<< /Size ${objects.length + 1} /Root 1 0 R >>\\nstartxref\\n${xref}\\n%%EOF`;
+    return new Blob([pdf], { type: "application/pdf" });
+  }
+
+  function openPaperPdf(paper, download = false) {
+    const url = URL.createObjectURL(makePaperPdf(paper.text));
+    if (download) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = paper.title.replaceAll(" ", "_") + ".pdf";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    }
   }
 
   function openTab(next) {
@@ -125,7 +194,7 @@ export default function Home() {
 
         {tab === "mindmap" && <><span className="kicker">CHAPTER 4 · MIND MAP</span><h2>Describing Motion Around Us.</h2><div className="mind-filters">{mindGroups.map((g) => <button key={g} className={mindFilter === g ? "selected" : ""} onClick={() => setMindFilter(g)}>{g}</button>)}</div><div className="mind-grid">{filteredMindMap.map(([group,title,body]) => <article key={group + title}><span>{group}</span><h3>{title}</h3><p>{body}</p></article>)}</div></>}
 
-        {tab === "papers" && <><span className="kicker">SOURCE-BACKED PAPER BANK</span><h2>Practice with real sources.</h2><p className="overlay-intro">Official past papers stay linked to their authoritative repositories. Generated practice is kept separate so the app never labels AI-generated questions as historical exam questions.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map((m) => <button key={m} className={paperMode === m ? "selected" : ""} onClick={() => setPaperMode(m)}>{m === "all" ? "All" : m[0].toUpperCase() + m.slice(1)}</button>)}</div><div className="paper-grid">{paperSources.filter((p) => paperMode === "all" || p.modes.includes(paperMode)).map((p) => <article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span></div><a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a></article>)}</div></>}
+        {tab === "papers" && <><span className="kicker">CHAPTER 4 · PAPER BANK</span><h2>Practice with real sources + your papers.</h2><p className="overlay-intro">Official sources stay linked to their authoritative repositories. The three Chapter 4 papers you generated are now integrated directly into the app as in-app PDF documents, clearly marked as NCERT-based rather than historical exam papers.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map((m) => <button key={m} className={paperMode === m ? "selected" : ""} onClick={() => setPaperMode(m)}>{m === "all" ? "All" : m[0].toUpperCase() + m.slice(1)}</button>)}</div><div className="paper-grid">{[...chapter4Papers, ...paperSources].filter((p) => paperMode === "all" || p.modes.includes(paperMode)).map((p) => <article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind === "generated" ? "IN-APP PDF" : p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span>{p.kind === "generated" && <span>{p.pages} page{p.pages === 1 ? "" : "s"}</span>}</div>{p.kind === "generated" ? <div className="paper-actions"><button onClick={() => openPaperPdf(p)}>Open PDF ↗</button><button onClick={() => openPaperPdf(p, true)}>Download PDF</button></div> : <a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a>}</article>)}</div></>}
 
         {tab === "notes" && <><span className="kicker">CHAPTER 4 · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map((x) => <article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
       </div></section>}
