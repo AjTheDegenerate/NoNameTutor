@@ -10,6 +10,7 @@ import mindMap from "./chapter4MindMap";
 import chapter4Lessons from "./chapter4Lessons";
 import Chapter4Lesson from "./Chapter4Lesson";
 import paperSources from "./paperSources";
+import chapter4QuestionBank from "./chapter4QuestionBank";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -46,6 +47,8 @@ export default function Home() {
   const [mindFilter, setMindFilter] = useState("All");
   const [activeLesson, setActiveLesson] = useState(null);
   const [paperMode, setPaperMode] = useState("all");
+  const [questionMode, setQuestionMode] = useState("all");
+  const [questionAnswers, setQuestionAnswers] = useState({});
 
   const content = lessons[chapter.id];
   const filtered = useMemo(() => content.filter((x) => (x.title + " " + x.body).toLowerCase().includes(query.toLowerCase())), [content, query]);
@@ -74,6 +77,7 @@ export default function Home() {
           <button className={tab === "flashcards" ? "nav-active" : ""} onClick={() => openTab("flashcards")}>Flashcards</button>
           <button className={tab === "notes" ? "nav-active" : ""} onClick={() => setTab("notes")}>Notes</button>
           <button className={tab === "papers" ? "nav-active" : ""} onClick={() => setTab("papers")}>Papers</button>
+          <button className={tab === "revision" ? "nav-active" : ""} onClick={() => setTab("revision")}>Revision</button>
         </nav>
         <div className="stats"><span className="streak">🔥 <b>3</b> day streak</span><span className="xp">⚡ <b>{completedConcepts * 10}</b> XP</span><span className="avatar">A</span></div>
       </header>
@@ -87,7 +91,7 @@ export default function Home() {
         <section className="path-panel">
           <div className="path-head"><div><span className="kicker">PHYSICS PATH</span><h2>Build your physics streak</h2></div><span className="progress-chip">{progress}% complete</span></div>
           <div className="chapter-tabs">{chapters.map((c) => <button key={c.id} className={chapter.id === c.id ? "chapter-tab active" : "chapter-tab"} onClick={() => {setChapter(c); setTab("learn");}}><span>{c.number}</span>{c.short}</button>)}</div>
-          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button><button onClick={() => setTab("papers")}>📚 Papers</button></div>}
+          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button><button onClick={() => setTab("papers")}>📚 Papers</button><button onClick={() => setTab("revision")}>✍️ Q&A Revision</button></div>}
 
           <div className="path">
             {filtered.map((lesson, i) => {
@@ -114,6 +118,8 @@ export default function Home() {
       {tab !== "learn" && <section className="overlay-panel"><div className="overlay-inner"><button className="close" onClick={() => setTab("learn")}>× Close</button>
 
         {tab === "flashcards" && <><span className="kicker">CHAPTER 4 · ANKI IMPORT</span><h2>Linear Motion — card {card + 1} / {flashcards.length}</h2><article className="flashcard"><span className="card-label">QUESTION</span><h3>{flashcards[card][0]}</h3>{showAnswer ? <div className="card-answer"><span className="card-label">ANSWER</span><p>{flashcards[card][1]}</p></div> : <button className="reveal" onClick={() => setShowAnswer(true)}>Reveal answer</button>}</article><div className="flash-controls"><button disabled={card === 0} onClick={() => {setCard(card - 1);setShowAnswer(false);}}>← Previous</button><button onClick={() => {setCard((card + 1) % flashcards.length);setShowAnswer(false);}}>{card === flashcards.length - 1 ? "Restart deck →" : "Next card →"}</button></div><p className="deck-note">80 cards imported from the supplied Linear Motion Anki deck.</p></>}
+
+        {tab === "revision" && <><span className="kicker">CHAPTER 4 · LEARN + REVISE QUESTION BANK</span><h2>Questions with answers, not just questions.</h2><p className="overlay-intro">Use this as active revision: attempt first, reveal the answer, then read the explanation. It covers one-word answers, MCQs, assertion-reasoning, very short, short, long, numericals, graphs, derivatives, case-based questions, differentiations and mixed revision.</p><div className="question-filters">{["all","one-word","mcq","assertion-reasoning","very-short","short","long","numerical","graph","derivative","case","differentiate","revision"].map((m) => <button key={m} className={questionMode === m ? "selected" : ""} onClick={() => setQuestionMode(m)}>{m === "all" ? "All" : m.replaceAll("-", " ")}</button>)}</div><div className="question-grid">{chapter4QuestionBank.filter((q) => questionMode === "all" || q.type === questionMode).map((q, i) => { const id = q.type + ":" + i; const revealed = questionAnswers[id]; return <article className="question-card" key={id}><div className="question-top"><span>{q.type.replaceAll("-", " ").toUpperCase()}</span>{q.options && <em>{q.options.length} options</em>}</div><h3>{q.q}</h3>{q.options && <ol className="question-options">{q.options.map((o, n) => <li key={o}>{String.fromCharCode(65+n)}. {o}</li>)}</ol>}{revealed ? <div className="question-answer"><b>Answer</b><p>{q.answer}</p><small>{q.explanation}</small></div> : <button onClick={() => setQuestionAnswers((x) => ({...x, [id]: true}))}>Reveal answer + explanation</button>}</article>; })}</div></>}
 
         {tab === "practice" && <><span className="kicker">CHAPTER 4 · IMPORTED QUIZ</span><h2>Motion quiz — {quiz.length} questions.</h2><p className="overlay-intro">Reveal answers after attempting each question. The imported question bank covers definitions, numericals, graph interpretation, kinematics and circular motion.</p>{quiz.map((q, i) => <article className="practice-card" key={q[0]}><span>Q{i + 1}</span><h3>{q[0]}</h3>{quizAnswers[i] ? <div className="quiz-answer">✓ {q[1]}</div> : <button onClick={() => setQuizAnswers((x) => ({...x, [i]: true}))}>Reveal answer</button>}</article>)}</>}
 
