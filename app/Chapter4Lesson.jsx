@@ -9,14 +9,14 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, locked
   const [passed, setPassed] = useState(false);
 
   const steps = [
-    { label: "HOOK", title: lesson.hook, body: "Start with the question before memorising the definition." },
+    { label: "HOOK", title: lesson.hook, body: "Start with a simple question before learning the definition." },
     { label: "TEXTBOOK", title: "Read the source idea", body: lesson.textbook, source: lesson.sources[0] },
     { label: "TEACHER", title: "Now make sense of it", body: lesson.teacher },
     { label: "EXAMPLE", title: "Watch it happen", body: lesson.example },
     { label: "YOUR TURN", title: lesson.interaction.prompt, body: lesson.interaction.type === "choice" ? "Choose the answer you think is correct." : "Work it out before revealing the answer." },
     { label: "COMMON MISTAKE", title: "Watch for this", body: lesson.mistake },
     { label: "TEXTBOOK ACTIVITY", title: "Back to the source", body: lesson.textbookActivity, source: lesson.sources.join(" · ") },
-    { label: "CHECKPOINT", title: lesson.checkpoint.prompt, body: "Pass this checkpoint to complete the lesson." }
+    { label: "CHECKPOINT", title: lesson.checkpoint.prompt, body: "Answer the checkpoint, then finish the lesson." }
   ];
 
   const current = steps[step];
@@ -56,7 +56,7 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, locked
         <div className="teaching-label">{current.label}</div>
         <h3>{current.title}</h3>
         <p>{current.body}</p>
-        {current.source && <div className="source-ref">📖 Source: {current.source}</div>}
+        {current.source && <div className="source-ref">📖 Textbook: {current.source}</div>}{current.label === "TEXTBOOK" && lesson.externalReferences?.length > 0 && <div className="web-references"><b>Want another explanation?</b>{lesson.externalReferences.map((ref) => <a key={ref.url + ref.label} href={ref.url} target="_blank" rel="noreferrer">{ref.label} ↗</a>)}</div>}
 
         {current.label === "YOUR TURN" && lesson.interaction.type === "choice" && (
           <div className="interaction-options">
