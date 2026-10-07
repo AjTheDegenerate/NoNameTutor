@@ -1,6 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import flash1 from "./chapter4Flashcards1";
+import flash2 from "./chapter4Flashcards2";
+import flash3 from "./chapter4Flashcards3";
+import flash4 from "./chapter4Flashcards4";
+import quiz from "./chapter4Quiz";
+import mindMap from "./chapter4MindMap";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -17,7 +23,7 @@ const lessons = {
     { key: "graphs", title: "Position-time & velocity-time graphs", body: "Position-time slope gives velocity. A horizontal position-time line means rest; a straight non-horizontal line means constant velocity; a curve indicates changing velocity. Velocity-time slope gives acceleration and area gives displacement." },
     { key: "kinematics", title: "Kinematic equations", body: "For constant acceleration: v = u + at; s = ut + ½at²; v² = u² + 2as. Also s = ½(u + v)t and s = vt − ½at². Signs indicate direction along the chosen coordinate line." },
     { key: "circular", title: "Uniform circular motion", body: "Uniform circular motion has constant speed on a circular path, but velocity changes because direction changes continuously. For radius r and period T, v = 2πr/T. One revolution has distance 2πr and zero displacement." },
-    { key: "applications", title: "Applications & chapter revision", body: "Chapter applications include km/h → m/s using ×5/18, the two-postmen problem from Ganitakaumudi, Sarang's pool example, bus acceleration examples, and the historical references to Aryabhatiya and Ganitakaumudi." }
+    { key: "applications", title: "Applications & chapter revision", body: "Applications include km/h → m/s using ×5/18, the two-postmen problem from Ganitakaumudi, Sarang's pool example, bus acceleration examples, and the historical references to Aryabhatiya and Ganitakaumudi." }
   ],
   force: [
     { key: "force", title: "The concept of force", body: "Force can change an object's motion or shape. Force is a vector quantity, so magnitude and direction matter." },
@@ -33,57 +39,58 @@ const lessons = {
   ]
 };
 
+const flashcards = [...flash1, ...flash2, ...flash3, ...flash4];
+
 export default function Home() {
   const [chapter, setChapter] = useState(chapters[0]);
   const [tab, setTab] = useState("learn");
   const [query, setQuery] = useState("");
   const [done, setDone] = useState([]);
+  const [card, setCard] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [quizAnswers, setQuizAnswers] = useState({});
+  const [mindFilter, setMindFilter] = useState("All");
 
   const content = lessons[chapter.id];
   const filtered = useMemo(() => content.filter((x) => (x.title + " " + x.body).toLowerCase().includes(query.toLowerCase())), [content, query]);
-  const totalConcepts = 8 + 8;
+  const totalConcepts = 16;
   const completedConcepts = done.filter((x) => x.includes(":lesson:")).length;
   const progress = Math.round((completedConcepts / totalConcepts) * 100);
+  const mindGroups = ["All", ...Array.from(new Set(mindMap.map((x) => x[0])))];
+  const filteredMindMap = mindMap.filter((x) => mindFilter === "All" || x[0] === mindFilter);
 
   function complete(key) {
     setDone((current) => current.includes(key) ? current : [...current, key]);
   }
 
+  function openTab(next) {
+    setTab(next);
+    if (next === "flashcards") { setCard(0); setShowAnswer(false); }
+  }
+
   return (
     <main className="app-shell">
       <header className="topbar">
-        <button className="brand" onClick={() => setTab("learn")} aria-label="NoNameTutor home">
-          <span className="brand-mark">NN</span>
-          <span><b>NoNameTutor</b><small>Class 9 · Physics</small></span>
-        </button>
+        <button className="brand" onClick={() => setTab("learn")} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class 9 · Physics</small></span></button>
         <nav className="top-nav">
           <button className={tab === "learn" ? "nav-active" : ""} onClick={() => setTab("learn")}>Learn</button>
-          <button className={tab === "practice" ? "nav-active" : ""} onClick={() => setTab("practice")}>Practice</button>
-          <button className={tab === "flashcards" ? "nav-active" : ""} onClick={() => setTab("flashcards")}>Flashcards</button>
+          <button className={tab === "practice" ? "nav-active" : ""} onClick={() => openTab("practice")}>Practice</button>
+          <button className={tab === "flashcards" ? "nav-active" : ""} onClick={() => openTab("flashcards")}>Flashcards</button>
           <button className={tab === "notes" ? "nav-active" : ""} onClick={() => setTab("notes")}>Notes</button>
         </nav>
         <div className="stats"><span className="streak">🔥 <b>3</b> day streak</span><span className="xp">⚡ <b>{completedConcepts * 10}</b> XP</span><span className="avatar">A</span></div>
       </header>
 
       <section className="course-strip">
-        <div><span className="kicker">CLASS 9 · PHYSICS</span><h1>Your learning path</h1><p>Chapter 4 now uses the imported study pack instead of placeholder material.</p></div>
+        <div><span className="kicker">CLASS 9 · PHYSICS</span><h1>Your learning path</h1><p>Chapter 4 is now built from the imported study pack: 8 lessons, 80 flashcards, 28 quiz questions and a chapter mind map.</p></div>
         <div className="goal"><div className="goal-top"><b>Daily goal</b><span>{Math.min(completedConcepts, 3)} / 3</span></div><div className="goal-track"><i style={{width: Math.min(100, completedConcepts / 3 * 100) + "%"}} /></div><small>Complete 3 lessons today</small></div>
       </section>
 
       <div className="main-grid">
         <section className="path-panel">
           <div className="path-head"><div><span className="kicker">PHYSICS PATH</span><h2>Build your physics streak</h2></div><span className="progress-chip">{progress}% complete</span></div>
-          <div className="chapter-tabs">
-            {chapters.map((c) => <button key={c.id} className={chapter.id === c.id ? "chapter-tab active" : "chapter-tab"} onClick={() => {setChapter(c); setTab("learn");}}><span>{c.number}</span>{c.short}</button>)}
-          </div>
-
-          {chapter.id === "motion" && (
-            <div className="asset-bar">
-              <button onClick={() => setTab("flashcards")}>🃏 80 Flashcards</button>
-              <button onClick={() => setTab("practice")}>🧠 28-Question Quiz</button>
-              <button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button>
-            </div>
-          )}
+          <div className="chapter-tabs">{chapters.map((c) => <button key={c.id} className={chapter.id === c.id ? "chapter-tab active" : "chapter-tab"} onClick={() => {setChapter(c); setTab("learn");}}><span>{c.number}</span>{c.short}</button>)}</div>
+          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button></div>}
 
           <div className="path">
             {filtered.map((lesson, i) => {
@@ -92,36 +99,29 @@ export default function Home() {
               const locked = i > 0 && !done.includes(chapter.id + ":lesson:" + content[i - 1].key);
               return <div className={"path-row " + (completed ? "is-done" : "")} key={lesson.key}>
                 <div className="path-line"><span className="node">{completed ? "✓" : i + 1}</span></div>
-                <article className={"lesson-card " + (locked ? "locked" : "")}>
-                  <div className="lesson-meta"><span>LESSON {i + 1}</span>{completed && <em>COMPLETED</em>}</div>
-                  <h3>{lesson.title}</h3><p>{lesson.body}</p>
-                  <button disabled={locked} onClick={() => complete(key)}>{completed ? "Review lesson" : locked ? "Complete the previous lesson" : "Mark lesson complete →"}</button>
-                </article>
+                <article className={"lesson-card " + (locked ? "locked" : "")}><div className="lesson-meta"><span>LESSON {i + 1}</span>{completed && <em>COMPLETED</em>}</div><h3>{lesson.title}</h3><p>{lesson.body}</p><button disabled={locked} onClick={() => complete(key)}>{completed ? "Review lesson" : locked ? "Complete the previous lesson" : "Mark lesson complete →"}</button></article>
               </div>;
             })}
           </div>
         </section>
 
         <aside className="right-rail">
-          <div className="rail-card"><div className="rail-icon">🎯</div><span className="kicker">CHAPTER 4 STUDY PACK</span><h3>Everything for motion.</h3><p>Lessons, flashcards, quiz questions, and the mind map are now connected to the chapter.</p><button onClick={() => setTab("flashcards")}>Start flashcards</button></div>
+          <div className="rail-card"><div className="rail-icon">🎯</div><span className="kicker">CHAPTER 4 STUDY PACK</span><h3>Everything for motion.</h3><p>Study the concepts, drill the imported Anki cards, take the 28-question quiz, then use the mind map for a fast recap.</p><button onClick={() => openTab("flashcards")}>Start flashcards</button></div>
           <div className="rail-card stats-card"><span className="kicker">YOUR PROGRESS</span><div className="big-stat">{completedConcepts}<small> / {totalConcepts}</small></div><p>lessons completed</p><div className="mini-track"><i style={{width: progress + "%"}} /></div></div>
           <div className="rail-card"><span className="kicker">CHAPTER SEARCH</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Find a concept..." />{query && <small className="search-count">{filtered.length} matching lessons</small>}</div>
         </aside>
       </div>
 
-      {tab !== "learn" && (
-        <section className="overlay-panel">
-          <div className="overlay-inner">
-            <button className="close" onClick={() => setTab("learn")}>× Close</button>
-            <span className="kicker">CHAPTER 4 · {tab.toUpperCase()}</span>
-            <h2>{tab === "flashcards" ? "Linear Motion — 80 cards" : tab === "practice" ? "Motion quiz — 28 questions" : tab === "mindmap" ? "Describing Motion Around Us" : "Chapter 4 quick notes"}</h2>
-            {tab === "flashcards" && <div className="asset-placeholder"><p>The complete 80-card Anki deck is wired into the Chapter 4 data layer.</p><p>Each card covers definitions, scalar/vector ideas, distance/displacement, speed/velocity, acceleration, graphs, kinematics, circular motion, conversions, examples, and historical references.</p><button onClick={() => setTab("learn")}>Back to learning path</button></div>}
-            {tab === "practice" && <div className="asset-placeholder"><p>The imported 28-question Chapter 4 quiz is wired into the practice layer.</p><p>It covers the same source material as the flashcards, including numerical questions and graph interpretation.</p><button onClick={() => setTab("learn")}>Back to learning path</button></div>}
-            {tab === "mindmap" && <div className="asset-placeholder"><p>The imported mind map covers motion, position, distance/displacement, speed/velocity, acceleration, graphs, kinematics, circular motion, applications, and the chapter's historical references.</p><button onClick={() => setTab("learn")}>Back to learning path</button></div>}
-            {tab === "notes" && <div className="note-grid">{content.map((x) => <article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div>}
-          </div>
-        </section>
-      )}
+      {tab !== "learn" && <section className="overlay-panel"><div className="overlay-inner"><button className="close" onClick={() => setTab("learn")}>× Close</button>
+
+        {tab === "flashcards" && <><span className="kicker">CHAPTER 4 · ANKI IMPORT</span><h2>Linear Motion — card {card + 1} / {flashcards.length}</h2><article className="flashcard"><span className="card-label">QUESTION</span><h3>{flashcards[card][0]}</h3>{showAnswer ? <div className="card-answer"><span className="card-label">ANSWER</span><p>{flashcards[card][1]}</p></div> : <button className="reveal" onClick={() => setShowAnswer(true)}>Reveal answer</button>}</article><div className="flash-controls"><button disabled={card === 0} onClick={() => {setCard(card - 1);setShowAnswer(false);}}>← Previous</button><button onClick={() => {setCard((card + 1) % flashcards.length);setShowAnswer(false);}}>{card === flashcards.length - 1 ? "Restart deck →" : "Next card →"}</button></div><p className="deck-note">80 cards imported from the supplied Linear Motion Anki deck.</p></>}
+
+        {tab === "practice" && <><span className="kicker">CHAPTER 4 · IMPORTED QUIZ</span><h2>Motion quiz — {quiz.length} questions.</h2><p className="overlay-intro">Reveal answers after attempting each question. The imported question bank covers definitions, numericals, graph interpretation, kinematics and circular motion.</p>{quiz.map((q, i) => <article className="practice-card" key={q[0]}><span>Q{i + 1}</span><h3>{q[0]}</h3>{quizAnswers[i] ? <div className="quiz-answer">✓ {q[1]}</div> : <button onClick={() => setQuizAnswers((x) => ({...x, [i]: true}))}>Reveal answer</button>}</article>)}</>}
+
+        {tab === "mindmap" && <><span className="kicker">CHAPTER 4 · MIND MAP</span><h2>Describing Motion Around Us.</h2><div className="mind-filters">{mindGroups.map((g) => <button key={g} className={mindFilter === g ? "selected" : ""} onClick={() => setMindFilter(g)}>{g}</button>)}</div><div className="mind-grid">{filteredMindMap.map(([group,title,body]) => <article key={group + title}><span>{group}</span><h3>{title}</h3><p>{body}</p></article>)}</div></>}
+
+        {tab === "notes" && <><span className="kicker">CHAPTER 4 · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map((x) => <article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
+      </div></section>}
 
       <footer><span>NoNameTutor · Class 9 Physics</span><span>Chapter 4 study pack integrated</span></footer>
     </main>
