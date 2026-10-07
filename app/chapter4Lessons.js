@@ -1,98 +1,1238 @@
 const chapter4Lessons = [
   {
-    key: "linear", title: "Where are you?", section: "4.1.1 Describing position", pages: "49–50",
-    hook: "Before we say where something is, we need a starting point.",
-    textbook: "The textbook says to choose a fixed point first. Then describe how far away something is and in which direction. If its position changes over time, it is moving.",
-    teacher: "Imagine the school gate is our starting point. “20 m away” is not enough: we need to say whether it is toward the school or toward the road. We can call one direction positive (+) and the other negative (−).",
-    example: "If a runner is 60 m to the right of the start, write +60 m. If they are 20 m to the left, write −20 m.",
-    interaction: { type: "choice", prompt: "A student sits 5 m east of the classroom and never moves. Relative to the classroom, what is true?", options: ["The student is in motion because time passes.", "The student is at rest because position is not changing.", "The student has zero position.", "Position cannot be described without speed."], answer: 1, explain: "Correct. The textbook defines rest relative to a reference point: the position does not change with time." },
-    mistake: "Something can be at rest compared with one thing and moving compared with another. Always say what you are comparing it with.",
-    checkpoint: { prompt: "What two things, besides the reference point, are needed to describe position?", answer: "Distance and direction." },
-    sources: ["Chapter 4, §4.1.1, pp. 49–50"], externalReferences: [{ label: "Khan Academy: Motion (Class 9)", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "motion",
+    "title": "What is motion?",
+    "section": "4.1 Motion in a Straight Line",
+    "pages": "49",
+    "hook": "Motion is described by how position changes with time relative to a reference point.",
+    "textbook": "Motion is not a property you can describe in isolation. The textbook frames it relative to a chosen reference point.",
+    "teacher": "Think of the idea as a tool you can reuse. Motion is not a property you can describe in isolation. The textbook frames it relative to a chosen reference point.",
+    "example": "If a bus changes position relative to a roadside tree, the bus is moving relative to that tree.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A passenger sitting in a moving bus is at rest relative to whom?",
+      "options": [
+        "The bus",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The passenger's position relative to the bus is unchanged."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "The bus"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1 Motion in a Straight Line, pp. 49"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "distance", title: "Distance vs displacement", section: "4.1.2 Distance travelled and displacement", pages: "50–51",
-    hook: "The total path and your final position are two different things.",
-    textbook: "In the textbook's runner example, the total distance is 160 m, but the displacement is 40 m forward. Distance counts the whole trip. Displacement tells us how far and which way the final position is from the start.",
-    teacher: "Distance is the full length of the trip. Displacement is the straight change from where you started to where you finished, including direction. If you return to your start, displacement is zero even though you travelled.",
-    example: "Walk 100 m east, then 60 m west. Distance = 160 m. Final position = 40 m east of the start, so displacement = +40 m.",
-    interaction: { type: "numeric", prompt: "You walk 30 m east, then 10 m west. What are the distance and displacement?", answer: "Distance = 40 m; displacement = +20 m.", explain: "Distance counts both parts of the path. Displacement is the net change in position." },
-    textbookActivity: "Textbook activity 4.1 asks you to track a ball thrown upward and falling back to O, then compare distance and displacement at several positions.",
-    mistake: "Displacement is not just the path's shortest length. It tells you the change from start to finish and the direction.",
-    checkpoint: { prompt: "Can displacement be zero while distance is not zero?", answer: "Yes. For example, after a complete out-and-back trip, the final and initial positions are the same." },
-    sources: ["Chapter 4, §4.1.2, pp. 50–51; Activity 4.1, p. 51"], externalReferences: [{ label: "Khan Academy: Distance and displacement", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }, { label: "Khan Academy: Describing motion", url: "https://en.khanacademy.org/science/strengthened-shs-physics-1/x5eb5cea12d2cf683:descriptors-of-motion/a/describing-motion" }]
+    "key": "reference",
+    "title": "Reference points",
+    "section": "4.1.1 Describing position",
+    "pages": "49–50",
+    "hook": "Every position needs a reference point.",
+    "textbook": "Choose a fixed point first; then describe distance and direction from it.",
+    "teacher": "Think of the idea as a tool you can reuse. Choose a fixed point first; then describe distance and direction from it.",
+    "example": "Use the school gate as zero and the road direction as negative: −20 m means 20 m on that side.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Which is a valid reference point?",
+      "options": [
+        "A fixed point such as a tree or school gate",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "A reference point gives the comparison needed to describe position."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "A fixed point such as a tree or school gate"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.1 Describing position, pp. 49–50"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "speed", title: "How fast are you moving?", section: "4.1.3 Average speed and average velocity", pages: "52–53",
-    hook: "Speed tells you how fast you move. Velocity tells you how fast and in which direction.",
-    textbook: "Average speed = total distance ÷ total time. Average velocity = displacement ÷ total time, including direction. In uniform motion, an object covers equal distances in equal time intervals.",
-    teacher: "For speed, use distance. For velocity, use displacement. Both can be measured in m/s or km/h. If you turn around, the average speed and average velocity may be different.",
-    example: "Sarang swims 25 m to the other end of a 25 m pool and returns in 50 s. Distance = 50 m, displacement = 0 m. So average speed = 1 m/s and average velocity = 0 m/s.",
-    interaction: { type: "choice", prompt: "A runner completes a lap and returns exactly to the starting point. Which statement must be true for the whole lap?", options: ["Average speed is zero.", "Average velocity is zero.", "Distance is zero.", "Speed and velocity are always equal."], answer: 1, explain: "Correct. The displacement is zero because the runner finishes where they started, so average velocity is zero." },
-    textbookActivity: "The chapter also connects the speed-distance-time idea to Aryabhatiya and a two-postmen problem from Ganitakaumudi.",
-    mistake: "Average velocity is not the average of the speed readings. Use displacement ÷ time.",
-    checkpoint: { prompt: "What is the formula for average velocity?", answer: "Average velocity = displacement ÷ time interval." },
-    sources: ["Chapter 4, §4.1.3, pp. 52–53; Example 4.2, p. 53"], externalReferences: [{ label: "Khan Academy: Motion (Class 9)", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "position",
+    "title": "Position and direction",
+    "section": "4.1.1 Describing position",
+    "pages": "49–50",
+    "hook": "A position needs distance and direction.",
+    "textbook": "The textbook uses a sign convention so opposite directions can be represented with + and −.",
+    "teacher": "Think of the idea as a tool you can reuse. The textbook uses a sign convention so opposite directions can be represented with + and −.",
+    "example": "+60 m and −20 m can describe positions on opposite sides of the same origin.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "If east is positive, what sign represents 30 m west?",
+      "options": [
+        "−30 m",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The sign records direction relative to the chosen convention."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "−30 m"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.1 Describing position, pp. 49–50"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "acceleration", title: "Acceleration & gravity", section: "4.1.4 Average acceleration", pages: "54–56",
-    hook: "Acceleration means velocity is changing. It does not just mean moving fast.",
-    textbook: "Average acceleration = change in velocity ÷ time: a = (v − u)/t. If an object speeds up, acceleration points along its motion. If it slows down, acceleration points the other way.",
-    teacher: "A fast bus has zero acceleration if its speed and direction stay the same. Acceleration also happens when direction changes, as it does on a circular track.",
-    example: "A bus changes from 36 km/h to 54 km/h in 10 s. Convert first: 10 m/s to 15 m/s. Then a = (15 − 10)/10 = 0.5 m/s².",
-    interaction: { type: "numeric", prompt: "A vehicle changes velocity from 8 m/s to 20 m/s in 4 s. What is its average acceleration?", answer: "3 m/s².", explain: "a = (20 − 8) ÷ 4 = 12 ÷ 4 = 3 m/s²." },
-    textbookActivity: "Example 4.4 shows a dropped object gaining 9.8 m/s of velocity each second. The textbook identifies this constant acceleration as acceleration due to gravity, g = 9.8 m/s².",
-    mistake: "Negative acceleration does not always mean slowing down. It depends on which direction you call positive and which way the object is moving.",
-    checkpoint: { prompt: "What does acceleration actually measure?", answer: "How quickly velocity changes with time." },
-    sources: ["Chapter 4, §4.1.4, pp. 54–56; Examples 4.3–4.4"], externalReferences: [{ label: "Khan Academy: Motion (Class 9)", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "rest",
+    "title": "Rest vs motion",
+    "section": "4.1.1 Describing position",
+    "pages": "49–50",
+    "hook": "Rest and motion depend on the reference point.",
+    "textbook": "If position does not change with time relative to the reference point, the object is at rest relative to it.",
+    "teacher": "Think of the idea as a tool you can reuse. If position does not change with time relative to the reference point, the object is at rest relative to it.",
+    "example": "A student can be at rest relative to a classroom but moving relative to the Sun.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Can the same object be at rest and in motion at the same time?",
+      "options": [
+        "Yes, relative to different reference points",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Rest and motion are relative to the chosen reference point."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Yes, relative to different reference points"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.1 Describing position, pp. 49–50"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "graphs", title: "Read motion like a graph", section: "4.2 Graphical Representation of Motion", pages: "56–63",
-    hook: "Graphs help us see how an object's motion changes over time.",
-    textbook: "The textbook uses two main graphs: position vs time and velocity vs time. These graphs show how motion changes as time passes.",
-    teacher: "On a position-time graph, the slope tells you velocity. On a velocity-time graph, the slope tells you acceleration. The area under a velocity-time graph tells you displacement.",
-    example: "A position-time line rises 40 m over 2 s. Its slope is 20 m/s, so the average velocity over that interval is 20 m/s.",
-    interaction: { type: "choice", prompt: "A position-time graph is a horizontal line at 40 m. What does it mean?", options: ["The object is accelerating.", "The object is moving at constant velocity.", "The object is at rest at 40 m.", "The object is moving backward."], answer: 2, explain: "Correct. Position is not changing with time, so the object is stationary at 40 m." },
-    textbookActivity: "Activity 4.3 walks through choosing axes, choosing scales, plotting position-time data and connecting the points. Later activities use slope and area to extract physical quantities.",
-    mistake: "A motion graph is not a map of the route. It shows how a value changes over time.",
-    checkpoint: { prompt: "What does the slope of a velocity-time graph give?", answer: "Acceleration." },
-    sources: ["Chapter 4, §4.2.1–4.2.3, pp. 57–63; Activities 4.3–4.4"], externalReferences: [{ label: "Khan Academy: Position-time graphs", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }, { label: "Khan Academy: Velocity-time graphs", url: "https://en.khanacademy.org/science/cambridge-o-level-physics-cie/x0e04e0cb682fb793:kinematics/x0e04e0cb682fb793:velocity-time-graphs/a/what-are-velocity-vs-time-graphs" }]
+    "key": "distance",
+    "title": "Distance: total path",
+    "section": "4.1.2 Distance travelled and displacement",
+    "pages": "50–51",
+    "hook": "Distance counts the actual path travelled.",
+    "textbook": "Add the lengths of every part of the route. Direction is not needed for distance.",
+    "teacher": "Think of the idea as a tool you can reuse. Add the lengths of every part of the route. Direction is not needed for distance.",
+    "example": "30 m east + 10 m west gives 40 m distance.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "Walk 30 m east, then 10 m west. What is the distance?",
+      "answer": "40 m",
+      "explain": "Distance is the total length of the path."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "40 m"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.2 Distance travelled and displacement, pp. 50–51"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "kinematics", title: "Kinematic equations", section: "4.3 Kinematic Equations for Motion in a Straight Line with Constant Acceleration", pages: "63–65",
-    hook: "These three equations help solve motion problems when acceleration stays constant.",
-    textbook: "When an object moves in a straight line with constant acceleration, we can use: v = u + at; s = ut + ½at²; and v² = u² + 2as. These connect starting speed, final speed, time, acceleration and displacement.",
-    teacher: "First write down what you know and what you need to find. Choose the equation that uses those values. Check that acceleration is constant and that your units match.",
-    example: "A car brakes with a = −4 m/s² from u = 15 m/s to v = 0. Using v² = u² + 2as gives 0 = 225 − 8s, so s = 28.125 m.",
-    interaction: { type: "choice", prompt: "Which equation is the natural choice when you know u, v and a but need s?", options: ["v = u + at", "s = ut + ½at²", "v² = u² + 2as", "average speed = distance ÷ time"], answer: 2, explain: "Correct. v² = u² + 2as contains u, v, a and s without requiring t." },
-    textbookActivity: "The chapter derives two primary equations from the velocity-time graph and derives v² = u² + 2as by eliminating time. It also gives two more derivations as a Journey Beyond exercise.",
-    mistake: "Use these equations only when acceleration is constant. Keep your positive and negative signs consistent.",
-    checkpoint: { prompt: "State the condition that must hold before you use the kinematic equations.", answer: "The acceleration must be constant." },
-    sources: ["Chapter 4, §4.3, pp. 63–65; Example 4.8, p. 65"], externalReferences: [{ label: "Khan Academy: Motion and kinematic equations", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "displacement",
+    "title": "Displacement: change in position",
+    "section": "4.1.2 Distance travelled and displacement",
+    "pages": "50–51",
+    "hook": "Displacement compares your final position with your initial position.",
+    "textbook": "It includes direction and can be positive, negative, or zero depending on the chosen axis.",
+    "teacher": "Think of the idea as a tool you can reuse. It includes direction and can be positive, negative, or zero depending on the chosen axis.",
+    "example": "30 m east then 10 m west leaves you 20 m east: displacement +20 m.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "For 30 m east then 10 m west, what is displacement if east is positive?",
+      "answer": "+20 m",
+      "explain": "Net change in position is 30 − 10 = 20 m east."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "+20 m"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.2 Distance travelled and displacement, pp. 50–51"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "circular", title: "When straight-line rules meet a circle", section: "4.4.1 Uniform circular motion", pages: "66–68",
-    hook: "An object can move at the same speed and still accelerate.",
-    textbook: "On a circle, the distance is the length of the path. After one full lap, distance is 2πR but displacement is zero because you end where you started. In uniform circular motion, speed stays the same but direction keeps changing.",
-    teacher: "Velocity includes direction. A runner going around a track may keep the same speed, but keeps turning. Since direction changes, velocity changes too — so there is acceleration.",
-    example: "For one revolution of radius R completed in time T, average speed is 2πR/T and average velocity is zero. In uniform circular motion, that constant speed is also the speed at every point.",
-    interaction: { type: "choice", prompt: "A car travels around a circular track at constant speed. Is it accelerating?", options: ["No, because speed is constant.", "Yes, because the direction of velocity continuously changes.", "Only if its speed increases.", "Only after one full lap."], answer: 1, explain: "Correct. Acceleration depends on change in velocity, and velocity changes when direction changes." },
-    textbookActivity: "Activity 4.5 uses a marble moving inside a ring. When the ring is lifted away, the marble moves in a straight line in the direction it was moving at that instant — along the tangent.",
-    mistake: "Same speed does not mean same velocity if direction changes.",
-    checkpoint: { prompt: "What changes continuously in uniform circular motion even though speed stays constant?", answer: "The direction of velocity." },
-    sources: ["Chapter 4, §4.4–4.4.1, pp. 66–68; Activity 4.5"], externalReferences: [{ label: "Khan Academy: Uniform circular motion", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "distance-displacement",
+    "title": "Distance vs displacement",
+    "section": "4.1.2 Distance travelled and displacement",
+    "pages": "50–51",
+    "hook": "Distance and displacement answer different questions.",
+    "textbook": "Distance asks 'how much path?'; displacement asks 'where did you end up relative to where you started?'",
+    "teacher": "Think of the idea as a tool you can reuse. Distance asks 'how much path?'; displacement asks 'where did you end up relative to where you started?'",
+    "example": "A complete out-and-back trip has non-zero distance but zero displacement.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Which can be zero after a complete lap?",
+      "options": [
+        "Displacement",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The final position is the starting position, so displacement is zero."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Displacement"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.2 Distance travelled and displacement, pp. 50–51"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   },
   {
-    key: "applications", title: "Real problems & chapter mastery", section: "Revise, Reflect, Refine", pages: "65–71",
-    hook: "Let's use what you've learned to solve real problems.",
-    textbook: "The chapter applies motion concepts to braking distance, safe following distance, road travel, graph interpretation, circular motion and everyday measurements. Its revision set mixes distance/displacement, acceleration, graphs, kinematics and circular motion.",
-    teacher: "For each problem: write down what you know, include units, choose the right formula, solve it, and check if your answer makes sense.",
-    example: "The textbook’s braking example shows why speed matters: with the same braking acceleration, increasing initial velocity greatly increases stopping distance. It then connects this to safe following distance and driver reaction time.",
-    interaction: { type: "numeric", prompt: "A bus travels at 36 km/h for 0.5 s before the driver reacts. How far does it travel during the reaction time?", answer: "5 m.", explain: "36 km/h = 10 m/s. Reaction distance = speed × time = 10 × 0.5 = 5 m." },
-    textbookActivity: "The chapter ends with 16 mixed revision problems and Journey Beyond activities, including deriving additional equations, comparing graph scales, investigating vehicle braking factors, and using a smartphone accelerometer.",
-    mistake: "Don't grab a formula straight away. First work out what the question is asking and what information you have.",
-    checkpoint: { prompt: "Before solving a motion numerical, name one thing you should establish first.", answer: "A consistent reference direction/sign convention and the known quantities with units." },
-    sources: ["Chapter 4, Example 4.8 and Bridging Science and Society, pp. 65; Revise, Reflect, Refine, pp. 68–70; The Journey Beyond, p. 71"], externalReferences: [{ label: "Khan Academy: Class 9 Motion practice", url: "https://www.khanacademy.org/science/in-in-class9th-physics-india/in-in-motion" }]
+    "key": "scalars-vectors",
+    "title": "Scalars and vectors",
+    "section": "4.1.2 Distance travelled and displacement",
+    "pages": "50–51",
+    "hook": "Some quantities need direction and some do not.",
+    "textbook": "Distance is scalar. Displacement and velocity are vector quantities in the chapter's treatment.",
+    "teacher": "Think of the idea as a tool you can reuse. Distance is scalar. Displacement and velocity are vector quantities in the chapter's treatment.",
+    "example": "Writing 40 m is enough for distance; displacement needs magnitude and direction.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Which quantity needs direction?",
+      "options": [
+        "Displacement",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Displacement is described with magnitude and direction."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Displacement"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.2 Distance travelled and displacement, pp. 50–51"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "speed",
+    "title": "Speed",
+    "section": "4.1.3 Average speed and average velocity",
+    "pages": "52–53",
+    "hook": "Speed tells how much distance is covered per unit time.",
+    "textbook": "Average speed is total distance divided by total time.",
+    "teacher": "Think of the idea as a tool you can reuse. Average speed is total distance divided by total time.",
+    "example": "100 m in 20 s gives an average speed of 5 m/s.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "A runner covers 120 m in 20 s. Average speed?",
+      "answer": "6 m/s",
+      "explain": "120 ÷ 20 = 6 m/s."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "6 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.3 Average speed and average velocity, pp. 52–53"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "avg-speed",
+    "title": "Average speed",
+    "section": "4.1.3 Average speed and average velocity",
+    "pages": "52–53",
+    "hook": "Average speed uses the whole distance and whole time.",
+    "textbook": "Do not average speed readings blindly; calculate total distance ÷ total time.",
+    "teacher": "Think of the idea as a tool you can reuse. Do not average speed readings blindly; calculate total distance ÷ total time.",
+    "example": "A trip with several speeds still has one average speed from total distance and total time.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Average speed uses which numerator?",
+      "options": [
+        "Total distance",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Average speed = total distance ÷ total time."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Total distance"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.3 Average speed and average velocity, pp. 52–53"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "velocity",
+    "title": "Velocity",
+    "section": "4.1.3 Average speed and average velocity",
+    "pages": "52–53",
+    "hook": "Velocity combines rate with direction.",
+    "textbook": "Average velocity uses displacement rather than distance.",
+    "teacher": "Think of the idea as a tool you can reuse. Average velocity uses displacement rather than distance.",
+    "example": "If you finish where you started, displacement is zero, so average velocity is zero.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A runner returns to the start after one lap. Average velocity for the lap?",
+      "options": [
+        "0 m/s",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Displacement is zero."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "0 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.3 Average speed and average velocity, pp. 52–53"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "avg-velocity",
+    "title": "Average velocity",
+    "section": "4.1.3 Average speed and average velocity",
+    "pages": "52–53",
+    "hook": "Average velocity = displacement ÷ time interval.",
+    "textbook": "Keep the sign of displacement so the direction is retained.",
+    "teacher": "Think of the idea as a tool you can reuse. Keep the sign of displacement so the direction is retained.",
+    "example": "A displacement of −40 m over 10 s gives −4 m/s.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "A car's displacement is −60 m in 12 s. Average velocity?",
+      "answer": "−5 m/s",
+      "explain": "−60 ÷ 12 = −5 m/s."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "−5 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.3 Average speed and average velocity, pp. 52–53"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "uniform",
+    "title": "Uniform vs non-uniform motion",
+    "section": "4.1.3 Average speed and average velocity",
+    "pages": "52–53",
+    "hook": "Uniform motion covers equal distances in equal time intervals.",
+    "textbook": "If the distances in equal intervals differ, the motion is non-uniform.",
+    "teacher": "Think of the idea as a tool you can reuse. If the distances in equal intervals differ, the motion is non-uniform.",
+    "example": "A vehicle covering 10 m every second has uniform motion along that line.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "10 m, 10 m, 10 m, 10 m each second describes what?",
+      "options": [
+        "Uniform motion",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Equal distances in equal time intervals."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Uniform motion"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.3 Average speed and average velocity, pp. 52–53"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "acceleration",
+    "title": "Acceleration",
+    "section": "4.1.4 Average acceleration",
+    "pages": "54–56",
+    "hook": "Acceleration measures change in velocity per unit time.",
+    "textbook": "Average acceleration is a = (v − u)/t. Velocity can change in magnitude or direction.",
+    "teacher": "Think of the idea as a tool you can reuse. Average acceleration is a = (v − u)/t. Velocity can change in magnitude or direction.",
+    "example": "From 10 m/s to 20 m/s in 5 s: a = 2 m/s².",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "Velocity changes from 10 to 20 m/s in 5 s. Acceleration?",
+      "answer": "2 m/s²",
+      "explain": "(20 − 10) ÷ 5 = 2 m/s²."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "2 m/s²"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.4 Average acceleration, pp. 54–56"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "sign-acceleration",
+    "title": "Positive and negative acceleration",
+    "section": "4.1.4 Average acceleration",
+    "pages": "54–56",
+    "hook": "The sign of acceleration depends on your direction convention.",
+    "textbook": "Speeding up does not automatically mean positive acceleration; the chosen axis matters.",
+    "teacher": "Think of the idea as a tool you can reuse. Speeding up does not automatically mean positive acceleration; the chosen axis matters.",
+    "example": "If positive is east, acceleration toward west is negative.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "If east is positive, acceleration toward west is…",
+      "options": [
+        "Negative",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The sign records direction relative to the chosen axis."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Negative"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.4 Average acceleration, pp. 54–56"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "gravity",
+    "title": "Gravity and g",
+    "section": "4.1.4 Average acceleration",
+    "pages": "55–56",
+    "hook": "Free fall near Earth's surface is an example of acceleration.",
+    "textbook": "The textbook uses g ≈ 9.8 m/s² downward.",
+    "teacher": "Think of the idea as a tool you can reuse. The textbook uses g ≈ 9.8 m/s² downward.",
+    "example": "Direction matters: if upward is positive, gravitational acceleration is −9.8 m/s².",
+    "interaction": {
+      "type": "choice",
+      "prompt": "With upward chosen positive, what is g?",
+      "options": [
+        "−9.8 m/s²",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Gravity acts downward, opposite the positive upward direction."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "−9.8 m/s²"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.4 Average acceleration, pp. 55–56"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "units",
+    "title": "Units that belong with values",
+    "section": "4.1.4 / 4.3",
+    "pages": "54–65",
+    "hook": "A numerical answer is incomplete without appropriate units.",
+    "textbook": "Keep SI units consistent: metres, seconds, metres per second, metres per second squared.",
+    "teacher": "Think of the idea as a tool you can reuse. Keep SI units consistent: metres, seconds, metres per second, metres per second squared.",
+    "example": "Do not mix km/h with m/s inside a formula without converting.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Which is a unit of acceleration?",
+      "options": [
+        "m/s²",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Acceleration is change in velocity per time."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "m/s²"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1.4 / 4.3, pp. 54–65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "conversion",
+    "title": "km/h to m/s",
+    "section": "4.3 Applications",
+    "pages": "65",
+    "hook": "Unit conversion is part of solving the problem, not decoration.",
+    "textbook": "For km/h to m/s, multiply by 5/18.",
+    "teacher": "Think of the idea as a tool you can reuse. For km/h to m/s, multiply by 5/18.",
+    "example": "36 km/h = 36 × 5/18 = 10 m/s.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "Convert 72 km/h to m/s.",
+      "answer": "20 m/s",
+      "explain": "72 × 5/18 = 20 m/s."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "20 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Applications, pp. 65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "values",
+    "title": "Reading tables and values",
+    "section": "4.2 Graphs",
+    "pages": "56–61",
+    "hook": "Tables are raw measurements waiting to be interpreted.",
+    "textbook": "Check the headings, units, intervals and whether values are position, velocity or time.",
+    "teacher": "Think of the idea as a tool you can reuse. Check the headings, units, intervals and whether values are position, velocity or time.",
+    "example": "Before plotting, identify which column is the independent variable.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Before using a table to plot a graph, what should you check first?",
+      "options": [
+        "Labels and units",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "You need to know what each value represents."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Labels and units"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2 Graphs, pp. 56–61"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "axes",
+    "title": "How graphs are built",
+    "section": "4.2 Graphs",
+    "pages": "56–61",
+    "hook": "A graph turns a table into a visual relationship.",
+    "textbook": "Put the independent variable on the horizontal axis, choose a sensible scale, label axes and units, then plot points.",
+    "teacher": "Think of the idea as a tool you can reuse. Put the independent variable on the horizontal axis, choose a sensible scale, label axes and units, then plot points.",
+    "example": "For position versus time, time belongs on the horizontal axis.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "For a position-time graph, time normally goes on which axis?",
+      "options": [
+        "Horizontal axis",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Time is the independent variable in the position-time relationship."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Horizontal axis"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2 Graphs, pp. 56–61"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "plot",
+    "title": "Plotting a position-time graph",
+    "section": "4.2.1 Plotting a graph",
+    "pages": "56–61",
+    "hook": "Plotting is a process: scale → points → pattern.",
+    "textbook": "A graph is not a map of the route. It shows how position changes with time.",
+    "teacher": "Think of the idea as a tool you can reuse. A graph is not a map of the route. It shows how position changes with time.",
+    "example": "Use the table values as coordinates and inspect the shape after plotting.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "What does a curved position-time graph tell you?",
+      "options": [
+        "Velocity is changing",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The textbook explains that a changing slope means changing velocity."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Velocity is changing"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.1 Plotting a graph, pp. 56–61"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "slope-position",
+    "title": "Slope of a position-time graph",
+    "section": "4.2.2 Position-time graphs",
+    "pages": "60–63",
+    "hook": "Slope is rise divided by run: change in position divided by change in time.",
+    "textbook": "For a position-time graph, slope represents velocity.",
+    "teacher": "Think of the idea as a tool you can reuse. For a position-time graph, slope represents velocity.",
+    "example": "If position changes by 20 m in 4 s, slope = 5 m/s.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "A position-time line changes 20 m over 4 s. What is its slope?",
+      "answer": "5 m/s",
+      "explain": "Δposition ÷ Δtime = 20 ÷ 4 = 5 m/s."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "5 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.2 Position-time graphs, pp. 60–63"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "pt-graph",
+    "title": "Reading position-time graphs",
+    "section": "4.2.2 Position-time graphs",
+    "pages": "60–63",
+    "hook": "The shape of a position-time graph describes motion.",
+    "textbook": "Horizontal means position is constant; straight sloping means constant velocity; changing slope means changing velocity.",
+    "teacher": "Think of the idea as a tool you can reuse. Horizontal means position is constant; straight sloping means constant velocity; changing slope means changing velocity.",
+    "example": "Compare slopes instead of judging steepness by eye alone.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "What does a horizontal position-time line mean?",
+      "options": [
+        "The object is at rest relative to the reference point",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Position is not changing with time."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "The object is at rest relative to the reference point"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.2 Position-time graphs, pp. 60–63"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "vt-graph",
+    "title": "Velocity-time graphs",
+    "section": "4.2.3 Velocity-time graphs",
+    "pages": "63–65",
+    "hook": "Velocity-time graphs show how velocity changes with time.",
+    "textbook": "Horizontal means constant velocity. A sloping line means velocity is changing.",
+    "teacher": "Think of the idea as a tool you can reuse. Horizontal means constant velocity. A sloping line means velocity is changing.",
+    "example": "Read the vertical value as velocity and horizontal value as time.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A horizontal velocity-time line at 8 m/s means…",
+      "options": [
+        "Constant velocity of 8 m/s",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Velocity stays unchanged as time passes."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Constant velocity of 8 m/s"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.3 Velocity-time graphs, pp. 63–65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "slope-vt",
+    "title": "Slope of a velocity-time graph",
+    "section": "4.2.3 Velocity-time graphs",
+    "pages": "64–65",
+    "hook": "Slope on a velocity-time graph gives acceleration.",
+    "textbook": "Slope = change in velocity ÷ change in time.",
+    "teacher": "Think of the idea as a tool you can reuse. Slope = change in velocity ÷ change in time.",
+    "example": "From 4 to 10 m/s in 3 s, acceleration is 2 m/s².",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "Velocity rises from 4 to 10 m/s in 3 s. Acceleration?",
+      "answer": "2 m/s²",
+      "explain": "(10 − 4) ÷ 3 = 2 m/s²."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "2 m/s²"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.3 Velocity-time graphs, pp. 64–65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "area-vt",
+    "title": "Area under a velocity-time graph",
+    "section": "4.2.3 Velocity-time graphs",
+    "pages": "64–65",
+    "hook": "Area under a velocity-time graph represents displacement.",
+    "textbook": "For a constant velocity, the area is a rectangle: velocity × time.",
+    "teacher": "Think of the idea as a tool you can reuse. For a constant velocity, the area is a rectangle: velocity × time.",
+    "example": "8 m/s for 5 s gives displacement 40 m.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "A velocity-time rectangle is 8 m/s high and 5 s wide. Displacement?",
+      "answer": "40 m",
+      "explain": "Area = 8 × 5 = 40 m."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "40 m"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2.3 Velocity-time graphs, pp. 64–65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "formulas",
+    "title": "Kinematic formulas",
+    "section": "4.3 Kinematic equations",
+    "pages": "65–67",
+    "hook": "Equations connect displacement, velocity, acceleration and time for constant acceleration.",
+    "textbook": "The chapter derives v = u + at, s = ut + ½at², v² = u² + 2as, plus equivalent forms.",
+    "teacher": "Think of the idea as a tool you can reuse. The chapter derives v = u + at, s = ut + ½at², v² = u² + 2as, plus equivalent forms.",
+    "example": "Use only the equations whose conditions and known quantities fit the problem.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Which equation directly relates u, v, a and t?",
+      "options": [
+        "v = u + at",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "It contains exactly those four quantities."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "v = u + at"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Kinematic equations, pp. 65–67"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "choose-formula",
+    "title": "How to choose a formula",
+    "section": "4.3 Kinematic equations",
+    "pages": "65–67",
+    "hook": "Formula choice starts with known and unknown quantities.",
+    "textbook": "List what you know, identify what you need, then choose an equation containing them and valid for constant acceleration.",
+    "teacher": "Think of the idea as a tool you can reuse. List what you know, identify what you need, then choose an equation containing them and valid for constant acceleration.",
+    "example": "If t is missing, v² = u² + 2as may be useful.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A problem gives u, v and a and asks for t. Which equation is a natural starting point?",
+      "options": [
+        "v = u + at",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "It contains u, v, a and t."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "v = u + at"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Kinematic equations, pp. 65–67"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "rearrange",
+    "title": "Rearranging formulas",
+    "section": "4.3 Kinematic equations",
+    "pages": "65–67",
+    "hook": "A formula is a relationship, not a fixed sentence.",
+    "textbook": "Solve algebraically for the unknown before substituting values.",
+    "teacher": "Think of the idea as a tool you can reuse. Solve algebraically for the unknown before substituting values.",
+    "example": "From v = u + at, t = (v − u)/a.",
+    "interaction": {
+      "type": "numeric",
+      "prompt": "Rearrange v = u + at for t.",
+      "answer": "t = (v − u)/a",
+      "explain": "Subtract u, then divide by a."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "t = (v − u)/a"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Kinematic equations, pp. 65–67"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "numericals",
+    "title": "How to solve a numerical",
+    "section": "4.3 Kinematic equations",
+    "pages": "65–68",
+    "hook": "Good numerical solving is a repeatable process.",
+    "textbook": "Write known values with units, choose direction/signs, choose a formula, substitute, calculate, attach units, and sanity-check.",
+    "teacher": "Think of the idea as a tool you can reuse. Write known values with units, choose direction/signs, choose a formula, substitute, calculate, attach units, and sanity-check.",
+    "example": "A final value with no units or an impossible magnitude needs checking.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "What should you do before plugging numbers into a formula?",
+      "options": [
+        "Identify known/unknown quantities and make units consistent",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "This prevents formula and unit mistakes."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Identify known/unknown quantities and make units consistent"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Kinematic equations, pp. 65–68"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "sanity",
+    "title": "Checking an answer",
+    "section": "4.3 Applications",
+    "pages": "65–68",
+    "hook": "Physics answers should make physical sense.",
+    "textbook": "Check sign, unit, scale and whether the result matches the situation.",
+    "teacher": "Think of the idea as a tool you can reuse. Check sign, unit, scale and whether the result matches the situation.",
+    "example": "A car cannot reasonably travel 500 km in 2 seconds; revisit the units or arithmetic.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A speed calculation gives 0.02 m/s for a highway car. What should you do?",
+      "options": [
+        "Check the conversion and arithmetic",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "A sanity check can catch unit or calculation errors."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Check the conversion and arithmetic"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3 Applications, pp. 65–68"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "derivative-idea",
+    "title": "Rate of change: the derivative idea",
+    "section": "4.2 Graphs",
+    "pages": "60–65",
+    "hook": "The chapter's slope idea is the foundation of a rate-of-change viewpoint.",
+    "textbook": "Here we use only the textbook-supported idea: slope tells how one quantity changes with another. Formal calculus differentiation is beyond this chapter.",
+    "teacher": "Think of the idea as a tool you can reuse. Here we use only the textbook-supported idea: slope tells how one quantity changes with another. Formal calculus differentiation is beyond this chapter.",
+    "example": "A steeper position-time slope means a larger velocity; a steeper velocity-time slope means a larger acceleration.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "In a position-time graph, what does a steeper slope mean?",
+      "options": [
+        "Greater velocity magnitude",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Slope is the rate of change of position with time."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Greater velocity magnitude"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.2 Graphs, pp. 60–65"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "circular",
+    "title": "Uniform circular motion",
+    "section": "4.4.1 Uniform circular motion",
+    "pages": "69–71",
+    "hook": "Constant speed does not guarantee constant velocity.",
+    "textbook": "In circular motion, direction changes continuously, so velocity changes even when speed is constant.",
+    "teacher": "Think of the idea as a tool you can reuse. In circular motion, direction changes continuously, so velocity changes even when speed is constant.",
+    "example": "One revolution has distance 2πr and displacement zero.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "Why is there acceleration in uniform circular motion?",
+      "options": [
+        "Velocity changes because direction changes",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "Acceleration measures change in velocity, including direction."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Velocity changes because direction changes"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.4.1 Uniform circular motion, pp. 69–71"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "revision",
+    "title": "Mixed numerical strategy",
+    "section": "4.3–4.4",
+    "pages": "65–71",
+    "hook": "Mixed problems test whether you can choose the right idea, not just remember a formula.",
+    "textbook": "Separate the problem into quantities, units, direction and relationship before calculating.",
+    "teacher": "Think of the idea as a tool you can reuse. Separate the problem into quantities, units, direction and relationship before calculating.",
+    "example": "Use graphs when the problem gives a graph; use kinematics when acceleration is constant.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "A problem gives a velocity-time graph and asks for displacement. What should you look for first?",
+      "options": [
+        "Area under the graph",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "The chapter states that area under a velocity-time graph gives displacement."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Area under the graph"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.3–4.4, pp. 65–71"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
+  },
+  {
+    "key": "mastery",
+    "title": "Chapter 4 mastery",
+    "section": "4.1–4.4",
+    "pages": "49–71",
+    "hook": "Mastery means connecting concepts, graphs, units and calculations.",
+    "textbook": "The official NCERT chapter's revision set mixes displacement, acceleration, graph interpretation, kinematics and circular motion.",
+    "teacher": "Think of the idea as a tool you can reuse. The official NCERT chapter's revision set mixes displacement, acceleration, graph interpretation, kinematics and circular motion.",
+    "example": "Use the source paper bank after the lessons, then revisit any weak skill.",
+    "interaction": {
+      "type": "choice",
+      "prompt": "What is the best next step after missing a graph-based question?",
+      "options": [
+        "Review the graph skill, practise a similar problem, then retry",
+        "Not enough information",
+        "The opposite statement",
+        "It cannot be determined"
+      ],
+      "answer": 0,
+      "explain": "That closes the learn → practise → reassess loop."
+    },
+    "mistake": "Do not skip the meaning of the quantity. Check the reference direction, known values, units and what the question actually asks.",
+    "checkpoint": {
+      "prompt": "State the key rule for this lesson in your own words.",
+      "answer": "Review the graph skill, practise a similar problem, then retry"
+    },
+    "textbookActivity": "Use the related textbook examples, activities and revision problems as the source-backed follow-up.",
+    "sources": [
+      "NCERT Class 9 Science, Chapter 4, 4.1–4.4, pp. 49–71"
+    ],
+    "externalReferences": [
+      {
+        "label": "Official NCERT Chapter 4",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
+      }
+    ]
   }
 ];
 
