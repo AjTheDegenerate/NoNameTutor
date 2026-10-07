@@ -9,6 +9,7 @@ import quiz from "./chapter4Quiz";
 import mindMap from "./chapter4MindMap";
 import chapter4Lessons from "./chapter4Lessons";
 import Chapter4Lesson from "./Chapter4Lesson";
+import paperSources from "./paperSources";
 
 const chapters = [
   { id: "motion", number: "04", title: "Describing Motion Around Us", short: "Motion" },
@@ -17,16 +18,7 @@ const chapters = [
 ];
 
 const lessons = {
-  motion: [
-    { key: "linear", title: "Linear motion & reference points", body: "Linear motion is motion along a straight line. Position is described using distance and direction relative to a chosen reference point. Motion means position changes with time relative to that point." },
-    { key: "distance", title: "Distance & displacement", body: "Distance is the total length of the actual path. Displacement is the net change in position, including direction. Distance is scalar; displacement is vector; displacement magnitude is never greater than distance." },
-    { key: "speed", title: "Speed, velocity & uniform motion", body: "Average speed = total distance ÷ time. Average velocity = displacement ÷ time. Uniform motion covers equal distances in equal intervals; non-uniform motion covers unequal distances in equal intervals." },
-    { key: "acceleration", title: "Acceleration & gravity", body: "Average acceleration is a change in velocity divided by time: a = (v − u) / t. Speeding up means acceleration is in the velocity direction; slowing down means it is opposite. Gravity near Earth is 9.8 m/s² downward." },
-    { key: "graphs", title: "Position-time & velocity-time graphs", body: "Position-time slope gives velocity. A horizontal position-time line means rest; a straight non-horizontal line means constant velocity; a curve indicates changing velocity. Velocity-time slope gives acceleration and area gives displacement." },
-    { key: "kinematics", title: "Kinematic equations", body: "For constant acceleration: v = u + at; s = ut + ½at²; v² = u² + 2as. Also s = ½(u + v)t and s = vt − ½at². Signs indicate direction along the chosen coordinate line." },
-    { key: "circular", title: "Uniform circular motion", body: "Uniform circular motion has constant speed on a circular path, but velocity changes because direction changes continuously. For radius r and period T, v = 2πr/T. One revolution has distance 2πr and zero displacement." },
-    { key: "applications", title: "Applications & chapter revision", body: "Applications include km/h → m/s using ×5/18, the two-postmen problem from Ganitakaumudi, Sarang's pool example, bus acceleration examples, and the historical references to Aryabhatiya and Ganitakaumudi." }
-  ],
+  motion: chapter4Lessons.map((x) => ({ key: x.key, title: x.title, body: x.hook })),
   force: [
     { key: "force", title: "The concept of force", body: "Force can change an object's motion or shape. Force is a vector quantity, so magnitude and direction matter." },
     { key: "newton1", title: "Newton's First Law", body: "An object remains at rest or in uniform straight-line motion unless acted upon by an unbalanced external force." },
@@ -53,10 +45,11 @@ export default function Home() {
   const [quizAnswers, setQuizAnswers] = useState({});
   const [mindFilter, setMindFilter] = useState("All");
   const [activeLesson, setActiveLesson] = useState(null);
+  const [paperMode, setPaperMode] = useState("all");
 
   const content = lessons[chapter.id];
   const filtered = useMemo(() => content.filter((x) => (x.title + " " + x.body).toLowerCase().includes(query.toLowerCase())), [content, query]);
-  const totalConcepts = 16;
+  const totalConcepts = chapter.id === "motion" ? chapter4Lessons.length : content.length;
   const completedConcepts = done.filter((x) => x.includes(":lesson:")).length;
   const progress = Math.round((completedConcepts / totalConcepts) * 100);
   const mindGroups = ["All", ...Array.from(new Set(mindMap.map((x) => x[0])))];
@@ -80,12 +73,13 @@ export default function Home() {
           <button className={tab === "practice" ? "nav-active" : ""} onClick={() => openTab("practice")}>Practice</button>
           <button className={tab === "flashcards" ? "nav-active" : ""} onClick={() => openTab("flashcards")}>Flashcards</button>
           <button className={tab === "notes" ? "nav-active" : ""} onClick={() => setTab("notes")}>Notes</button>
+          <button className={tab === "papers" ? "nav-active" : ""} onClick={() => setTab("papers")}>Papers</button>
         </nav>
         <div className="stats"><span className="streak">🔥 <b>3</b> day streak</span><span className="xp">⚡ <b>{completedConcepts * 10}</b> XP</span><span className="avatar">A</span></div>
       </header>
 
       <section className="course-strip">
-        <div><span className="kicker">CLASS 9 · PHYSICS</span><h1>Your learning path</h1><p>Chapter 4 is now built from the imported study pack: 8 lessons, 80 flashcards, 28 quiz questions and a chapter mind map.</p></div>
+        <div><span className="kicker">CLASS 9 · PHYSICS</span><h1>Your learning path</h1><p>Chapter 4 is now a 35-skill learning path, backed by 80 flashcards, 28 quiz questions, a mind map and a verified paper-source bank.</p></div>
         <div className="goal"><div className="goal-top"><b>Daily goal</b><span>{Math.min(completedConcepts, 3)} / 3</span></div><div className="goal-track"><i style={{width: Math.min(100, completedConcepts / 3 * 100) + "%"}} /></div><small>Complete 3 lessons today</small></div>
       </section>
 
@@ -93,7 +87,7 @@ export default function Home() {
         <section className="path-panel">
           <div className="path-head"><div><span className="kicker">PHYSICS PATH</span><h2>Build your physics streak</h2></div><span className="progress-chip">{progress}% complete</span></div>
           <div className="chapter-tabs">{chapters.map((c) => <button key={c.id} className={chapter.id === c.id ? "chapter-tab active" : "chapter-tab"} onClick={() => {setChapter(c); setTab("learn");}}><span>{c.number}</span>{c.short}</button>)}</div>
-          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button></div>}
+          {chapter.id === "motion" && <div className="asset-bar"><button onClick={() => openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={() => openTab("practice")}>🧠 28-Question Quiz</button><button onClick={() => setTab("mindmap")}>🗺️ Mind Map</button><button onClick={() => setTab("papers")}>📚 Papers</button></div>}
 
           <div className="path">
             {filtered.map((lesson, i) => {
@@ -109,7 +103,7 @@ export default function Home() {
         </section>
 
         <aside className="right-rail">
-          <div className="rail-card"><div className="rail-icon">🎯</div><span className="kicker">CHAPTER 4 STUDY PACK</span><h3>Everything for motion.</h3><p>Study the concepts, drill the imported Anki cards, take the 28-question quiz, then use the mind map for a fast recap.</p><button onClick={() => openTab("flashcards")}>Start flashcards</button></div>
+          <div className="rail-card"><div className="rail-icon">🎯</div><span className="kicker">CHAPTER 4 STUDY PACK</span><h3>Everything for motion.</h3><p>Study the concepts, drill the imported cards, take the quiz, then move into official-source papers and practice.</p><button onClick={() => setTab("papers")}>Open paper bank</button></div>
           <div className="rail-card stats-card"><span className="kicker">YOUR PROGRESS</span><div className="big-stat">{completedConcepts}<small> / {totalConcepts}</small></div><p>lessons completed</p><div className="mini-track"><i style={{width: progress + "%"}} /></div></div>
           <div className="rail-card"><span className="kicker">CHAPTER SEARCH</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Find a concept..." />{query && <small className="search-count">{filtered.length} matching lessons</small>}</div>
         </aside>
@@ -124,6 +118,8 @@ export default function Home() {
         {tab === "practice" && <><span className="kicker">CHAPTER 4 · IMPORTED QUIZ</span><h2>Motion quiz — {quiz.length} questions.</h2><p className="overlay-intro">Reveal answers after attempting each question. The imported question bank covers definitions, numericals, graph interpretation, kinematics and circular motion.</p>{quiz.map((q, i) => <article className="practice-card" key={q[0]}><span>Q{i + 1}</span><h3>{q[0]}</h3>{quizAnswers[i] ? <div className="quiz-answer">✓ {q[1]}</div> : <button onClick={() => setQuizAnswers((x) => ({...x, [i]: true}))}>Reveal answer</button>}</article>)}</>}
 
         {tab === "mindmap" && <><span className="kicker">CHAPTER 4 · MIND MAP</span><h2>Describing Motion Around Us.</h2><div className="mind-filters">{mindGroups.map((g) => <button key={g} className={mindFilter === g ? "selected" : ""} onClick={() => setMindFilter(g)}>{g}</button>)}</div><div className="mind-grid">{filteredMindMap.map(([group,title,body]) => <article key={group + title}><span>{group}</span><h3>{title}</h3><p>{body}</p></article>)}</div></>}
+
+        {tab === "papers" && <><span className="kicker">SOURCE-BACKED PAPER BANK</span><h2>Practice with real sources.</h2><p className="overlay-intro">Official past papers stay linked to their authoritative repositories. Generated practice is kept separate so the app never labels AI-generated questions as historical exam questions.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map((m) => <button key={m} className={paperMode === m ? "selected" : ""} onClick={() => setPaperMode(m)}>{m === "all" ? "All" : m[0].toUpperCase() + m.slice(1)}</button>)}</div><div className="paper-grid">{paperSources.filter((p) => paperMode === "all" || p.modes.includes(paperMode)).map((p) => <article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span></div><a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a></article>)}</div></>}
 
         {tab === "notes" && <><span className="kicker">CHAPTER 4 · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map((x) => <article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
       </div></section>}
