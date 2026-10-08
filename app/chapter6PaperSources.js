@@ -1,0 +1,6 @@
+const chapter6PaperSources = [
+{id:"ncert-ch6",title:"NCERT Chapter 6 — How Forces Affect Motion",kind:"source",classLevel:"9",subject:"Science",year:"Current textbook",status:"official",modes:["past","solved","unsolved","practice"],description:"Official NCERT Chapter 6 source with worked examples, activities and the chapter's revision questions.",url:"https://ncert.nic.in/textbook/pdf/iesc106.pdf"},
+{id:"cbse-cbe-9-science-ch6",title:"CBSE Curriculum-Aligned Competency Based Test Items — Science Class 9",kind:"competency",classLevel:"9",subject:"Science",year:"2021",status:"official",modes:["practice","unsolved"],description:"Official CBSE competency-based assessment material useful for application and interpretation practice.",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"},
+{id:"cbse-archive-x-2026",title:"CBSE Previous Years' Question Papers — Class X",kind:"past",classLevel:"10",subject:"Science",year:"Archive",status:"official",modes:["past"],description:"Official CBSE archive for broader force-and-motion exam practice; use exact chapter relevance selectively.",url:"https://www.cbse.gov.in/cbsenew/question-paper.html"}
+];
+export default chapter6PaperSources;
