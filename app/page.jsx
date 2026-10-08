@@ -5,6 +5,8 @@ import flash1 from "./chapter4Flashcards1";
 import flash2 from "./chapter4Flashcards2";
 import flash3 from "./chapter4Flashcards3";
 import flash4 from "./chapter4Flashcards4";
+import chapter6Flashcards from "./chapter6Flashcards";
+import chapter6Quiz from "./chapter6Quiz";
 import chapter4Quiz from "./chapter4Quiz";
 import chapter4MindMap from "./chapter4MindMap";
 import chapter4Lessons from "./chapter4Lessons";
@@ -74,7 +76,7 @@ export default function Home(){
   function complete(key){setDone(current=>current.includes(key)?current:[...current,key]);}
 
   function openTab(next){
-    if((next==="flashcards"||next==="practice")&&chapter.id!=="motion") return;
+    if((next==="flashcards"||next==="practice")&&!["motion","force"].includes(chapter.id)) return;
     setTab(next);
     if(next==="flashcards"){setCard(0);setShowAnswer(false);}
   }
@@ -112,8 +114,8 @@ export default function Home(){
       <button className="brand" onClick={()=>setTab("learn")} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class 9 · Physics</small></span></button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
-        <button className={tab==="practice"?"nav-active":""} disabled={chapter.id!=="motion"} onClick={()=>openTab("practice")}>Practice</button>
-        <button className={tab==="flashcards"?"nav-active":""} disabled={chapter.id!=="motion"} onClick={()=>openTab("flashcards")}>Flashcards</button>
+        <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
+        <button className={tab==="flashcards"?"nav-active":""} disabled={!["motion","force"].includes(chapter.id)} onClick={()=>openTab("flashcards")}>Flashcards</button>
         <button className={tab==="notes"?"nav-active":""} onClick={()=>setTab("notes")}>Notes</button>
         <button className={tab==="papers"?"nav-active":""} onClick={()=>setTab("papers")}>Papers</button>
         <button className={tab==="revision"?"nav-active":""} onClick={()=>setTab("revision")}>Revision</button>
@@ -134,7 +136,7 @@ export default function Home(){
         <div className="chapter-tabs">{chapters.map(c=><button key={c.id} className={chapter.id===c.id?"chapter-tab active":"chapter-tab"} onClick={()=>selectChapter(c)}><span>{c.number}</span>{c.short}</button>)}</div>
 
         {chapter.id==="motion"&&<div className="asset-bar"><button onClick={()=>openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={()=>openTab("practice")}>🧠 28-Question Quiz</button><button onClick={()=>setTab("mindmap")}>🗺️ Mind Map</button><button onClick={()=>setTab("papers")}>📚 Papers</button><button onClick={()=>setTab("revision")}>✍️ Q&A Revision</button><button onClick={()=>setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={()=>setTab("derivations")}>∫ Derivations</button></div>}
-        {chapter.id==="force"&&<div className="asset-bar"><button onClick={()=>setTab("mindmap")}>🗺️ Mind Map</button><button onClick={()=>setTab("papers")}>📚 Papers</button><button onClick={()=>setTab("revision")}>✍️ 75-Question Revision</button><button onClick={()=>setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={()=>setTab("derivations")}>∫ Derivations</button></div>}
+        {chapter.id==="force"&&<div className="asset-bar"><button onClick={()=>openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={()=>openTab("practice")}>🧠 27-Question Quiz</button><button onClick={()=>setTab("mindmap")}>🗺️ Mind Map</button><button onClick={()=>setTab("papers")}>📚 Papers</button><button onClick={()=>setTab("revision")}>✍️ 81-Question Revision</button><button onClick={()=>setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={()=>setTab("derivations")}>∫ Derivations</button></div>}
 
         <div className="path">{filtered.map((lesson,i)=>{
           const key=chapter.id+":lesson:"+lesson.key;const completed=done.includes(key);const locked=i>0&&!done.includes(chapter.id+":lesson:"+content[i-1].key);
@@ -154,9 +156,11 @@ export default function Home(){
 
     {tab!=="learn"&&<section className="overlay-panel"><div className="overlay-inner"><button className="close" onClick={()=>setTab("learn")}>× Close</button>
 
-      {tab==="flashcards"&&chapter.id==="motion"&&<><span className="kicker">CHAPTER 4 · ANKI IMPORT</span><h2>Linear Motion — card {card+1} / {flashcards.length}</h2><article className="flashcard"><span className="card-label">QUESTION</span><h3>{flashcards[card][0]}</h3>{showAnswer?<div className="card-answer"><span className="card-label">ANSWER</span><p>{flashcards[card][1]}</p></div>:<button className="reveal" onClick={()=>setShowAnswer(true)}>Reveal answer</button>}</article><div className="flash-controls"><button disabled={card===0} onClick={()=>{setCard(card-1);setShowAnswer(false);}}>← Previous</button><button onClick={()=>{setCard((card+1)%flashcards.length);setShowAnswer(false);}}>{card===flashcards.length-1?"Restart deck →":"Next card →"}</button></div><p className="deck-note">80 cards imported from the supplied Linear Motion Anki deck.</p></>}
+      {tab==="flashcards"&&<><span className="kicker">{chapter.id==="force"?"CHAPTER 6 · SUPPLIED ANKI IMPORT":"CHAPTER 4 · ANKI IMPORT"}</span><h2>{chapter.id==="force"?"How Forces Affect Motion":"Linear Motion"} — card {card+1} / {chapter.id==="force"?chapter6Flashcards.length:flashcards.length}</h2><article className="flashcard"><span className="card-label">QUESTION</span><h3>{(chapter.id==="force"?chapter6Flashcards:flashcards)[card][0]}</h3>{showAnswer?<div className="card-answer"><span className="card-label">ANSWER</span><p>{(chapter.id==="force"?chapter6Flashcards:flashcards)[card][1]}</p></div>:<button className="reveal" onClick={()=>setShowAnswer(true)}>Reveal answer</button>}</article><div className="flash-controls"><button disabled={card===0} onClick={()=>{setCard(card-1);setShowAnswer(false);}}>← Previous</button><button onClick={()=>{const total=chapter.id==="force"?chapter6Flashcards.length:flashcards.length;setCard((card+1)%total);setShowAnswer(false);}}>{card===(chapter.id==="force"?chapter6Flashcards.length:flashcards.length)-1?"Restart deck →":"Next card →"}</button></div><p className="deck-note">{chapter.id==="force"?"80 cards imported from the supplied Physics Flashcards Anki deck.":"80 cards imported from the supplied Linear Motion Anki deck."}</p></>}
 
       {tab==="practice"&&chapter.id==="motion"&&<><span className="kicker">CHAPTER 4 · IMPORTED QUIZ</span><h2>Motion quiz — {chapter4Quiz.length} questions.</h2><p className="overlay-intro">Reveal answers after attempting each question. The imported quiz covers definitions, numericals, graph interpretation, kinematics and circular motion.</p>{chapter4Quiz.map((q,i)=><article className="practice-card" key={q[0]}><span>Q{i+1}</span><h3>{q[0]}</h3>{quizAnswers[i]?<div className="quiz-answer">✓ {q[1]}</div>:<button onClick={()=>setQuizAnswers(x=>({...x,[i]:true}))}>Reveal answer</button>}</article>)}</>}
+
+      {tab==="practice"&&chapter.id==="force"&&<><span className="kicker">CHAPTER 6 · SUPPLIED QUIZ</span><h2>Force quiz — {chapter6Quiz.length} questions.</h2><p className="overlay-intro">Attempt the supplied multiple-choice quiz. Choose an option, check it, then continue to the next question.</p>{chapter6Quiz.map((q,i)=>{const picked=quizAnswers["ch6:"+i];const checked=typeof picked==="string";const correct=checked&&picked===q.answer;return <article className="practice-card" key={q.q}><span>Q{i+1}</span><h3>{q.q}</h3><div className="quiz-options">{q.options.map((option,n)=><button key={option} disabled={checked} className={checked&&option===picked?(correct?"quiz-option-correct":"quiz-option-wrong"):""} onClick={()=>setQuizAnswers(x=>({...x,["ch6:"+i]:option}))}>{String.fromCharCode(65+n)}. {option}</button>)}</div>{checked?<div className={correct?"quiz-answer":"quiz-answer is-wrong"}>{correct?"✓ Correct":"✕ Not quite"} — correct answer: {q.answer}</div>:null}</article>})}</>}
 
       {tab==="revision"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · QUESTION BANK</span><h2>{chapter.title} — {chapterData.questionBank.length} revision questions.</h2><p className="overlay-intro">Attempt first, then reveal the answer and explanation. Chapter 6 includes one-word, MCQ, assertion-reasoning, short/long, numerical, graph, derivative, case, differentiation and revision formats.</p><div className="question-filters">{["all","one-word","mcq","assertion-reasoning","very-short","short","long","numerical","graph","derivative","case","differentiate","revision"].map(m=><button key={m} className={questionMode===m?"selected":""} onClick={()=>setQuestionMode(m)}>{m==="all"?"All":m.replaceAll("-"," ")}</button>)}</div><div className="question-grid">{chapterData.questionBank.filter(q=>questionMode==="all"||q.type===questionMode).map((q,i)=>{const id=chapter.id+":"+q.type+":"+i;const revealed=questionAnswers[id];return <article className="question-card" key={id}><div className="question-top"><span>{q.type.replaceAll("-"," ").toUpperCase()}</span>{q.options&&<em>{q.options.length} options</em>}</div><h3>{q.q}</h3>{q.options&&<ol className="question-options">{q.options.map((o,n)=><li key={o}>{String.fromCharCode(65+n)}. {o}</li>)}</ol>}{revealed?<div className="question-answer"><b>Answer</b><p>{q.answer}</p><small>{q.explanation}</small></div>:<button onClick={()=>setQuestionAnswers(x=>({...x,[id]:true}))}>Reveal answer + explanation</button>}</article>})}</div></>}
 
