@@ -62,7 +62,7 @@ const chapter6QuestionBank = [
 {type:"graph",q:"Describe the position-time graph for constant non-zero velocity.","answer":"A straight line with constant slope.","explanation:"Constant velocity means constant position-time slope."},
 {type:"graph",q:"What does a horizontal velocity-time graph indicate?","answer":"Constant velocity and zero acceleration.","explanation:"The v-t slope is zero."},
 {type:"graph",q:"A 10 kg object has a v-t graph with slope 3 m/s². Find force.","answer":"30 N","explanation:"F=ma=10×3=30 N."},
-{type:"graph",q:"A 1500 kg car has v-t slopes +2, 0 and −2 m/s² in three intervals. What forces act?","answer:"+ "3000 N east, 0 N, 3000 N west",explanation:"Multiply each acceleration by 1500 kg and retain direction/sign."},
+{type:"graph",q:"A 1500 kg car has v-t slopes +2, 0 and −2 m/s² in three intervals. What forces act?","answer:"3000 N east, 0 N, 3000 N west",explanation:"Multiply each acceleration by 1500 kg and retain direction/sign."},
 {type:"graph",q:"An acceleration-mass graph shows acceleration decreasing as mass increases for a fixed force. Which law does this illustrate?","answer":"Newton's second law: a = F/m.","explanation:"The chapter's revision set uses an acceleration-mass graph to test this inverse relation."},
 {type:"graph",q:"The chapter asks for a force-mass graph when acceleration is fixed. What relation should be used?","answer":"F=ma, so F is proportional to mass for fixed acceleration.","explanation:"Holding a constant in F=ma gives a direct relationship between force and mass."},
 {type:"derivative",q:"What graph quantity is the rate of change of velocity with time?","answer:"Acceleration.","explanation:"The chapter treats the v-t slope as acceleration."},
