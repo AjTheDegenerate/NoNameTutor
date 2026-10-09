@@ -128,7 +128,7 @@ export default function Home(){
         <button className={tab==="formulas"?"nav-active":""} onClick={()=>setTab("formulas")}>Formulas</button>
         <button className={tab==="derivations"?"nav-active":""} onClick={()=>setTab("derivations")}>Derivations</button>
       </nav>
-      <div className="stats"><span className="streak">🔥 <b>3</b> day streak</span><span className="xp">⚡ <b>{completedConcepts*10}</b> XP</span><span className="avatar">A</span></div>
+      
     </header>
 
     <section className="course-strip">
