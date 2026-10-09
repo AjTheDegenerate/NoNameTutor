@@ -2,18 +2,63 @@ const sourceUrl = "https://ncert.nic.in/textbook/pdf/iesc107.pdf";
 const makeLesson = (key,title,section,pages,hook,textbook,teacher,example,interaction,mistake,checkpoint,textbookActivity) => ({
   key,title,section,pages,hook,textbook,teacher,example,
   checkpoint: checkpoint && typeof checkpoint === "object" ? checkpoint : {prompt:checkpoint,answer:hook},
-  interaction: interaction && typeof interaction === "object" ? interaction : C(
+  interaction: interaction && typeof interaction === "object" ? interaction : (specificInteractions[key] || C(
     "Which statement best captures this lesson?",
     [hook, "Work is always force multiplied by time.", "Machines create extra energy instead of trading force and distance.", "Kinetic and potential energy are the same quantity."],
     0,
     textbook
-  ),
+  )),
   mistake,textbookActivity,
   sources:[`NCERT Class 9 Science, Chapter 7, ${section}, pp. ${pages}`],
   externalReferences:[{label:"Official NCERT Chapter 7",url:sourceUrl}]
 });
 const C = (prompt,options,answer,explain) => ({type:"choice",prompt,options,answer,explain});
 const N = (prompt,answer,explain) => ({type:"numeric",prompt,answer,explain});
+const specificInteractions = {
+  "work-definition": C("When does a force do scientific work on an object?",["When it produces displacement in its direction","Whenever a person feels tired","Whenever a force exists, even with no displacement","Whenever power is non-zero"],0,"The textbook definition requires force and displacement in the force direction."),
+  "work-formula": N("A 20 N constant force moves an object 5 m along the force. Find W in joules.","100","W = F × s = 20 × 5 = 100 J."),
+  "joule-unit": C("Which expression is equivalent to one joule?",["1 N m","1 N/s","1 kg m s⁻¹","1 W s⁻¹"],0,"1 J = 1 N × 1 m = 1 kg m² s⁻²."),
+  "work-graph": N("A constant 10 N force acts over 3 m. What is the rectangular area, in joules?","30","Work is the area: 10 N × 3 m = 30 J."),
+  "zero-force-work": C("A specified force is 0 N. What work does that force do?",["0 J","Force × time","Always positive work","Cannot be zero if the object moves"],0,"W = F × s, so a zero force does zero work."),
+  "zero-displacement-work": C("A 100 N force is applied to a wall that does not move. Work on the wall is:",["0 J","100 J","100 N s","Negative 100 J"],0,"The wall's displacement is zero."),
+  "perpendicular-work": C("The support force on a box points up while the box moves horizontally. Work by the support force is:",["Zero","Positive","Negative","Equal to mgh"],0,"The force is perpendicular to the displacement."),
+  "positive-work": C("Which example gives positive work by the named force?",["A push forward on a wheelchair moving forward","A stopping force on a moving ball","A force on a wall that does not move","An upward support force on a box carried horizontally"],0,"Positive work occurs when force and displacement point in the same direction."),
+  "negative-work": C("A goalkeeper's force stops a ball moving forward. Work by that stopping force is:",["Negative","Positive","Always zero","Equal to the ball's mass"],0,"The force opposes the ball's displacement."),
+  "work-energy-theorem": C("Which statement is the work–energy theorem?",["Work done equals the change in energy","Work equals force divided by time","Power equals energy multiplied by time","Energy equals displacement divided by force"],0,"This is the relation stated in Section 7.2."),
+  "energy-definition": C("Energy is defined in the chapter as:",["The capacity to do work","The rate of doing work","The product of force and time","The resistance force in a machine"],0,"This is the wording introduced through the ball and flowerpot examples."),
+  "energy-unit": C("Which SI unit is shared by work and energy?",["Joule","Watt","Newton","Metre"],0,"Both work and energy are measured in joules."),
+  "energy-forms": C("Chemical energy in food powers muscles. Which conversion does the chapter describe?",["Chemical to mechanical","Light to nuclear","Sound to gravitational","Thermal to chemical only"],0,"The chapter uses this as an example of energy conversion."),
+  "mechanical-energy": C("Mechanical energy comprises:",["Kinetic energy plus potential energy","Power plus work","Force plus displacement","Load divided by effort"],0,"The chapter defines mechanical energy from motion and position."),
+  "kinetic-energy": N("Find the kinetic energy in joules for m = 2 kg and v = 5 m/s. Enter the number only.","25","K = ½mv² = 0.5 × 2 × 25 = 25 J."),
+  "derive-kinetic-energy": C("In the textbook's derivation, which relationship is substituted into W = F × s?",["v² = u² + 2as","P = W/t","U = mgh","MA = load/effort"],0,"Kinetic energy is derived using the kinematic equation and F = ma."),
+  "kinetic-scaling": C("At fixed mass, if speed changes from v to 2v, kinetic energy becomes:",["4 times","2 times","Half","Unchanged"],0,"K = ½mv², so the square of the speed doubles twice."),
+  "negative-work-energy": C("When a negative work reduces an object's speed, its kinetic energy generally:",["Decreases","Must double","Becomes gravitational potential energy in every case","Cannot change"],0,"The chapter links negative work and decreasing velocity to reduced kinetic energy."),
+  "potential-energy": C("Which situation stores potential energy in the chapter's examples?",["A stretched rubber band","A moving coin only because it is moving","A constant-speed car on a level road only","A wall being pushed without moving"],0,"Deformation or relative position can store potential energy."),
+  "gravitational-pe": N("Find U in joules for m = 3 kg, h = 4 m, and g = 10 m/s². Enter the number only.","120","U = mgh = 3 × 10 × 4 = 120 J."),
+  "pe-height": C("At fixed mass and g, if height doubles, gravitational potential energy:",["Doubles","Halves","Becomes four times","Stays unchanged"],0,"U = mgh, so U is directly proportional to h."),
+  "energy-conversion-fall": C("During ideal free fall, which conversion occurs?",["Potential energy decreases as kinetic energy increases","Kinetic energy decreases as potential energy decreases","Both energies remain zero","Power turns into mass"],0,"The chapter's free-fall derivation shows the energy exchange."),
+  "mechanical-conservation": C("The chapter's mechanical-energy conservation statement applies when:",["No other external forces act in the ideal model","Friction always does large work","The object must remain at rest","Only potential energy is present"],0,"The condition about other external forces is part of the textbook statement."),
+  "pendulum-energy": C("Where is the kinetic energy of an ideal pendulum greatest?",["At the lowest point","At the extreme turning point","It is equal at all points","Outside the path"],0,"At the lowest point the pendulum is moving fastest."),
+  "friction-dissipates": C("According to the chapter, work done against friction:",["Does not store potential energy; mechanical energy is dissipated","Always creates gravitational potential energy","Is always positive","Makes a real pendulum swing forever"],0,"The chapter explicitly distinguishes friction from energy-storing conservative forces."),
+  "power-definition": C("Power is:",["Work done per unit time","Force times displacement","Mass times acceleration","Load divided by effort"],0,"Average power P = W/t."),
+  "watt-horsepower": C("One watt is equal to:",["1 joule per second","1 newton per metre","1 joule per minute","1 kilogram metre"],0,"The textbook defines 1 W = 1 J s⁻¹."),
+  "power-lift": N("A 10 kg load is lifted 2 m in 4 s using g = 10 m/s². Find average power in watts. Enter the number only.","50","W = mgh = 10 × 10 × 2 = 200 J; P = 200/4 = 50 W."),
+  "power-kinetic": N("A car gains 200000 J in 10 s. Find average power in watts. Enter the number only.","20000","P = ΔE/t = 200000/10 = 20000 W."),
+  "simple-machines-purpose": C("What do simple machines do in the chapter's explanation?",["Change force magnitude or direction without creating energy","Create extra energy","Always reduce total work","Remove all friction"],0,"Simple machines make tasks easier, but do not create energy."),
+  "effort-load-ma": N("Load = 180 N and effort = 45 N. Find MA. Enter the number only.","4","MA = load/effort = 180/45 = 4."),
+  "fixed-pulley": C("What is the ideal mechanical advantage of a fixed pulley in the chapter?",["1","2","Greater than 10","0"],0,"The fixed pulley changes direction; effort equals load."),
+  "movable-pulley": C("What does the chapter say about a movable pulley system?",["It can have mechanical advantage greater than 1","It always has MA exactly 1","It creates energy","It has no load"],0,"The source introduces this qualitatively without a pulley-count formula."),
+  "inclined-plane-purpose": C("A longer, gentler ramp reaching the same height generally requires:",["Less effort over a longer distance","More effort over a shorter distance","No work at all","More energy created by the ramp"],0,"The source explains the force–distance trade-off."),
+  "inclined-plane-ma": N("A ramp is 6 m long and 2 m high. Find the ideal MA. Enter the number only.","3","MA = L/h = 6/2 = 3."),
+  "ramp-example": N("A 50 cm ramp raises a load by 30 cm. What is L/h to 2 decimal places? Enter the number only.","1.67","MA = 50/30 ≈ 1.67."),
+  "lever-parts": C("What is the fulcrum?",["The fixed pivot about which the lever rotates","The force applied to the lever","The resistance force only","The length of the bar"],0,"The fulcrum is the lever's fixed turning point."),
+  "law-of-lever": N("An effort of 20 N acts at 0.6 m. The load arm is 0.2 m. Find balanced load in newtons. Enter the number only.","60","F₁d₁ = F₂d₂, so load = 20 × 0.6 / 0.2 = 60 N."),
+  "lever-ma": N("Effort arm is 0.9 m and load arm is 0.3 m. Find ideal MA. Enter the number only.","3","MA = effort arm/load arm = 0.9/0.3 = 3."),
+  "lever-classes": C("Which part lies in the middle of a Class III lever?",["Effort","Fulcrum","Load","Both fulcrum and load"],0,"Class III has effort between fulcrum and load."),
+  "machines-conserve-energy": C("In the ideal model, input work and useful work on the load are:",["Equal","Input work is always zero","Useful work is always larger","Unrelated"],0,"The chapter states this while ignoring friction."),
+  "watermill-energy": C("Which sequence best describes the watermill example?",["Water potential energy → kinetic energy → wheel rotation","Wheel rotation → nuclear energy → water height","Sound energy → chemical energy only","Mechanical energy appears without a source"],0,"The source follows water's height, flow, wheel and grinding stone.")
+};
+
 const chapter7Lessons = [
 makeLesson("work-definition","What counts as scientific work?","7.1 Work Done by a Constant Force","117","In science, effort alone does not prove that work was done on an object.","The chapter defines work done by a constant force using the force and the displacement produced in the direction of that force. It also reminds us to name the force or agency and the object on which the work is done.","Ask two questions: which force are we talking about, and did that force displace the object?","A person lifts a bag. The applied upward force and the bag's upward displacement mean the person does work on the bag.","", "Do not use the everyday meaning of 'work' as the scientific definition.","State the force-and-displacement idea in your own words.","Compare lifting one bag with lifting three bags to the same height."),
 makeLesson("work-formula","The work formula: W = F × s","7.1 Work Done by a Constant Force","117–118","Work increases if the force increases or if displacement in its direction increases.","For a constant force acting in the direction of displacement, W = F × s. The force should be in newtons and displacement in metres, giving work in joules.","Multiply the force by the part of the displacement that occurs in the force's direction; at this grade, the chapter introduces the direct-alignment case.","A 20 N constant force displaces an object 5 m along the force: W = 20 × 5 = 100 J.","", "Do not multiply force by time or by speed when the question asks for work.","Use W = F × s and name the SI unit.","Compare the work done lifting one bag to heights of 1 m and 3 m."),
