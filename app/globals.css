@@ -23,3 +23,12 @@
 .paper-sources{display:flex;flex-direction:column;gap:6px;margin-top:14px;padding:12px 13px;background:#090e0c;border:1px solid var(--line);border-radius:10px}.paper-sources b{font-size:10px;letter-spacing:.08em;color:#819089;text-transform:uppercase}.paper-sources a{color:var(--cyan);font-size:11px;line-height:1.45;text-decoration:underline;text-underline-offset:2px}
 
 .quiz-options{display:grid;gap:8px;margin-top:12px}.quiz-options button{width:100%;text-align:left;border:2px solid var(--line);background:#0b110f;color:#c9d5d0;border-radius:10px;padding:11px 13px;font-size:12px;font-weight:800}.quiz-options button:hover:not(:disabled){border-color:var(--cyan);background:#0e2c24}.quiz-options button:disabled{cursor:default;opacity:.9}.quiz-options button.quiz-option-correct{border-color:var(--cyan);background:#0d2c24;color:var(--cyan)}.quiz-options button.quiz-option-wrong{border-color:#704c3d;background:#251813;color:#e5a98d}.quiz-answer.is-wrong{background:#251813;border-left-color:#704c3d;color:#e5b29e}
+
+/* Chapter 4 lesson copy and written-answer controls */
+.teaching-copy p{color:#c1cec8;font-size:16px;line-height:1.7;margin:0 0 14px}
+.teaching-copy p:last-child{margin-bottom:0}
+.answer-label{display:grid;gap:8px;color:var(--muted);font-size:12px;font-weight:900;margin-bottom:12px}
+.answer-label input{width:100%;box-sizing:border-box;background:#0b110f;border:2px solid var(--line);color:var(--ink);padding:13px 14px;border-radius:10px;font:inherit;font-size:16px}
+.answer-label input:focus{outline:2px solid var(--cyan);outline-offset:1px}
+.numeric-practice>button:disabled{opacity:.4;cursor:not-allowed}
+.numeric-practice .feedback{margin-top:14px}
