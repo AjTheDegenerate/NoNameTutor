@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import flash1 from "./chapter4Flashcards1";
 import flash2 from "./chapter4Flashcards2";
 import flash3 from "./chapter4Flashcards3";
@@ -56,6 +56,7 @@ const dataByChapter = {
 const flashcards = [...flash1,...flash2,...flash3,...flash4];
 
 export default function Home(){
+  const appRoot = useRef(null);
   const [chapter,setChapter]=useState(chapters[0]);
   const [tab,setTab]=useState("learn");
   const [query,setQuery]=useState("");
@@ -70,6 +71,33 @@ export default function Home(){
   const [questionAnswers,setQuestionAnswers]=useState({});
   const [formulaTopic,setFormulaTopic]=useState("all");
 
+  useEffect(() => {
+    const root = appRoot.current;
+    if (!root) return;
+    const typeset = () => {
+      if (window.MathJax?.typesetPromise) {
+        window.MathJax.typesetClear?.([root]);
+        window.MathJax.typesetPromise([root]).catch(() => {});
+      }
+    };
+    if (window.MathJax?.typesetPromise) { typeset(); return; }
+    window.MathJax = {
+      tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$", "$"], ["\\[", "\\]"]], processEscapes: true },
+      options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"] },
+      startup: { typeset: false }
+    };
+    let script = document.getElementById("nonametutor-mathjax");
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "nonametutor-mathjax";
+      script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    script.addEventListener("load", typeset, { once: true });
+    if (window.MathJax?.typesetPromise) typeset();
+    return () => script?.removeEventListener("load", typeset);
+  }, [chapter.id, tab, activeLesson, card, showAnswer, questionMode, questionAnswers, quizAnswers, formulaTopic, mindFilter, paperMode]);
   const content=lessons[chapter.id];
   const featureData=dataByChapter[chapter.id];
   const filtered=useMemo(()=>content.filter(x=>(x.title+" "+x.body).toLowerCase().includes(query.toLowerCase())),[content,query]);
@@ -115,7 +143,7 @@ export default function Home(){
   }
 
   const chapterData=featureData;
-  return <main className="app-shell">
+  return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
       <button className="brand" onClick={()=>setTab("learn")} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class 9 · Physics</small></span></button>
       <nav className="top-nav">
@@ -178,9 +206,9 @@ export default function Home(){
 
       {tab==="papers"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · PAPER BANK</span><h2>Source-backed papers + generated practice.</h2><p className="overlay-intro">Authoritative material stays linked to its source. Generated papers are clearly marked as NCERT-based supplementary practice rather than historical exam papers.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map(m=><button key={m} className={paperMode===m?"selected":""} onClick={()=>setPaperMode(m)}>{m==="all"?"All":m[0].toUpperCase()+m.slice(1)}</button>)}</div><div className="paper-grid">{[...chapterData.papers,...chapterData.paperSources].filter(p=>paperMode==="all"||p.modes.includes(paperMode)).map(p=><article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind==="generated"?"IN-APP PDF":p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span>{p.kind==="generated"&&<span>{p.pages} pages</span>}</div>{p.kind==="generated"?<><div className="paper-actions"><button onClick={()=>openPaperPdf(p)}>Open PDF ↗</button><button onClick={()=>openPaperPdf(p,true)}>Download PDF</button></div>{p.sources&&<div className="paper-sources"><b>Official source basis</b>{p.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.label} ↗</a>)}</div>}</>:<a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a>}</article>)}</div></>}
 
-      {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
+      {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b>{name}</b><span className="math-formula">{formula}</span><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
 
-      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><code>{d.result}</code></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch"><span className="axis-y">quantity</span><div className="sketch-area"><i className={"sketch-line "+(d.mode==="paper"?"rise":"slope")} /><b>time →</b></div></div></div></div></article>)}</div></>}
+      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{d.result}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch"><span className="axis-y">quantity</span><div className="sketch-area"><i className={"sketch-line "+(d.mode==="paper"?"rise":"slope")} /><b>time →</b></div></div></div></div></article>)}</div></>}
 
       {tab==="notes"&&<><span className="kicker">CHAPTER {chapter.number} · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map(x=><article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
 
