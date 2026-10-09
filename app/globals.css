@@ -32,3 +32,9 @@
 .answer-label input:focus{outline:2px solid var(--cyan);outline-offset:1px}
 .numeric-practice>button:disabled{opacity:.4;cursor:not-allowed}
 .numeric-practice .feedback{margin-top:14px}
+
+/* Render inline and display LaTeX as readable maths throughout study tools. */
+mjx-container { color: inherit; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+mjx-container[display="true"] { margin: .85em 0 !important; }
+.formula-row .math-formula, .derived-result .math-formula { display: block; font-size: 1.05em; line-height: 1.8; overflow-x: auto; }
+.question-card mjx-container, .practice-card mjx-container, .flashcard mjx-container, .lesson-step mjx-container, .derivation-card mjx-container { line-height: 1.7; }
