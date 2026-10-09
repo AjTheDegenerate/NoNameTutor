@@ -120,8 +120,8 @@ export default function Home(){
       <button className="brand" onClick={()=>setTab("learn")} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class 9 · Physics</small></span></button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
-        <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
-        <button className={tab==="flashcards"?"nav-active":""} disabled={!["motion","force"].includes(chapter.id)} onClick={()=>openTab("flashcards")}>Flashcards</button>
+        <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
+        <button className={tab==="flashcards"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("flashcards")}>Flashcards</button>
         <button className={tab==="notes"?"nav-active":""} onClick={()=>setTab("notes")}>Notes</button>
         <button className={tab==="papers"?"nav-active":""} onClick={()=>setTab("papers")}>Papers</button>
         <button className={tab==="revision"?"nav-active":""} onClick={()=>setTab("revision")}>Revision</button>
@@ -152,7 +152,7 @@ export default function Home(){
       </section>
 
       <aside className="right-rail">
-        <div className="rail-card"><div className="rail-icon">{chapter.id==="force"?"⚙️":"🎯"}</div><span className="kicker">CHAPTER {chapter.number} STUDY PACK</span><h3>{chapter.title}</h3><p>{chapter.id==="force"?"Learn force and friction, apply all three Newton laws, read force-from-graph problems and practise system-of-objects numericals.":"Study the concepts, drill the imported cards, take the quiz, then move into source-backed papers, revision, formulas and derivations."}</p><button onClick={()=>setTab("papers")}>Open paper bank</button></div>
+        <div className="rail-card"><div className="rail-icon">{chapter.id==="force"?"⚙️":chapter.id==="work"?"⚡":"🎯"}</div><span className="kicker">CHAPTER {chapter.number} STUDY PACK</span><h3>{chapter.title}</h3><p>{chapter.id==="force"?"Learn force and friction, apply all three Newton laws, read force-from-graph problems and practise system-of-objects numericals.":chapter.id==="work"?"Learn scientific work, work–energy theorem, kinetic and potential energy, power, and how pulleys, ramps and levers trade force for distance.":"Study the concepts, drill the imported cards, take the quiz, then move into source-backed papers, revision, formulas and derivations."}</p><button onClick={()=>setTab("papers")}>Open paper bank</button></div>
         <div className="rail-card stats-card"><span className="kicker">YOUR PROGRESS</span><div className="big-stat">{completedConcepts}<small> / {totalConcepts}</small></div><p>lessons completed</p><div className="mini-track"><i style={{width:progress+"%"}} /></div></div>
         <div className="rail-card"><span className="kicker">CHAPTER SEARCH</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Find a concept..." />{query&&<small className="search-count">{filtered.length} matching lessons</small>}</div>
       </aside>
