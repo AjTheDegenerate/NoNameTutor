@@ -772,8 +772,8 @@ const chapter4Lessons = [
     "pages": "65",
     "hook": "Use the correct conversion factor before substituting speed values.",
     "textbook": "For km/h to m/s, multiply by 5/18.",
-    "teacher": "One kilometre is 1000 m and one hour is 3600 s, so 1 km/h = 1000/3600 m/s = 5/18 m/s. Therefore, multiply by 5/18 to convert km/h to m/s. For the reverse conversion, multiply by 18/5.",
-    "example": "36 km/h × 5/18 = 10 m/s.",
+    "teacher": "Convert both parts of the unit: 1 km = 1000 m, while 1 h = 3600 s. Therefore 1 km/h = (1000/3600) m/s = (5/18) m/s. That is why you multiply by 5/18 to convert km/h to m/s. For the reverse conversion, multiply by 18/5 because 1 m/s equals 3.6 km/h.",
+    "example": "72 km/h × 5/18 = 20 m/s. The number becomes smaller because metres per second is a smaller numerical value than kilometres per hour for this same speed.",
     "interaction": {
       "type": "numeric",
       "prompt": "Convert 90 km/h into m/s.",
@@ -783,7 +783,7 @@ const chapter4Lessons = [
         "25m/s"
       ],
       "hint": "Multiply 90 by 5/18.",
-      "explain": "90 × 5/18 = 25 m/s."
+      "explain": "90 × 5/18 = 25 m/s. Keep the unit conversion with the calculation so the answer is not just a number."
     },
     "mistake": "Do not use 18/5 when converting km/h to m/s; that is the factor for converting m/s to km/h.",
     "checkpoint": {
