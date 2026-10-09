@@ -1,6 +1,13 @@
 const sourceUrl = "https://ncert.nic.in/textbook/pdf/iesc107.pdf";
 const makeLesson = (key,title,section,pages,hook,textbook,teacher,example,interaction,mistake,checkpoint,textbookActivity) => ({
-  key,title,section,pages,hook,textbook,teacher,example,interaction,mistake,checkpoint,textbookActivity,
+  key,title,section,pages,hook,textbook,teacher,example,
+  interaction: interaction && typeof interaction === "object" ? interaction : C(
+    "Which statement best captures this lesson?",
+    [hook, "Work is always force multiplied by time.", "Machines create extra energy instead of trading force and distance.", "Kinetic and potential energy are the same quantity."],
+    0,
+    textbook
+  ),
+  mistake,checkpoint,textbookActivity,
   sources:[`NCERT Class 9 Science, Chapter 7, ${section}, pp. ${pages}`],
   externalReferences:[{label:"Official NCERT Chapter 7",url:sourceUrl}]
 });
