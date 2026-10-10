@@ -410,8 +410,8 @@ const chapter4QuestionBank = [
   {
     "type": "graph",
     "q": "A position-time graph becomes steeper with time. What does that suggest?",
-    "answer": "The magnitude of velocity is increasing if the slope is increasing in the positive direction.",
-    "explanation": "Velocity is the slope, so a changing slope indicates changing velocity."
+    "answer": "The magnitude of velocity is increasing if the magnitude of the graph's slope increases.",
+    "explanation": "Velocity is the slope of a position-time graph. A larger absolute slope means greater speed; keep the slope's sign to determine direction."
   },
   {
     "type": "graph",
@@ -526,6 +526,18 @@ const chapter4QuestionBank = [
     "q": "What is the biggest conceptual trap in distance versus displacement?",
     "answer": "Thinking displacement is the total path travelled.",
     "explanation": "Displacement is only the net change from initial to final position."
+  },
+  {
+    "type": "long",
+    "q": "Derive s = vt − ½at² for straight-line motion with constant acceleration.",
+    "answer": "From v = u + at, rearrange to u = v − at. Substitute into s = ut + ½at²: s = (v − at)t + ½at² = vt − at² + ½at² = vt − ½at².",
+    "explanation": "This is one of the additional equations suggested in the chapter's end-of-chapter derivation exercise. It assumes constant acceleration."
+  },
+  {
+    "type": "long",
+    "q": "Derive s = ½(u + v)t using a velocity-time graph for constant acceleration.",
+    "answer": "Displacement is the area under the velocity-time graph. With a straight line from u to v over time t, the area is a trapezium: s = ½(u + v)t.",
+    "explanation": "The trapezium's parallel sides are u and v, and its height is t. This form applies to straight-line motion with constant acceleration."
   }
 ];
 
