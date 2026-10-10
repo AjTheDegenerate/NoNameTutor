@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ScientificText from "./ScientificText";
 
 export default function Chapter6Lesson({ lesson, lessonNumber, completed, onComplete }) {
   const [step, setStep] = useState(0);
