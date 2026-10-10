@@ -85,6 +85,27 @@ function toMathMarkup(value) {
   return "\\(" + expression + "\\)";
 }
 
+
+const chapters = [
+  { id:"motion", number:"04", title:"Describing Motion Around Us", short:"Motion", description:"35-skill learning path backed by flashcards, quiz, mind map, question bank, papers, formulas and derivations." },
+  { id:"force", number:"06", title:"How Forces Affect Motion", short:"Forces", description:"Full force-and-motion learning path covering force, friction, Newton's laws, graphs, numericals, systems, formulas and derivations." },
+  { id:"work", number:"07", title:"Work, Energy, and Simple Machines", short:"Energy", description:"Full chapter learning path on scientific work, energy, power, mechanical advantage, pulleys, inclined planes and levers." }
+];
+
+const lessons = {
+  motion: chapter4Lessons.map((x) => ({ key:x.key, title:x.title, body:x.hook })),
+  force: chapter6Lessons.map((x) => ({ key:x.key, title:x.title, body:x.hook })),
+  work: chapter7Lessons.map((x) => ({ key:x.key, title:x.title, body:x.hook }))
+};
+
+const dataByChapter = {
+  motion:{mindMap:chapter4MindMap,questionBank:chapter4QuestionBank,papers:chapter4Papers,paperSources:paperSources4,formulas:chapter4Formulas,derivations:chapter4Derivations},
+  force:{mindMap:chapter6MindMap,questionBank:chapter6QuestionBank,papers:chapter6Papers,paperSources:paperSources6,formulas:chapter6Formulas,derivations:chapter6Derivations},
+  work:{mindMap:chapter7MindMap,questionBank:chapter7QuestionBank,papers:chapter7Papers,paperSources:paperSources7,formulas:chapter7Formulas,derivations:chapter7Derivations}
+};
+
+const flashcards = [...flash1,...flash2,...flash3,...flash4];
+
 function GraphSketch({ type }) {
   const positionGraph = type === "position-time-line" || type === "position-time-tangent";
   const areaGraph = type === "velocity-time-area";
