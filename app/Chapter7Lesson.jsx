@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ScientificText from "./ScientificText";
 
 export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComplete }) {
@@ -27,6 +27,13 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
     { label:"CHECKPOINT", title:lesson.checkpoint.prompt, body:"Reveal the checkpoint answer, then finish the lesson." }
   ];
   const current = steps[step];
+
+  useEffect(() => {
+    const root = document.querySelector(".lesson-modal");
+    if (!root || !window.MathJax?.typesetPromise) return;
+    window.MathJax.typesetClear?.([root]);
+    window.MathJax.typesetPromise([root]).catch(() => {});
+  }, [step, selected, input, feedback, checkpointRevealed]);
 
   function checkInteraction() {
     if (interaction.type === "choice") {
