@@ -38,3 +38,7 @@ mjx-container { color: inherit; max-width: 100%; overflow-x: auto; overflow-y: h
 mjx-container[display="true"] { margin: .85em 0 !important; }
 .formula-row .math-formula, .derived-result .math-formula { display: block; font-size: 1.05em; line-height: 1.8; overflow-x: auto; }
 .question-card mjx-container, .practice-card mjx-container, .flashcard mjx-container, .lesson-step mjx-container, .derivation-card mjx-container { line-height: 1.7; }
+
+
+/* Chapter 4 assessment progress */
+.quiz-score{display:flex;align-items:baseline;gap:7px;margin:14px 0 22px;padding:13px 16px;background:#0b211b;border:1px solid #285447;border-radius:12px;color:#9fc7b8}.quiz-score b{font-size:24px;color:var(--cyan)}.quiz-score span{font-size:12px;font-weight:800}
