@@ -62,9 +62,14 @@ function physicsAnswerMatches(expected, submitted) {
 }
 
 function toMathMarkup(value) {
+  const source = String(value ?? "").trim();
+  // Formula datasets may opt into exact LaTeX with $...$; keep it untouched.
+  if (source.startsWith("$") && source.endsWith("$") && source.length > 2) {
+    return "\\(" + source.slice(1, -1) + "\\)";
+  }
   const known = new Set(["MA", "F_net", "W_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
   const products = new Set(["mv", "mgh", "ut", "at", "as", "vt", "uv", "ma", "mg"]);
-  const expression = String(value ?? "")
+  const expression = source
     .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
       if (token === "MA") return "\\mathrm{MA}";
       if (/^[A-Za-z][0-9]+$/.test(token)) return token[0] + "_{" + token.slice(1) + "}";
