@@ -15,19 +15,16 @@ const paperSources = [
     "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf"
   },
   {
-    "id": "cbse-cbe-9-science",
-    "title": "CBSE Competency-Based Test Items — Science Class 9",
-    "kind": "competency",
+    "id": "ncert-exemplar-motion",
+    "title": "NCERT Exemplar — Motion (legacy Class IX unit)",
+    "kind": "source",
     "classLevel": "9",
     "subject": "Science",
-    "year": "2021",
-    "status": "official",
-    "modes": [
-      "unsolved",
-      "practice"
-    ],
-    "description": "Official CBSE competency-based assessment material for application, interpretation and higher-order practice. This is a source collection, not a chapter-specific past board paper.",
-    "url": "https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"
+    "year": "Archived collection",
+    "status": "official NCERT exemplar",
+    "modes": ["unsolved", "practice"],
+    "description": "Official NCERT practice questions for the legacy Motion unit. This is an Exemplar collection, not a past CBSE board paper.",
+    "url": "https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep108.pdf"
   },
   {
     "id": "cbse-curriculum-9-2026-27",
