@@ -7,7 +7,7 @@ const chapter7MindMap = [
 ["Work","Negative work","Force and displacement are in opposite directions."],
 ["Work","Force–displacement graph","Work equals the area under the graph between the positions."],
 ["Work","Name the agent and object","Always specify which force does work on which object."],
-["Work–energy theorem","Core relation","Work done on an object equals the change in its energy."],
+["Work–energy theorem","Core relation","The chapter states that work done appears as a change in energy. In standard mechanics, net work equals the change in kinetic energy: W_net = ΔK."],
 ["Energy","Definition","Energy is the capacity to do work; SI unit is joule."],
 ["Energy","Forms","Mechanical, thermal, light, sound, electrical, nuclear and chemical energy."],
 ["Mechanical energy","Kinetic energy","Energy due to motion; K = ½mv²."],
