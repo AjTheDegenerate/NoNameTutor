@@ -13,7 +13,7 @@ const chapter7Derivations = [
 "The upward force for slow lifting is equal to the weight mg in the chapter's setup.",
 "Work done by the applied force is W = force × displacement.",
 "Substitute force mg and vertical displacement h: W = mg × h.",
-"By the work–energy theorem, the work appears as a change in potential energy."
+"For slow lifting, the work done by the applied force is stored as the increase in gravitational potential energy: W_applied = ΔU. This is an energy-transfer statement; the standard net-work theorem specifically gives W_net = ΔK."
 ],result:"U = mgh",graph:"At fixed m and g, raising the object farther increases U in direct proportion to height."},
 {title:"3. Work as the area under an F–s graph",mode:"graph",setup:"Interpret the force–displacement graph shown in the textbook.",steps:[
 "Read force on the vertical axis and displacement on the horizontal axis.",
