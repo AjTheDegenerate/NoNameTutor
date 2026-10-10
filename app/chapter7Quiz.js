@@ -90,14 +90,14 @@ const chapter7Quiz = [
     "answer": "$-30\\text{ J}$"
   },
   {
-    "q": "According to the chapter’s statement of the work–energy theorem, what does work done on an object or system equal?",
+    "q": "According to this chapter’s wording of the work–energy theorem, what does work done on an object appear as?", 
     "options": [
-      "The change in its energy",
+      "A change in the object’s energy", 
       "The product of its mass and acceleration",
       "The rate of change of momentum over time",
       "Its instantaneous gravitational potential energy"
     ],
-    "answer": "The change in its energy"
+    "answer": "A change in the object’s energy"
   },
   {
     "q": "In a game of carrom, a moving striker collides head-on with a stationary coin. What work is done by the striker on the coin during the collision?",
