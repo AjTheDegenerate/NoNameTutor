@@ -8,7 +8,6 @@ const paperSources = [
     "year": "Current textbook",
     "status": "official",
     "modes": [
-      "solved",
       "unsolved",
       "practice"
     ],
@@ -38,10 +37,7 @@ const paperSources = [
     "subject": "Science",
     "year": "2026–27",
     "status": "official",
-    "modes": [
-      "practice",
-      "unsolved"
-    ],
+    "modes": [],
     "description": "Official CBSE curriculum portal for checking grade-level subject scope. Use it to validate coverage; it is not a question paper.",
     "url": "https://cbseacademic.nic.in/curriculum_2027.html"
   }
