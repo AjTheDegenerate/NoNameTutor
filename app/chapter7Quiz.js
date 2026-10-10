@@ -97,7 +97,7 @@ const chapter7Quiz = [
       "The rate of change of momentum over time",
       "Its instantaneous gravitational potential energy"
     ],
-    "answer": "The change in its kinetic energy"
+    "answer": "The change in its energy"
   },
   {
     "q": "In a game of carrom, a moving striker collides head-on with a stationary coin. What work is done by the striker on the coin during the collision?",
