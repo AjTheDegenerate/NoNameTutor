@@ -1,6 +1,7 @@
 const chapter7Formulas = [
 {topic:"Work done by a constant force",condition:"Use W = F × s when displacement is in the direction of the force, as introduced in this chapter.",numeric:[
-["Work","W = F × s","F in newtons, s in metres, W in joules."],
+["Work","W = F × s","For a constant force parallel to displacement: F in newtons, s in metres, W in joules."],
+["Work at an angle", "W = F s cos θ", "General constant-force relation; θ is the angle between force and displacement. It gives zero work at 90° and negative work when the force component opposes displacement."],
 ["Force from work","F = W/s","Rearranged from the chapter's work relation."],
 ["Displacement from work","s = W/F","For non-zero constant force in the stated direction."]
 ],graphical:[
