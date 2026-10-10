@@ -1,11 +1,11 @@
 const chapter7Papers = [
 {
 id:"chapter7-generated-solved",title:"Chapter 7 — Solved Source-Based Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Generated · source-linked",modes:["solved"],pages:3,
-description:"A newly written 40-mark paper with worked answers. Questions are built from the supplied NCERT chapter and official NCERT/CBSE assessment scopes; this is not mislabelled as an official exam paper.",
+description:"A newly written 40-mark paper with worked answers. Questions are built from the supplied NCERT chapter and official NCERT source scope; this is not mislabelled as an official exam paper.",
 sources:[
 {label:"NCERT Chapter 7 — current textbook",url:"https://ncert.nic.in/textbook/pdf/iesc107.pdf"},
 {label:"NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"},
-{label:"CBSE Class 9 Work and Energy competency items",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"}
+{label:"NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"}
 ],
 text:`Chapter 7 — Work, Energy, and Simple Machines
 SOLVED SOURCE-BASED PAPER • Class 9 Science
@@ -40,7 +40,7 @@ Section D — Simple machines [8 marks]
 Worked answers
 1. Work = force × displacement in the direction of the force; SI unit joule (J).
 2. The force is zero, displacement is zero, or force is perpendicular to displacement.
-3. Work done on an object equals the change in its energy.
+3. The net work done on an object equals the change in its kinetic energy, ΔK = K_final − K_initial.
 4. Kinetic energy is due to motion; potential energy is stored due to deformation or relative positions in a system.
 5. Power is the rate of doing work or transferring energy; SI unit watt (W).
 6. W = F × s = 30 × 4 = 120 J.
@@ -62,7 +62,7 @@ description:"An independent 40-mark paper written from the current NCERT chapter
 sources:[
 {label:"NCERT Chapter 7 — current textbook",url:"https://ncert.nic.in/textbook/pdf/iesc107.pdf"},
 {label:"NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"},
-{label:"CBSE Class 9 Work and Energy competency items",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"}
+{label:"NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"}
 ],
 text:`Chapter 7 — Work, Energy, and Simple Machines
 UNSOLVED SOURCE-BASED PAPER • Class 9 Science
@@ -98,9 +98,9 @@ End of paper. Show the formula, substitution, units and direction/sign where rel
 },
 {
 id:"chapter7-generated-practice",title:"Chapter 7 — Competency Practice Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Generated · source-linked",modes:["practice"],pages:4,
-description:"A 30-question mixed practice set inspired by the work, energy, power and machine concepts in NCERT and the application/reasoning styles of official CBSE competency items.",
+description:"A 30-question mixed practice set inspired by the work, energy, power and machine concepts in NCERT and the application/reasoning styles of official NCERT Exemplar questions.",
 sources:[
-{label:"CBSE Class 9 Work and Energy competency items",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"},
+{label:"NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"},
 {label:"NCERT Chapter 7 — current textbook",url:"https://ncert.nic.in/textbook/pdf/iesc107.pdf"},
 {label:"NCERT Grade 9 syllabus scope",url:"https://ncert.nic.in/pdf/announcement/Syllabus_Secondary_Stage_Phase_I_Grade_9_Part_2.pdf"}
 ],
