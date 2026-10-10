@@ -80,6 +80,39 @@ const dataByChapter = {
 
 const flashcards = [...flash1,...flash2,...flash3,...flash4];
 
+function GraphSketch({ type }) {
+  const positionGraph = type === "position-time-line" || type === "position-time-tangent";
+  const areaGraph = type === "velocity-time-area";
+  const tangentGraph = type === "position-time-tangent";
+  const ariaLabel = areaGraph
+    ? "Velocity-time graph with the signed area highlighted"
+    : tangentGraph
+      ? "Curved position-time graph with a tangent at one point"
+      : positionGraph
+        ? "Position-time graph with a sloping line"
+        : "Velocity-time graph with a sloping line";
+  return (
+    <svg className="graph-sketch-svg" viewBox="0 0 320 170" role="img" aria-label={ariaLabel}>
+      <line x1="38" y1="16" x2="38" y2="136" stroke="#42534c" strokeWidth="1.5" />
+      <line x1="38" y1="136" x2="302" y2="136" stroke="#42534c" strokeWidth="1.5" />
+      <text x="8" y="16" fill="#8da197" fontSize="10">{positionGraph ? "position" : "velocity"}</text>
+      <text x="278" y="158" fill="#8da197" fontSize="10">time →</text>
+      {areaGraph && <polygon points="40,136 40,91 278,42 278,136" fill="rgba(67,245,195,0.15)" />}
+      {tangentGraph ? (
+        <>
+          <path d="M40 125 Q130 120 278 42" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+          <line x1="80" y1="117" x2="230" y2="67" stroke="#f0c674" strokeWidth="2" strokeDasharray="5 4" />
+          <circle cx="155" cy="94" r="4" fill="#f0c674" />
+        </>
+      ) : (
+        <line x1="40" y1={areaGraph ? 91 : 105} x2="278" y2={areaGraph ? 42 : 42} stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+      )}
+      {areaGraph && <text x="138" y="119" fill="#a7e8d4" fontSize="11">area = displacement</text>}
+      {tangentGraph && <text x="165" y="57" fill="#f0c674" fontSize="10">tangent</text>}
+    </svg>
+  );
+}
+
 export default function Home(){
   const appRoot = useRef(null);
   const [chapter,setChapter]=useState(chapters[0]);
@@ -233,7 +266,7 @@ export default function Home(){
 
       {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b>{name}</b><span className="math-formula">{formula}</span><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
 
-      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{d.result}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch"><span className="axis-y">quantity</span><div className="sketch-area"><i className={"sketch-line "+(d.mode==="paper"?"rise":"slope")} /><b>time →</b></div></div></div></div></article>)}</div></>}
+      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{d.result}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch graph-sketch-accurate"><GraphSketch type={d.graphType || "velocity-time-line"} /></div></div></div></article>)}</div></>}
 
       {tab==="notes"&&<><span className="kicker">CHAPTER {chapter.number} · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map(x=><article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
 
