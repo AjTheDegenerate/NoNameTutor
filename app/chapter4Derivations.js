@@ -34,10 +34,11 @@ const chapter4Derivations = [
     steps: [
       "From v = u + at, t = (v − u) / a.",
       "Start with s = ut + 1/2 at².",
-      "Substitute t = (v − u)/a into the displacement equation.",
-      "Simplify the resulting expression.",
-      "The terms reduce to 2as = v² − u².",
-      "Rearrange: v² = u² + 2as."
+      "Substitute into s = ut + ½at²: s = u(v − u)/a + ½a[(v − u)/a]².",
+      "Simplify the second term: s = u(v − u)/a + (v − u)²/(2a).",
+      "Put the terms over a common denominator: 2as = 2u(v − u) + (v − u)².",
+      "Expand: 2as = 2uv − 2u² + v² − 2uv + u² = v² − u².",
+      "Rearrange to obtain v² = u² + 2as."
     ],
     result: "v² = u² + 2as",
     graph: "The same constant-acceleration velocity–time graph underlies the derivation; this form is especially useful when time is not given."
