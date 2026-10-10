@@ -1,6 +1,6 @@
 const chapter7Papers = [
 {
-id:"chapter7-generated-solved",title:"Chapter 7 — Solved Source-Based Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Official-source derived",modes:["solved"],pages:3,
+id:"chapter7-generated-solved",title:"Chapter 7 — Solved Source-Based Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Generated · source-linked",modes:["solved"],pages:3,
 description:"A newly written 40-mark paper with worked answers. Questions are built from the supplied NCERT chapter and official NCERT/CBSE assessment scopes; this is not mislabelled as an official exam paper.",
 sources:[
 {label:"NCERT Chapter 7 — current textbook",url:"https://ncert.nic.in/textbook/pdf/iesc107.pdf"},
@@ -57,7 +57,7 @@ Worked answers
 17. MA = effort arm/load arm = 0.6/0.2 = 3.`
 },
 {
-id:"chapter7-generated-unsolved",title:"Chapter 7 — Unsolved Source-Based Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Official-source derived",modes:["unsolved"],pages:3,
+id:"chapter7-generated-unsolved",title:"Chapter 7 — Unsolved Source-Based Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Generated · source-linked",modes:["unsolved"],pages:3,
 description:"An independent 40-mark paper written from the current NCERT chapter and official question-source scope. No answers are included in the paper text.",
 sources:[
 {label:"NCERT Chapter 7 — current textbook",url:"https://ncert.nic.in/textbook/pdf/iesc107.pdf"},
@@ -97,7 +97,7 @@ Section D — Machines [8 marks]
 End of paper. Show the formula, substitution, units and direction/sign where relevant.`
 },
 {
-id:"chapter7-generated-practice",title:"Chapter 7 — Competency Practice Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Official-source derived",modes:["practice"],pages:4,
+id:"chapter7-generated-practice",title:"Chapter 7 — Competency Practice Paper",kind:"generated",classLevel:"9",subject:"Science",year:"Generated",status:"Generated · source-linked",modes:["practice"],pages:4,
 description:"A 30-question mixed practice set inspired by the work, energy, power and machine concepts in NCERT and the application/reasoning styles of official CBSE competency items.",
 sources:[
 {label:"CBSE Class 9 Work and Energy competency items",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"},
@@ -149,9 +149,9 @@ Section D — Explain a claim
 },
 {
 id:"chapter7-past-ncert-exemplar",
-title:"NCERT Exemplar — Work and Energy (Official Archived Questions)",
-kind:"past",classLevel:"9",subject:"Science",year:"2018 archive",status:"official archived source",modes:["past","unsolved","practice"],
-description:"This is the actual official NCERT Exemplar PDF for legacy Class IX Chapter 11, Work and Energy. It includes multiple-choice, short-answer and long-answer questions on work, energy, power and conservation. It is a historical source, not a newly generated paper; it does not cover all of the current chapter's pulley/ramp/lever material.",
+title:"NCERT Exemplar — Work and Energy (Official Archived Practice Questions)",
+kind:"source",classLevel:"9",subject:"Science",year:"Archived collection",status:"official NCERT exemplar",modes:["unsolved","practice"],
+description:"Official NCERT Exemplar questions for legacy Class IX Chapter 11, Work and Energy. This authentic practice collection covers work, energy, power and conservation; it is not a past CBSE board paper and does not cover all of the current chapter's pulley/ramp/lever material.",
 url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf",
 sources:[
 {label:"Official NCERT Exemplar — Work and Energy",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep111.pdf"},
