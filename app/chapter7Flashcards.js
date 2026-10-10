@@ -49,7 +49,7 @@ const chapter7Flashcards = [
   ],
   [
     "State the work-energy theorem.",
-    "The work-energy theorem states that the work done on an object equals the change in its energy (\\text{Work done} = $\\Delta E$)."
+    "The chapter states that work done on an object appears as a change in its energy. In standard mechanics, the net-work theorem is $W_{\\text{net}} = \\Delta K$, the change in kinetic energy."
   ],
   [
     "What is the SI unit of energy?",
