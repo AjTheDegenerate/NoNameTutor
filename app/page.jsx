@@ -63,9 +63,22 @@ function physicsAnswerMatches(expected, submitted) {
 
 function toMathMarkup(value) {
   const source = String(value ?? "")
-    .replace(/m\s*s⁻²/g, "m/s²")
-    .replace(/m\/s⁻²/g, "m/s²")
-    .replace(/km\/h/g, "km/h");
+    .replace(/[₀-₉]/g, (digit) => "_{" + "₀₁₂₃₄₅₆₇₈₉".indexOf(digit) + "}")
+    .replace(/²/g, "^{2}")
+    .replace(/³/g, "^{3}")
+    .replace(/⁻¹/g, "^{-1}")
+    .replace(/⁻²/g, "^{-2}")
+    .replace(/½/g, "\\frac{1}{2}")
+    .replace(/π/g, "\\pi")
+    .replace(/×/g, "\\times ")
+    .replace(/[−–]/g, "-")
+    .replace(/Δ/g, "\\Delta ")
+    .replace(/≤/g, "\\le ")
+    .replace(/≥/g, "\\ge ")
+    .replace(/≠/g, "\\ne ")
+    .replace(/≈/g, "\\approx ")
+    .replace(/→/g, "\\to ")
+    .replace(/\b1\/2\b/g, "\\frac{1}{2}");
   const known = new Set(["MA", "F_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
   const expression = source
     .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
@@ -136,6 +149,7 @@ function GraphSketch({ type }) {
         <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
       )}
       {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">positive area shown; signed area = displacement</text>}
+      <text x="226" y="202" fill="#8da197" fontSize="9">schematic, not to scale</text>
     </svg>
   );
 }
