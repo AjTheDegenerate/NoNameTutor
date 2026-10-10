@@ -72,6 +72,7 @@ function toMathMarkup(value) {
   const expression = source
     .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
       if (token === "MA") return "\\mathrm{MA}";
+      if (["sin", "cos", "tan", "log", "ln", "min", "max"].includes(token)) return "\\" + token;
       if (/^[A-Za-z][0-9]+$/.test(token)) return token[0] + "_{" + token.slice(1) + "}";
       if (known.has(token)) return token.replace(/_([A-Za-z0-9]+)/g, "_{\\mathrm{$1}}");
       if (products.has(token) || token.length === 1) return token;
