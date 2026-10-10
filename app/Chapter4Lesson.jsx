@@ -24,22 +24,20 @@ function ChoiceQuestion({ question, selected, onSelect, passed }) {
     <div className="interaction-options">
       {question.options.map((option, i) => {
         const isSelected = selected === i;
-        const showCorrect = selected !== null && i === question.answer;
-        const className = isSelected
-          ? (passed ? "correct" : "wrong")
-          : (showCorrect ? "correct" : "");
+        const className = isSelected ? (passed ? "correct" : "wrong") : "";
         return (
-          <button key={option} className={className} onClick={() => onSelect(i)}>
+          <button key={option} className={className} disabled={passed} onClick={() => onSelect(i)}>
             {String.fromCharCode(65 + i)}. {option}
           </button>
         );
       })}
       {selected !== null && (
         <div className={passed ? "feedback good" : "feedback bad"}>
-          {passed
-            ? "✓ Correct. "
-            : `Not quite. Correct answer: ${question.options[question.answer]}. `}
-          {question.explain}
+          {passed ? (
+            <>✓ Correct. {question.explain}</>
+          ) : (
+            <>Not quite — try another option.</>
+          )}
         </div>
       )}
     </div>
