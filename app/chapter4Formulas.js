@@ -4,7 +4,7 @@ const chapter4Formulas = [
     numeric: [
       ["Displacement", "Δx = x₂ − x₁", "Change in position. SI unit: m."],
       ["Distance", "total distance = sum of path lengths", "Total length of the path travelled. SI unit: m."],
-      ["Position", "position = distance + direction from a reference point", "A position needs both magnitude and direction relative to the chosen reference point."]
+      ["Signed position", "x = +d or x = −d", "Choose a positive direction first. Use +d on the positive side of the origin and −d on the opposite side; position is not found by adding a direction to a distance."]
     ],
     graphical: [
       ["Position–time graph", "average velocity = Δposition / Δtime", "Slope of a straight segment gives average velocity."],
@@ -48,7 +48,7 @@ const chapter4Formulas = [
     graphical: [
       ["Constant velocity", "horizontal v–t line", "Velocity is constant; slope is zero."],
       ["Increasing velocity", "straight line with positive slope", "Constant positive acceleration when the slope is constant."],
-      ["Decreasing velocity", "straight line with negative slope", "Constant acceleration opposite to the velocity direction in the textbook example."],
+      ["Negative slope", "negative acceleration in the chosen sign convention", "Whether speed increases or decreases depends on the sign of velocity; negative acceleration does not always mean slowing down."],
       ["Area under v–t", "area = displacement", "The signed area over the chosen time interval gives displacement."]
     ],
     use: "For graphical numericals, first read the axes and time interval, then calculate slope or area."
@@ -83,6 +83,8 @@ const chapter4Formulas = [
   {
     topic: "Uniform circular motion",
     numeric: [
+      ["Average speed for one revolution", "v_avg = 2πR / T", "One revolution covers circumference 2πR in time T. For uniform circular motion, this average speed equals the constant speed."],
+      ["Distance and displacement after one revolution", "distance = 2πR; displacement = 0", "The path length is the circumference; the final position is the starting position."],
       ["Speed", "speed = constant", "Uniform circular motion has constant speed."],
       ["Velocity direction", "velocity is tangent to the circle", "The chapter states that velocity at a point is along the tangent in the direction of motion."]
     ],
