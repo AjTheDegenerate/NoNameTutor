@@ -58,3 +58,16 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 .math-inline mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
 
 .graph-sketch.graph-sketch-accurate{height:auto;min-height:0}.graph-sketch-note{padding:18px;color:#9ba9a3;font-size:12px;line-height:1.6}
+
+
+/* Formula vault: readable equations, resilient wrapping, and mobile-first layout. */
+.formula-card{min-width:0;overflow:hidden}
+.formula-row{grid-template-columns:minmax(145px,.78fr) minmax(0,1.12fr) minmax(0,1.35fr);gap:16px}
+.formula-row>*{min-width:0}
+.formula-row .math-formula{display:block;min-width:0;max-width:100%;padding:11px 12px;background:#07100d;border:1px solid #22352d;border-radius:10px;color:var(--cyan);font-size:1.08rem;line-height:1.8;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain}
+.formula-row .math-formula mjx-container{max-width:100%;margin:0!important}
+.formula-row .math-formula mjx-container[display="true"]{margin:0!important}
+.formula-row p{overflow-wrap:anywhere}
+.formula-row b{line-height:1.45}
+@media(max-width:900px){.formula-row{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:10px}.formula-row p{grid-column:1/-1}.formula-card{padding:18px}}
+@media(max-width:600px){.formula-row{grid-template-columns:minmax(0,1fr);gap:8px;padding:14px 0}.formula-row p{grid-column:auto}.formula-row .math-formula{font-size:1rem;padding:10px}.formula-card{padding:15px}.formula-heading h3{font-size:20px}.formula-condition{line-height:1.55}}
