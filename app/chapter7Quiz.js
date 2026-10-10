@@ -160,14 +160,14 @@ const chapter7Quiz = [
     "answer": "Potential energy"
   },
   {
-    "q": "Why does a system consisting of two unlike magnetic poles or opposite electric charges store potential energy when they are separated from each other?",
+    "q": "A simple machine lifts a 300 N load using an effort of 100 N. What is its mechanical advantage?",
     "options": [
-      "Work must be done against their internal attractive forces to separate them",
-      "Their mass increases as distance increases",
-      "Frictional forces convert thermal energy into kinetic energy during separation",
-      "The magnetic or electric fields disappear when distance grows"
+      "3",
+      "0.33",
+      "200",
+      "30,000"
     ],
-    "answer": "Work must be done against their internal attractive forces to separate them"
+    "answer": "3"
   },
   {
     "q": "What is the gravitational potential energy $U$ of an object of mass $m$ raised slowly to a height $h$ above the Earth's surface, where $g$ is the acceleration due to gravity?",
