@@ -105,6 +105,36 @@ const chapter4Derivations = [
     "result": "Instantaneous velocity is the limiting value of average velocity as the time interval becomes very small.",
     "graph": "In higher grades, this is represented by the slope of the tangent to a position–time curve. The supplied chapter explicitly says this treatment is learned in higher grades.",
     "graphType": "position-time-tangent"
+  },
+  {
+    "title": "8. Derive s = vt − 1/2 at²",
+    "mode": "paper",
+    "setup": "Use constant acceleration and the final velocity v to express the displacement without initial velocity u.",
+    "steps": [
+      "Start with the first equation: v = u + at.",
+      "Rearrange to get u = v − at.",
+      "Substitute this into s = ut + 1/2 at²: s = (v − at)t + 1/2 at².",
+      "Expand: s = vt − at² + 1/2 at².",
+      "Combine the acceleration terms: s = vt − 1/2 at²."
+    ],
+    "result": "s = vt − 1/2 at²",
+    "graph": "This equation also applies only to straight-line motion with constant acceleration; use signed quantities consistently.",
+    "graphType": "velocity-time-area"
+  },
+  {
+    "title": "9. Derive s = 1/2 (u + v)t",
+    "mode": "graph",
+    "setup": "Use the area of the trapezium under a velocity–time graph for straight-line motion with constant acceleration.",
+    "steps": [
+      "The velocity–time graph is a straight line from initial velocity u to final velocity v over time t.",
+      "Displacement s is the area under this graph.",
+      "Treat the region as a trapezium with parallel sides u and v and height t.",
+      "Area of a trapezium = 1/2 × (sum of parallel sides) × height.",
+      "Therefore s = 1/2 × (u + v) × t."
+    ],
+    "result": "s = 1/2 (u + v)t",
+    "graph": "This form uses the average of initial and final velocities, which equals average velocity for constant acceleration.",
+    "graphType": "velocity-time-area"
   }
 ];
 
