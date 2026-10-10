@@ -56,3 +56,5 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 
 .math-inline{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",serif;white-space:normal}
 .math-inline mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+
+.graph-sketch.graph-sketch-accurate{height:auto;min-height:0}.graph-sketch-note{padding:18px;color:#9ba9a3;font-size:12px;line-height:1.6}
