@@ -204,11 +204,11 @@ function GraphSketch({ type }) {
     {forceDisplacementGraph && <polygon points="52,160 52,65 326,65 326,160" fill="rgba(67,245,195,0.16)" />}
     {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
     {energyGraph ? <>
-      <line x1="52" y1="48" x2="326" y2="48" stroke="#f0c674" strokeWidth="2.5" />
-      <path d="M52 48 C140 54 226 126 326 148" fill="none" stroke="#43f5c3" strokeWidth="2.8" />
-      <path d="M52 148 C140 140 226 68 326 48" fill="none" stroke="#77a8ff" strokeWidth="2.8" />
-      <text x="284" y="39" fill="#f0c674" fontSize="10">total</text>
-      <text x="284" y="135" fill="#43f5c3" fontSize="10">U</text>
+      <line x1="52" y1="36" x2="326" y2="36" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M52 48 C140 54 226 126 326 160" fill="none" stroke="#43f5c3" strokeWidth="2.8" />
+      <path d="M52 160 C140 154 226 82 326 48" fill="none" stroke="#77a8ff" strokeWidth="2.8" />
+      <text x="284" y="28" fill="#f0c674" fontSize="10">total</text>
+      <text x="284" y="151" fill="#43f5c3" fontSize="10">U</text>
       <text x="284" y="60" fill="#77a8ff" fontSize="10">K</text>
     </> : powerGraph ? <>
       <path d="M68 45 C85 78 142 116 326 147" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
