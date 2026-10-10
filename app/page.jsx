@@ -110,25 +110,22 @@ function GraphSketch({ type }) {
         : "Velocity-time graph with a straight rising line; axes show velocity in metres per second and time in seconds";
   return (
     <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label={ariaLabel}>
-      <defs>
-        <marker id="graph-axis-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-          <path d="M0,0 L6,3.5 L0,7 Z" fill="#71857b" />
-        </marker>
-      </defs>
-      {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
+            {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
       {[120, 188, 256, 324].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
-      <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
-      <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
+      <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" />
+      <path d="M47 32 L52 24 L57 32" fill="none" stroke="#71857b" strokeWidth="1.5" />
+      <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" />
+      <path d="M325 155 L333 160 L325 165" fill="none" stroke="#71857b" strokeWidth="1.5" />
       <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
       <text x="284" y="184" fill="#a7b9af" fontSize="11">time t (s)</text>
       <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
-      {[120, 188, 256, 324].map((x, i) => <g key={"xt" + x}><line x1={x} y1="156" x2={x} y2="164" stroke="#71857b" /><text x={x - 3} y="176" fill="#81958b" fontSize="9">{i + 1}</text></g>)}
-      {[130, 100, 70, 40].map((y, i) => <g key={"yt" + y}><line x1="48" y1={y} x2="56" y2={y} stroke="#71857b" /><text x="35" y={y + 3} fill="#81958b" fontSize="9">{i + 1}</text></g>)}
+      {[120, 188, 256, 324].map((x) => <line key={"xt" + x} x1={x} y1="156" x2={x} y2="164" stroke="#71857b" />)}
+      {[130, 100, 70, 40].map((y) => <line key={"yt" + y} x1="48" y1={y} x2="56" y2={y} stroke="#71857b" />)}
       {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
       {tangentGraph ? (
         <>
           <path d="M52 145 Q182 145 326 48" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
-          <line x1="112" y1="147" x2="252" y2="97" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
+          <line x1="112" y1="146.75" x2="252" y2="97.2" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
           <circle cx="185.5" cy="120.75" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
           <text x="200" y="91" fill="#f0c674" fontSize="10">tangent at point</text>
         </>
