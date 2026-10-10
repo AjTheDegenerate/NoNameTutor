@@ -108,47 +108,130 @@ const dataByChapter = {
 const flashcards = [...flash1,...flash2,...flash3,...flash4];
 
 function GraphSketch({ type }) {
-  const positionGraph = type === "position-time-line" || type === "position-time-tangent";
+  if (type === "inclined-plane-diagram") {
+    return <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label="Inclined plane diagram showing ramp length L, vertical height h, load, and effort along the ramp">
+      <path d="M52 166 L316 166 L316 58 Z" fill="rgba(67,245,195,0.08)" stroke="#71857b" strokeWidth="1.5" />
+      <path d="M52 166 L316 58" stroke="#43f5c3" strokeWidth="4" strokeLinecap="round" />
+      <rect x="250" y="70" width="26" height="22" rx="2" transform="rotate(-22.3 263 81)" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
+      <line x1="290" y1="83" x2="252" y2="99" stroke="#f0c674" strokeWidth="2" />
+      <path d="M260 96 L252 99 L257 91" fill="none" stroke="#f0c674" strokeWidth="2" />
+      <line x1="328" y1="166" x2="328" y2="58" stroke="#a7b9af" strokeDasharray="4 4" />
+      <text x="337" y="116" fill="#a7b9af" fontSize="12">h</text>
+      <text x="170" y="128" fill="#43f5c3" fontSize="12">L</text>
+      <text x="207" y="92" fill="#f0c674" fontSize="10">effort</text>
+      <text x="252" y="56" fill="#a7b9af" fontSize="10">load</text>
+      <text x="182" y="196" textAnchor="middle" fill="#8da197" fontSize="9">Ideal smooth ramp; schematic, not to scale</text>
+    </svg>;
+  }
+  if (type === "lever-diagram") {
+    return <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label="Lever diagram with fulcrum, load and effort acting on opposite arms">
+      <path d="M48 111 L316 111" stroke="#43f5c3" strokeWidth="5" strokeLinecap="round" />
+      <path d="M164 145 L188 111 L212 145 Z" fill="#71857b" stroke="#a7b9af" strokeWidth="1.5" />
+      <circle cx="188" cy="111" r="4" fill="#f0c674" />
+      <line x1="83" y1="110" x2="83" y2="56" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M77 64 L83 54 L89 64" fill="none" stroke="#f0c674" strokeWidth="2.5" />
+      <line x1="288" y1="110" x2="288" y2="56" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M282 64 L288 54 L294 64" fill="none" stroke="#f0c674" strokeWidth="2.5" />
+      <text x="65" y="43" fill="#f0c674" fontSize="11">Effort</text>
+      <text x="270" y="43" fill="#f0c674" fontSize="11">Load</text>
+      <text x="175" y="164" fill="#a7b9af" fontSize="10">fulcrum</text>
+      <text x="108" y="100" fill="#a7b9af" fontSize="10">d₁</text>
+      <text x="234" y="100" fill="#a7b9af" fontSize="10">d₂</text>
+      <text x="182" y="196" textAnchor="middle" fill="#8da197" fontSize="9">Conceptual lever diagram; not to scale</text>
+    </svg>;
+  }
+  if (type === "system-diagram") {
+    return <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label="Two connected boxes treated as one system, pulled by an external force and sharing one acceleration">
+      <rect x="76" y="82" width="76" height="44" rx="5" fill="rgba(67,245,195,0.12)" stroke="#43f5c3" strokeWidth="2" />
+      <rect x="158" y="82" width="76" height="44" rx="5" fill="rgba(67,245,195,0.12)" stroke="#43f5c3" strokeWidth="2" />
+      <text x="114" y="108" textAnchor="middle" fill="#a7b9af" fontSize="12">m₁</text>
+      <text x="196" y="108" textAnchor="middle" fill="#a7b9af" fontSize="12">m₂</text>
+      <line x1="235" y1="103" x2="304" y2="103" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M296 96 L306 103 L296 110" fill="none" stroke="#f0c674" strokeWidth="2.5" />
+      <text x="269" y="90" fill="#f0c674" fontSize="12">F</text>
+      <line x1="78" y1="146" x2="235" y2="146" stroke="#43f5c3" strokeWidth="2.5" />
+      <path d="M227 139 L237 146 L227 153" fill="none" stroke="#43f5c3" strokeWidth="2.5" />
+      <text x="155" y="165" textAnchor="middle" fill="#43f5c3" fontSize="11">common acceleration a</text>
+      <text x="180" y="196" textAnchor="middle" fill="#8da197" fontSize="9">F is external to the combined system</text>
+    </svg>;
+  }
+
+  const positionGraph = type === "position-time-line" || type === "position-time-tangent" || type === "rest-constant-velocity";
   const areaGraph = type === "velocity-time-area";
   const tangentGraph = type === "position-time-tangent";
-  const axisLabel = positionGraph ? "position x (m)" : "velocity v (m/s)";
-  const ariaLabel = areaGraph
-    ? "Schematic velocity-time graph; velocity rises from a positive initial value, and the positive area under the line represents displacement"
-    : tangentGraph
-      ? "Schematic position-time curve with a straight tangent touching the curve at the marked point; tangent slope represents instantaneous velocity"
-      : positionGraph
-        ? "Schematic position-time graph with a straight rising line; slope represents constant velocity"
-        : "Schematic velocity-time graph with a straight rising line; slope represents constant acceleration";
-  return (
-    <svg className="graph-sketch-svg" viewBox="0 0 360 224" role="img" aria-label={ariaLabel}>
-      {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
-      {[120, 188, 256, 324].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
-      <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" />
-      <path d="M47 32 L52 24 L57 32" fill="none" stroke="#71857b" strokeWidth="1.5" />
-      <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" />
-      <path d="M325 155 L333 160 L325 165" fill="none" stroke="#71857b" strokeWidth="1.5" />
-      <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
-      <text x="284" y="184" fill="#a7b9af" fontSize="11">time t (s)</text>
-      <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
-      {[120, 188, 256, 324].map((x) => <line key={"xt" + x} x1={x} y1="156" x2={x} y2="164" stroke="#71857b" />)}
-      {[130, 100, 70, 40].map((y) => <line key={"yt" + y} x1="48" y1={y} x2="56" y2={y} stroke="#71857b" />)}
-      {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
-      {tangentGraph ? (
-        <>
-          <path d="M52 145 Q182 145 326 48" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
-          <line x1="112" y1="146.75" x2="252" y2="97.2" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
-          <circle cx="185.5" cy="120.75" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
-          <text x="200" y="91" fill="#f0c674" fontSize="10">tangent at point</text>
-        </>
-      ) : (
-        <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
-      )}
-      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">shaded positive area = displacement here</text>}
-      <text x="188" y="210" textAnchor="middle" fill="#8da197" fontSize="9">Schematic — not to scale; tick spacing is illustrative</text>
-    </svg>
-  );
-}
+  const forceDisplacementGraph = type === "force-displacement-area";
+  const energyGraph = type === "energy-conservation";
+  const powerGraph = type === "power-time-inverse";
+  const directGraph = ["acceleration-force-line", "force-mass-line", "potential-height-line"].includes(type);
+  const dualMotionGraph = type === "rest-constant-velocity";
+  const axisLabel = forceDisplacementGraph ? "force F (N)"
+    : energyGraph ? "energy (J)"
+    : powerGraph ? "average power P (W)"
+    : type === "acceleration-force-line" ? "acceleration a (m/s²)"
+    : type === "force-mass-line" ? "force F (N)"
+    : type === "potential-height-line" ? "potential energy U (J)"
+    : positionGraph ? "position x (m)" : "velocity v (m/s)";
+  const xLabel = forceDisplacementGraph ? "displacement s (m)"
+    : energyGraph ? "time t (s)"
+    : powerGraph ? "time t (s)"
+    : type === "acceleration-force-line" ? "net force F (N)"
+    : type === "force-mass-line" ? "mass m (kg)"
+    : type === "potential-height-line" ? "height h (m)" : "time t (s)";
+  const ariaLabel = forceDisplacementGraph ? "Force-displacement graph with constant positive force; the shaded rectangle represents work"
+    : energyGraph ? "Ideal energy-versus-time schematic with kinetic energy increasing, potential energy decreasing, and total mechanical energy constant"
+    : powerGraph ? "Average power decreases as the time taken increases for a fixed amount of work"
+    : type === "acceleration-force-line" ? "Acceleration against net force for fixed mass, a straight line through the origin"
+    : type === "force-mass-line" ? "Weight against mass near Earth's surface for constant gravitational acceleration"
+    : type === "potential-height-line" ? "Gravitational potential energy against height for fixed mass and gravity"
+    : areaGraph ? "Velocity-time graph with positive area under an increasing velocity line shaded; the shaded positive area represents displacement over this interval"
+    : tangentGraph ? "Position-time curve with a tangent touching the curve at the marked point; tangent slope represents instantaneous velocity"
+    : dualMotionGraph ? "Position-time graph comparing an object at rest, horizontal line, and constant velocity, rising straight line"
+    : positionGraph ? "Position-time graph with a straight rising line; slope represents constant velocity"
+    : "Velocity-time graph with a straight rising line; slope represents constant acceleration";
 
+  return <svg className="graph-sketch-svg" viewBox="0 0 360 224" role="img" aria-label={ariaLabel}>
+    {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
+    {[120, 188, 256, 324].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
+    <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" />
+    <path d="M47 32 L52 24 L57 32" fill="none" stroke="#71857b" strokeWidth="1.5" />
+    <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" />
+    <path d="M325 155 L333 160 L325 165" fill="none" stroke="#71857b" strokeWidth="1.5" />
+    <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
+    <text x="284" y="184" fill="#a7b9af" fontSize="11">{xLabel}</text>
+    <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
+    {[120, 188, 256, 324].map((x) => <line key={"xt" + x} x1={x} y1="156" x2={x} y2="164" stroke="#71857b" />)}
+    {[130, 100, 70, 40].map((y) => <line key={"yt" + y} x1="48" y1={y} x2="56" y2={y} stroke="#71857b" />)}
+    {forceDisplacementGraph && <polygon points="52,160 52,65 326,65 326,160" fill="rgba(67,245,195,0.16)" />}
+    {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
+    {energyGraph ? <>
+      <line x1="52" y1="48" x2="326" y2="48" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M52 48 C140 54 226 126 326 148" fill="none" stroke="#43f5c3" strokeWidth="2.8" />
+      <path d="M52 148 C140 140 226 68 326 48" fill="none" stroke="#77a8ff" strokeWidth="2.8" />
+      <text x="284" y="39" fill="#f0c674" fontSize="10">total</text>
+      <text x="284" y="135" fill="#43f5c3" fontSize="10">U</text>
+      <text x="284" y="60" fill="#77a8ff" fontSize="10">K</text>
+    </> : powerGraph ? <>
+      <path d="M68 45 C85 78 142 116 326 147" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+      <text x="176" y="93" fill="#a7e8d4" fontSize="10">P = W/t for fixed W</text>
+    </> : directGraph ? <>
+      <line x1="52" y1="160" x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+      <text x="206" y="92" fill="#a7e8d4" fontSize="10">direct relationship</text>
+    </> : dualMotionGraph ? <>
+      <line x1="52" y1="122" x2="326" y2="122" stroke="#f0c674" strokeWidth="2.8" />
+      <line x1="52" y1="148" x2="326" y2="58" stroke="#43f5c3" strokeWidth="2.8" />
+      <text x="260" y="114" fill="#f0c674" fontSize="10">rest</text>
+      <text x="226" y="75" fill="#43f5c3" fontSize="10">constant v</text>
+    </> : tangentGraph ? <>
+      <path d="M52 145 Q182 145 326 48" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+      <line x1="112" y1="146.75" x2="252" y2="97.2" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
+      <circle cx="185.5" cy="120.75" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
+      <text x="200" y="91" fill="#f0c674" fontSize="10">tangent at point</text>
+    </> : forceDisplacementGraph ? <line x1="52" y1="65" x2="326" y2="65" stroke="#43f5c3" strokeWidth="3" /> : <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />}
+    {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">shaded positive area = displacement here</text>}
+    {forceDisplacementGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">area = work</text>}
+    <text x="188" y="210" textAnchor="middle" fill="#8da197" fontSize="9">Schematic — not to scale; tick spacing is illustrative</text>
+  </svg>;
+}
 export default function Home(){
   const appRoot = useRef(null);
   const [chapter,setChapter]=useState(chapters[0]);
@@ -316,7 +399,7 @@ export default function Home(){
 
       {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b><ScientificText value={name} /></b><span className="math-formula">{toMathMarkup(formula)}</span><p><ScientificText value={note} /></p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b><ScientificText value={name} /></b><span className="math-formula graph-math-formula">{toMathMarkup(formula)}</span><p><ScientificText value={note} /></p></div>)}</section><div className="formula-use"><b>When to use:</b> <ScientificText value={f.use} /></div></article>)}</div></>}
 
-      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3><ScientificText value={d.title} /></h3><p className="derivation-setup"><ScientificText value={d.setup} /></p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}><ScientificText value={s} /></li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{toMathMarkup(d.result)}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p><ScientificText value={d.graph} /></p><div className="graph-sketch graph-sketch-accurate"><GraphSketch type={d.graphType || "velocity-time-line"} /></div></div></div></article>)}</div></>}
+      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3><ScientificText value={d.title} /></h3><p className="derivation-setup"><ScientificText value={d.setup} /></p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}><ScientificText value={s} /></li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{toMathMarkup(d.result)}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p><ScientificText value={d.graph} /></p><div className="graph-sketch graph-sketch-accurate">{d.graphType ? <GraphSketch type={d.graphType} /> : <div className="graph-sketch-note">No separate plotted graph is needed for this derivation; use the explanation above as the relevant diagram or relationship.</div>}</div></div></div></article>)}</div></>}
 
       {tab==="notes"&&<><span className="kicker">CHAPTER {chapter.number} · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map(x=><article key={x.key}><b>{x.title}</b><p><ScientificText value={x.body} /></p></article>)}</div></>}
 
