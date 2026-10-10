@@ -142,7 +142,7 @@ function GraphSketch({ type }) {
       ) : (
         <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
       )}
-      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">positive area = displacement</text>}
+      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">signed area = displacement</text>}
       <text x="188" y="210" textAnchor="middle" fill="#8da197" fontSize="9">Schematic — not to scale; tick spacing is illustrative</text>
     </svg>
   );
