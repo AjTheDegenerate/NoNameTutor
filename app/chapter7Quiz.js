@@ -90,14 +90,14 @@ const chapter7Quiz = [
     "answer": "$-30\\text{ J}$"
   },
   {
-    "q": "According to the work-energy theorem, what quantity is directly equal to the total work done on an object or system?",
+    "q": "According to the work–kinetic energy theorem, what quantity equals the net work done on an object?",
     "options": [
-      "The change in its total energy",
+      "The change in its kinetic energy",
       "The product of its mass and acceleration",
       "The rate of change of momentum over time",
       "Its instantaneous gravitational potential energy"
     ],
-    "answer": "The change in its total energy"
+    "answer": "The change in its kinetic energy"
   },
   {
     "q": "In a game of carrom, a moving striker collides head-on with a stationary coin. What work is done by the striker on the coin during the collision?",
