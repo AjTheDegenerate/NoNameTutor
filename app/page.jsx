@@ -116,20 +116,20 @@ function GraphSketch({ type }) {
         </marker>
       </defs>
       {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
-      {[120, 188, 256].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
+      {[120, 188, 256, 324].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
       <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
       <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
       <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
       <text x="284" y="184" fill="#a7b9af" fontSize="11">time t (s)</text>
       <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
-      {[120, 188, 256].map((x, i) => <g key={"xt" + x}><line x1={x} y1="156" x2={x} y2="164" stroke="#71857b" /><text x={x - 3} y="176" fill="#81958b" fontSize="9">{i + 1}</text></g>)}
-      {[130, 100, 70].map((y, i) => <g key={"yt" + y}><line x1="48" y1={y} x2="56" y2={y} stroke="#71857b" /><text x="35" y={y + 3} fill="#81958b" fontSize="9">{i + 1}</text></g>)}
+      {[120, 188, 256, 324].map((x, i) => <g key={"xt" + x}><line x1={x} y1="156" x2={x} y2="164" stroke="#71857b" /><text x={x - 3} y="176" fill="#81958b" fontSize="9">{i + 1}</text></g>)}
+      {[130, 100, 70, 40].map((y, i) => <g key={"yt" + y}><line x1="48" y1={y} x2="56" y2={y} stroke="#71857b" /><text x="35" y={y + 3} fill="#81958b" fontSize="9">{i + 1}</text></g>)}
       {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
       {tangentGraph ? (
         <>
           <path d="M52 145 Q182 145 326 48" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
-          <line x1="112" y1="145" x2="252" y2="97" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
-          <circle cx="182" cy="118" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
+          <line x1="112" y1="147" x2="252" y2="97" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
+          <circle cx="185.5" cy="120.75" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
           <text x="200" y="91" fill="#f0c674" fontSize="10">tangent at point</text>
         </>
       ) : (
