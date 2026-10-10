@@ -9,17 +9,17 @@ const chapter6Papers = [
   status:"Generated · source-linked",
   modes:["solved"],
   pages:3,
-  description:"A 40-mark solved paper constructed from the current NCERT Chapter 6 scope and question styles/concepts appearing in NCERT Exemplar Force and Laws of Motion and CBSE competency-based assessment material.",
+  description:"A 40-mark solved paper constructed from the current NCERT Chapter 6 scope and question styles/concepts appearing in NCERT Exemplar Force and Laws of Motion and NCERT Exemplar practice material.",
   sources:[
     {label:"NCERT Class 9 Science — Chapter 6",url:"https://ncert.nic.in/textbook/pdf/iesc106.pdf"},
     {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"},
     {label:"NCERT Exemplar — Answers",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep1an.pdf"},
-    {label:"CBSE Curriculum Aligned Competency Based Test Items — Science Class 9",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"}
+    {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"}
   ],
   text:`Chapter 6 — How Forces Affect Motion
 Solved Source-Based Paper • Class 9 Science
 40 marks • Suggested time: 60 min
-Constructed from official NCERT and CBSE source material; questions are newly written rather than copied from the source papers.
+Constructed from official NCERT source material; questions are newly written rather than copied from the source papers.
 
 Section A — Concepts [10 marks]
 1. [2] Define force and explain why both magnitude and direction are needed.
@@ -76,17 +76,17 @@ Solutions
   status:"Generated · source-linked",
   modes:["unsolved"],
   pages:3,
-  description:"An unsolved 40-mark paper built from the current NCERT chapter and official NCERT/CBSE assessment patterns.",
+  description:"An unsolved 40-mark paper built from the current NCERT chapter and official NCERT question styles.",
   sources:[
     {label:"NCERT Class 9 Science — Chapter 6",url:"https://ncert.nic.in/textbook/pdf/iesc106.pdf"},
     {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"},
-    {label:"CBSE Curriculum Aligned Competency Based Test Items — Science Class 9",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"},
+    {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"},
     {label:"CBSE Formative Assessment Manual — Class IX Science",url:"https://www.cbse.gov.in/cce/cce-manual/CBSE-FA-Class-IX%20%28Science%29%20Final.pdf"}
   ],
   text:`Chapter 6 — How Forces Affect Motion
 Unsolved Source-Based Paper • Class 9 Science
 40 marks • Suggested time: 60 min
-Constructed from official NCERT and CBSE source material; questions are newly written.
+Constructed from official NCERT source material; questions are newly written.
 
 1. [2] Define force and state its SI unit.
 2. [2] Why must the direction of a force be specified?
@@ -120,16 +120,16 @@ Constructed from official NCERT and CBSE source material; questions are newly wr
   status:"Generated · source-linked",
   modes:["practice"],
   pages:3,
-  description:"A mixed competency-style practice paper modelled on the application, interpretation and constructed-response approach used in official CBSE Class 9 assessment resources.",
+  description:"A mixed competency-style practice paper modelled on the application, interpretation and constructed-response approach used in official NCERT Exemplar question styles.",
   sources:[
-    {label:"CBSE Curriculum Aligned Competency Based Test Items — Science Class 9",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"},
+    {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"},
     {label:"NCERT Class 9 Science — Chapter 6",url:"https://ncert.nic.in/textbook/pdf/iesc106.pdf"},
     {label:"NCERT Exemplar — Force and Laws of Motion",url:"https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep109.pdf"}
   ],
   text:`Chapter 6 — How Forces Affect Motion
 Competency Practice Paper • Class 9 Science
 30 questions • Mixed difficulty
-Constructed from official NCERT and CBSE assessment patterns; questions are newly written.
+Constructed from official NCERT question styles; questions are newly written.
 
 Section A — Quick concepts
 1. Why can constant velocity coexist with zero net force?
