@@ -9,7 +9,7 @@ const chapter4Papers = [
     status: "NCERT-based",
     modes: ["solved"],
     description: "Solved Chapter 4 paper generated from the supplied NCERT chapter. Includes worked solutions for concepts, numericals, graphs, formula skills and application.",
-    pages: 2,
+    pages: 1,
     text: `Chapter 4 — Describing Motion Around Us
 Solved Paper • Describing Motion Around Us • Based on the supplied NCERT Chapter 4
 
