@@ -40,16 +40,18 @@ function normalisePhysicsAnswer(value) {
     .trim()
     .toLowerCase()
     .replace(/[−–]/g, "-")
-    .replace(/m\\s*s[⁻−-]¹/g, "m/s")
-    .replace(/m\\s*s[⁻−-]²/g, "m/s^2")
-    .replace(/m\\/s[⁻−-]²/g, "m/s^2")
-    .replace(/m\\/s²/g, "m/s^2")
-    .replace(/m\\/s¹/g, "m/s")
+    .replace(/m\s*s[⁻−-]¹/g, "m/s")
+    .replace(/m\s*s[⁻−-]²/g, "m/s^2")
+    .replace(/m\/s[⁻−-]²/g, "m/s^2")
+    .replace(/m\/s²/g, "m/s^2")
+    .replace(/m\/s¹/g, "m/s")
+    .replace(/m\s*s\^-1/g, "m/s")
+    .replace(/m\s*s\^-2/g, "m/s^2")
     .replace(/²/g, "^2")
     .replace(/³/g, "^3")
     .replace(/[×·]/g, "*")
-    .replace(/[.,;:]/g, "")
-    .replace(/\\s+/g, "");
+    .replace(/[.,;:]+$/g, "")
+    .replace(/\s+/g, "");
 }
 
 function physicsAnswerMatches(expected, submitted) {
