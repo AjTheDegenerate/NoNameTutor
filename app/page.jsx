@@ -60,6 +60,22 @@ function physicsAnswerMatches(expected, submitted) {
   return response.length > 0 && target === response;
 }
 
+function toMathMarkup(value) {
+  const source = String(value ?? "")
+    .replace(/m\s*s⁻²/g, "m/s²")
+    .replace(/m\/s⁻²/g, "m/s²")
+    .replace(/km\/h/g, "km/h");
+  const known = new Set(["MA", "F_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
+  const expression = source
+    .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
+      if (known.has(token)) return token.replace(/_([A-Za-z0-9]+)/g, "_{\\mathrm{$1}}");
+      if (token.length === 1) return token;
+      return "\\text{" + token + "}";
+    })
+    .replace(/ /g, "\\ ");
+  return "\\(" + expression + "\\)";
+}
+
 const chapters = [
   { id:"motion", number:"04", title:"Describing Motion Around Us", short:"Motion", description:"35-skill learning path backed by flashcards, quiz, mind map, question bank, papers, formulas and derivations." },
   { id:"force", number:"06", title:"How Forces Affect Motion", short:"Forces", description:"Full force-and-motion learning path covering force, friction, Newton's laws, graphs, numericals, systems, formulas and derivations." },
@@ -84,31 +100,42 @@ function GraphSketch({ type }) {
   const positionGraph = type === "position-time-line" || type === "position-time-tangent";
   const areaGraph = type === "velocity-time-area";
   const tangentGraph = type === "position-time-tangent";
+  const axisLabel = positionGraph ? "position x (m)" : "velocity v (m/s)";
   const ariaLabel = areaGraph
-    ? "Velocity-time graph with the signed area highlighted"
+    ? "Velocity-time graph with positive area under an increasing velocity line shaded; axes show velocity in metres per second and time in seconds"
     : tangentGraph
-      ? "Curved position-time graph with a tangent at one point"
+      ? "Position-time curve with a tangent touching the curve at the marked point; axes show position in metres and time in seconds"
       : positionGraph
-        ? "Position-time graph with a sloping line"
-        : "Velocity-time graph with a sloping line";
+        ? "Position-time graph with a straight rising line; axes show position in metres and time in seconds"
+        : "Velocity-time graph with a straight rising line; axes show velocity in metres per second and time in seconds";
   return (
-    <svg className="graph-sketch-svg" viewBox="0 0 320 170" role="img" aria-label={ariaLabel}>
-      <line x1="38" y1="16" x2="38" y2="136" stroke="#42534c" strokeWidth="1.5" />
-      <line x1="38" y1="136" x2="302" y2="136" stroke="#42534c" strokeWidth="1.5" />
-      <text x="8" y="16" fill="#8da197" fontSize="10">{positionGraph ? "position" : "velocity"}</text>
-      <text x="278" y="158" fill="#8da197" fontSize="10">time →</text>
-      {areaGraph && <polygon points="40,136 40,91 278,42 278,136" fill="rgba(67,245,195,0.15)" />}
+    <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label={ariaLabel}>
+      <defs>
+        <marker id="graph-axis-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L6,3.5 L0,7 Z" fill="#71857b" />
+        </marker>
+      </defs>
+      {[70, 100, 130].map((y) => <line key={"gy" + y} x1="52" y1={y} x2="326" y2={y} stroke="#23342d" strokeWidth="1" />)}
+      {[120, 188, 256].map((x) => <line key={"gx" + x} x1={x} y1="28" x2={x} y2="160" stroke="#23342d" strokeWidth="1" />)}
+      <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
+      <line x1="52" y1="160" x2="333" y2="160" stroke="#71857b" strokeWidth="1.5" markerEnd="url(#graph-axis-arrow)" />
+      <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
+      <text x="284" y="184" fill="#a7b9af" fontSize="11">time t (s)</text>
+      <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
+      {[120, 188, 256].map((x, i) => <g key={"xt" + x}><line x1={x} y1="156" x2={x} y2="164" stroke="#71857b" /><text x={x - 3} y="176" fill="#81958b" fontSize="9">{i + 1}</text></g>)}
+      {[130, 100, 70].map((y, i) => <g key={"yt" + y}><line x1="48" y1={y} x2="56" y2={y} stroke="#71857b" /><text x="35" y={y + 3} fill="#81958b" fontSize="9">{i + 1}</text></g>)}
+      {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
       {tangentGraph ? (
         <>
-          <path d="M40 125 Q130 120 278 42" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
-          <line x1="80" y1="117" x2="230" y2="67" stroke="#f0c674" strokeWidth="2" strokeDasharray="5 4" />
-          <circle cx="155" cy="94" r="4" fill="#f0c674" />
+          <path d="M52 145 Q182 145 326 48" fill="none" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+          <line x1="112" y1="145" x2="252" y2="97" stroke="#f0c674" strokeWidth="2.2" strokeDasharray="5 4" />
+          <circle cx="182" cy="118" r="4" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
+          <text x="200" y="91" fill="#f0c674" fontSize="10">tangent at point</text>
         </>
       ) : (
-        <line x1="40" y1={areaGraph ? 91 : 105} x2="278" y2={areaGraph ? 42 : 42} stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
+        <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
       )}
-      {areaGraph && <text x="138" y="119" fill="#a7e8d4" fontSize="11">area = displacement</text>}
-      {tangentGraph && <text x="165" y="57" fill="#f0c674" fontSize="10">tangent</text>}
+      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">signed area = displacement</text>}
     </svg>
   );
 }
@@ -264,9 +291,9 @@ export default function Home(){
 
       {tab==="papers"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · PAPER BANK</span><h2>Source-backed papers + generated practice.</h2><p className="overlay-intro">Authoritative material stays linked to its source. Generated papers are clearly marked as NCERT-based supplementary practice rather than historical exam papers.</p><div className="paper-filters">{["all","past","solved","unsolved","practice"].map(m=><button key={m} className={paperMode===m?"selected":""} onClick={()=>setPaperMode(m)}>{m==="all"?"All":m[0].toUpperCase()+m.slice(1)}</button>)}</div>{[...chapterData.papers,...chapterData.paperSources].filter(p=>paperMode==="all"||p.modes.includes(paperMode)).length===0?<div className="asset-placeholder">{paperMode==="past"?"No official CBSE Class IX board past-paper source is listed here. Class IX assessments are school-based; the official NCERT Exemplar and CBSE competency resources linked in this bank are practice or assessment-item collections, not past CBSE board papers. Verified school papers can be added when available.":"No items match this filter yet."}</div>:<div className="paper-grid">{[...chapterData.papers,...chapterData.paperSources].filter(p=>paperMode==="all"||p.modes.includes(paperMode)).map(p=><article className="paper-card" key={p.id}><div className="paper-top"><span>{p.kind==="generated"?"IN-APP PDF":p.kind.toUpperCase()}</span><em>✓ {p.status}</em></div><h3>{p.title}</h3><p>{p.description}</p><div className="paper-meta"><span>Class {p.classLevel}</span><span>{p.subject}</span><span>{p.year}</span>{p.kind==="generated"&&<span>{p.pages} pages</span>}</div>{p.kind==="generated"?<><div className="paper-actions"><button onClick={()=>openPaperPdf(p)}>Open PDF ↗</button><button onClick={()=>openPaperPdf(p,true)}>Download PDF</button></div>{p.sources&&<div className="paper-sources"><b>Official source basis</b>{p.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.label} ↗</a>)}</div>}</>:<a href={p.url} target="_blank" rel="noreferrer">Open authoritative source ↗</a>}</article>)}</div>}</>}
 
-      {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b>{name}</b><span className="math-formula">{formula}</span><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
+      {tab==="formulas"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · FORMULA + GRAPH REFERENCE</span><h2>Numerical formulas + graph tools for {chapter.short}.</h2><p className="overlay-intro">Each topic separates calculation tools from graphical interpretation, with conditions and usage notes kept close to the equations.</p><div className="formula-filters"><button className={formulaTopic==="all"?"selected":""} onClick={()=>setFormulaTopic("all")}>All topics</button>{chapterData.formulas.map(f=><button key={f.topic} className={formulaTopic===f.topic?"selected":""} onClick={()=>setFormulaTopic(f.topic)}>{f.topic}</button>)}</div><div className="formula-grid">{chapterData.formulas.filter(f=>formulaTopic==="all"||f.topic===formulaTopic).map(f=><article className="formula-card" key={f.topic}><div className="formula-heading"><span className="kicker">TOPIC</span><h3>{f.topic}</h3></div>{f.condition&&<div className="formula-condition">⚠️ {f.condition}</div>}<section><h4>Numerical / equation tools</h4>{f.numeric.map(([name,formula,note])=><div className="formula-row" key={name}><b>{name}</b><span className="math-formula">{toMathMarkup(formula)}</span><p>{note}</p></div>)}</section><section><h4>Graphical tools</h4>{f.graphical.map(([name,formula,note])=><div className="formula-row graph-row" key={name}><b>{name}</b><code>{formula}</code><p>{note}</p></div>)}</section><div className="formula-use"><b>When to use:</b> {f.use}</div></article>)}</div></>}
 
-      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{d.result}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch graph-sketch-accurate"><GraphSketch type={d.graphType || "velocity-time-line"} /></div></div></div></article>)}</div></>}
+      {tab==="derivations"&&chapterData&&<><span className="kicker">CHAPTER {chapter.number} · DERIVATIONS</span><h2>Derive it on paper. See the force on the graph.</h2><p className="overlay-intro">Follow the algebraic route and the matching graphical interpretation. Only source-supported extensions are included.</p><div className="derivation-grid">{chapterData.derivations.map(d=><article className="derivation-card" key={d.title}><div className="derivation-top"><span>{d.mode==="extension"?"HIGHER-GRADE EXTENSION":d.mode==="graph"?"GRAPH → EQUATION":"PAPER / ALGEBRA"}</span></div><h3>{d.title}</h3><p className="derivation-setup">{d.setup}</p><div className="derivation-columns"><div><h4>On paper</h4><ol>{d.steps.map((s,i)=><li key={i}>{s}</li>)}</ol><div className="derived-result"><span>RESULT</span><span className="math-formula">{toMathMarkup(d.result)}</span></div></div><div className="graph-explain"><h4>On the graph</h4><p>{d.graph}</p><div className="graph-sketch graph-sketch-accurate"><GraphSketch type={d.graphType || "velocity-time-line"} /></div></div></div></article>)}</div></>}
 
       {tab==="notes"&&<><span className="kicker">CHAPTER {chapter.number} · QUICK NOTES</span><h2>Chapter at a glance.</h2><div className="note-grid">{content.map(x=><article key={x.key}><b>{x.title}</b><p>{x.body}</p></article>)}</div></>}
 
