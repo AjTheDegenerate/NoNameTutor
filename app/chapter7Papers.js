@@ -40,7 +40,7 @@ Section D — Simple machines [8 marks]
 Worked answers
 1. Work = force × displacement in the direction of the force; SI unit joule (J).
 2. The force is zero, displacement is zero, or force is perpendicular to displacement.
-3. The net work done on an object equals the change in its kinetic energy, ΔK = K_final − K_initial.
+3. Work done on an object equals the change in its energy, matching the current NCERT chapter’s statement of the work–energy theorem.
 4. Kinetic energy is due to motion; potential energy is stored due to deformation or relative positions in a system.
 5. Power is the rate of doing work or transferring energy; SI unit watt (W).
 6. W = F × s = 30 × 4 = 120 J.
