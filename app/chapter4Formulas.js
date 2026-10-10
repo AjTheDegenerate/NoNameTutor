@@ -60,7 +60,9 @@ const chapter4Formulas = [
       ["First equation", "v = u + at", "Use when u, a, t and v are related."],
       ["Second equation", "s = ut + 1/2 at²", "Use when displacement, time and acceleration are involved."],
       ["Third equation", "v² = u² + 2as", "Useful when time is not given or is not needed."],
-      ["Average velocity for constant acceleration", "s = ((u + v)/2)t", "Follows from the area/average-velocity idea for constant acceleration."]
+      ["Average velocity for constant acceleration", "s = ((u + v)/2)t", "Follows from the area/average-velocity idea for constant acceleration."],
+      ["Displacement using final velocity", "s = vt − 1/2 at²", "Derived by substituting u = v − at into s = ut + 1/2 at². Use signed quantities consistently."],
+      ["Displacement using average velocity", "s = 1/2 (u + v)t", "For constant acceleration, average velocity is (u + v)/2; multiplying by time gives displacement."]
     ],
     graphical: [
       ["v–t graph intercept", "initial velocity = u", "At t = 0, the graph starts at u."],
