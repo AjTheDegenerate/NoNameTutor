@@ -71,3 +71,16 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 .formula-row b{line-height:1.45}
 @media(max-width:900px){.formula-row{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:10px}.formula-row p{grid-column:1/-1}.formula-card{padding:18px}}
 @media(max-width:600px){.formula-row{grid-template-columns:minmax(0,1fr);gap:8px;padding:14px 0}.formula-row p{grid-column:auto}.formula-row .math-formula{font-size:1rem;padding:10px}.formula-card{padding:15px}.formula-heading h3{font-size:20px}.formula-condition{line-height:1.55}}
+
+
+/* Formula vault fit: keep equations fully visible without horizontal scrollbars. */
+.formula-row{grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:10px 16px;align-items:center}
+.formula-row p{grid-column:1/-1;padding:0 2px 2px}
+.formula-row .math-formula,
+.formula-row .math-formula mjx-container,
+.formula-row .math-formula mjx-container[display="true"]{overflow:visible!important;overflow-x:clip!important;max-width:100%;min-width:0}
+.formula-row .math-formula{font-size:clamp(.78rem,1.05vw,1rem);line-height:1.5;padding:9px 10px;white-space:normal;overflow-wrap:anywhere}
+.formula-row .math-formula mjx-container{font-size:100%!important}
+.formula-row .math-formula mjx-container svg{max-width:100%;height:auto}
+@media(max-width:900px){.formula-row{grid-template-columns:minmax(0,1fr);gap:7px}.formula-row p{grid-column:auto}.formula-row .math-formula{font-size:.95rem}}
+@media(max-width:600px){.formula-row .math-formula{font-size:.88rem;padding:8px}.formula-row{padding:13px 0}}
