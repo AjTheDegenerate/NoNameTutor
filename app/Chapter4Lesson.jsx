@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScientificText from "./ScientificText";
 
 function normaliseAnswer(value) {
@@ -34,14 +34,14 @@ function ChoiceQuestion({ question, selected, onSelect, passed }) {
         const className = isSelected ? (passed ? "correct" : "wrong") : "";
         return (
           <button key={option} className={className} disabled={passed} onClick={() => onSelect(i)}>
-            {String.fromCharCode(65 + i)}. {option}
+            {String.fromCharCode(65 + i)}. <ScientificText value={option} />
           </button>
         );
       })}
       {selected !== null && (
         <div className={passed ? "feedback good" : "feedback bad"}>
           {passed ? (
-            <>✓ Correct. {question.explain}</>
+            <>✓ Correct. <ScientificText value={question.explain} /></>
           ) : (
             <>Not quite — try another option.</>
           )}
@@ -75,7 +75,7 @@ function WrittenAnswer({ question, value, setValue, checked, setChecked }) {
         <div className={passed ? "feedback good" : "feedback bad"}>
           {passed ? (
             <>
-              <b>✓ Correct — {question.answer}</b>
+              <b>✓ Correct — <ScientificText value={question.answer} /></b>
               <br />
               {question.explain}
             </>
@@ -83,7 +83,7 @@ function WrittenAnswer({ question, value, setValue, checked, setChecked }) {
             <>
               <b>Not quite. Try once more.</b>
               <br />
-              {question.hint || "Check the relationship, signs, arithmetic, and unit, then try again."}
+              <ScientificText value={question.hint || "Check the relationship, signs, arithmetic, and unit, then try again."} />
             </>
           )}
         </div>
@@ -121,6 +121,13 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, onComp
     { label: "CHECKPOINT", title: checkpoint.prompt, body: "Use what you learned to answer one final question before completing the lesson." }
   ];
   const current = steps[step];
+
+  useEffect(() => {
+    const root = document.querySelector(".lesson-modal");
+    if (!root || !window.MathJax?.typesetPromise) return;
+    window.MathJax.typesetClear?.([root]);
+    window.MathJax.typesetPromise([root]).catch(() => {});
+  }, [step, selected, response, interactionChecked, checkpointSelected, checkpointResponse, checkpointChecked]);
 
   function next() {
     if (step === 4 && !interactionPassed) return;
