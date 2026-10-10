@@ -181,7 +181,7 @@ export default function Home(){
     const safe=text.replaceAll("—","-").replaceAll("–","-").replaceAll("•","-").replaceAll("×","x").replaceAll("²","^2").replaceAll("−","-").replaceAll("→","->").replaceAll("π","pi").replaceAll("Δ","Delta").replaceAll("“",'"').replaceAll("”",'"').replaceAll("‘","'").replaceAll("’","'").replaceAll("≤","<=").replaceAll("≥",">=").replaceAll("≈","about").replaceAll("≠","!=").replaceAll("⁻¹","^-1").replaceAll("⁻²","^-2").replace(/[^\x20-\x7E\n\r\t]/g,"?");
     const wrap=(line,max=92)=>{const out=[];let rest=line;while(rest.length>max){let cut=rest.lastIndexOf(" ",max);if(cut<1)cut=max;out.push(rest.slice(0,cut));rest=rest.slice(cut).trimStart();}out.push(rest);return out;};
     const lines=safe.split("\n").flatMap(line=>line?wrap(line):[""]);
-    const perPage=56;const pages=[];for(let i=0;i<lines.length;i+=perPage)pages.push(lines.slice(i,i+perPage));
+    const perPage=58;const pages=[];for(let i=0;i<lines.length;i+=perPage)pages.push(lines.slice(i,i+perPage));
     const esc=s=>s.replaceAll("\\","\\\\").replaceAll("(","\\(").replaceAll(")","\\)");
     const objects=["<< /Type /Catalog /Pages 2 0 R >>"];
     const pageRefs=pages.map((_,i)=>`${3+i*2} 0 R`).join(" ");
