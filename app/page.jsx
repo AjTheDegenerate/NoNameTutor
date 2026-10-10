@@ -80,6 +80,8 @@ function toMathMarkup(value) {
     .replace(/≠/g, "\\ne ")
     .replace(/≈/g, "\\approx ")
     .replace(/²/g, "^{2}")
+    .replace(/½/g, "\\frac{1}{2}")
+    .replace(/\b1\/2\b/g, "\\frac{1}{2}")
     .replace(/³/g, "^{3}")
     .replace(/⁻¹/g, "^{-1}")
     .replace(/⁻²/g, "^{-2}")
@@ -141,6 +143,9 @@ function GraphSketch({ type }) {
       <text x="56" y="18" fill="#a7b9af" fontSize="11">{axisLabel}</text>
       <text x="284" y="184" fill="#a7b9af" fontSize="11">time t (s)</text>
       <text x="38" y="176" fill="#a7b9af" fontSize="10">0</text>
+      {[1, 2, 3, 4].map((n, i) => <text key={"xv" + n} x={120 + i * 68} y="176" textAnchor="middle" fill="#8da197" fontSize="9">{n}</text>)}
+      {[1, 2, 3, 4].map((n, i) => <text key={"yv" + n} x="43" y={133 - i * 30} textAnchor="end" fill="#8da197" fontSize="9">{n}</text>)}
+      <text x="245" y="202" fill="#8da197" fontSize="9">schematic, not to scale</text>
       {areaGraph && <polygon points="52,160 52,130 326,48 326,160" fill="rgba(67,245,195,0.16)" />}
       {tangentGraph ? (
         <>
@@ -152,7 +157,7 @@ function GraphSketch({ type }) {
       ) : (
         <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
       )}
-      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">signed area = displacement</text>}
+      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">positive area shown; signed area = displacement</text>}
     </svg>
   );
 }
