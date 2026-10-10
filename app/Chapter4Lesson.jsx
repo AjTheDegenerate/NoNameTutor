@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScientificText from "./ScientificText";
 
 function normaliseAnswer(value) {
@@ -121,6 +121,13 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, onComp
     { label: "CHECKPOINT", title: checkpoint.prompt, body: "Use what you learned to answer one final question before completing the lesson." }
   ];
   const current = steps[step];
+
+  useEffect(() => {
+    const root = document.querySelector(".lesson-modal");
+    if (!root || !window.MathJax?.typesetPromise) return;
+    window.MathJax.typesetClear?.([root]);
+    window.MathJax.typesetPromise([root]).catch(() => {});
+  }, [step, selected, response, interactionChecked, checkpointSelected, checkpointResponse, checkpointChecked]);
 
   function next() {
     if (step === 4 && !interactionPassed) return;
