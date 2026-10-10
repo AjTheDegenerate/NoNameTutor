@@ -90,9 +90,9 @@ const chapter7Quiz = [
     "answer": "$-30\\text{ J}$"
   },
   {
-    "q": "What does the work–energy theorem state about the net work done on an object?",
+    "q": "According to the chapter’s statement of the work–energy theorem, what does work done on an object or system equal?",
     "options": [
-      "The change in its kinetic energy",
+      "The change in its energy",
       "The product of its mass and acceleration",
       "The rate of change of momentum over time",
       "Its instantaneous gravitational potential energy"
