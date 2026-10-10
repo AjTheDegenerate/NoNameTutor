@@ -25,7 +25,7 @@ function toMathMarkup(value) {
     .replace(/₃/g, "_{3}").replace(/₄/g, "_{4}").replace(/₅/g, "_{5}")
     .replace(/₆/g, "_{6}").replace(/₇/g, "_{7}").replace(/₈/g, "_{8}").replace(/₉/g, "_{9}")
     .replace(/([A-Za-z]+)_([A-Za-z0-9]+)/g, "$1_{$2}")
-    .replace(/([A-Za-z]+(?:_\{[A-Za-z0-9]+\})?)/g, (token) => {
+    .replace(/(?<!\\)([A-Za-z]+(?:_\{[A-Za-z0-9]+\})?)/g, (token) => {
       const plain = token.replace(/_\{([^}]+)\}/g, "_$1");
       if (plain === "MA") return "\\mathrm{MA}";
       if (variables.has(plain)) return token;
