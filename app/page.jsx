@@ -143,7 +143,7 @@ function GraphSketch({ type }) {
       ) : (
         <line x1="52" y1={areaGraph ? 130 : 142} x2="326" y2="48" stroke="#43f5c3" strokeWidth="3" strokeLinecap="round" />
       )}
-      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">signed area = displacement</text>}
+      {areaGraph && <text x="143" y="143" fill="#a7e8d4" fontSize="10">shaded positive area = displacement here</text>}
       <text x="188" y="210" textAnchor="middle" fill="#8da197" fontSize="9">Schematic — not to scale; tick spacing is illustrative</text>
     </svg>
   );
@@ -214,7 +214,21 @@ export default function Home(){
   }
 
   function makePaperPdf(text){
-    const safe=text.replaceAll("—","-").replaceAll("–","-").replaceAll("•","-").replaceAll("×","x").replaceAll("²","^2").replaceAll("−","-").replaceAll("→","->").replaceAll("π","pi").replaceAll("Δ","Delta").replaceAll("“",'"').replaceAll("”",'"').replaceAll("‘","'").replaceAll("’","'").replaceAll("≤","<=").replaceAll("≥",">=").replaceAll("≈","about").replaceAll("≠","!=").replaceAll("⁻¹","^-1").replaceAll("⁻²","^-2").replace(/[^\x20-\x7E\n\r\t]/g,"?");
+    const safe=text
+      .replace(/[₀-₉]/g, digit => "_" + "₀₁₂₃₄₅₆₇₈₉".indexOf(digit))
+      .replaceAll("½","1/2").replaceAll("¼","1/4").replaceAll("¾","3/4")
+      .replaceAll("²","^2").replaceAll("³","^3").replaceAll("¹","^1")
+      .replaceAll("⁻¹","^-1").replaceAll("⁻²","^-2").replaceAll("⁻³","^-3")
+      .replaceAll("—","-").replaceAll("–","-").replaceAll("−","-")
+      .replaceAll("•","-").replaceAll("×","*").replaceAll("·","*")
+      .replaceAll("√","sqrt").replaceAll("π","pi").replaceAll("Δ","Delta")
+      .replaceAll("α","alpha").replaceAll("β","beta").replaceAll("θ","theta")
+      .replaceAll("μ","mu").replaceAll("ρ","rho").replaceAll("λ","lambda")
+      .replaceAll("→","->").replaceAll("≤","<=").replaceAll("≥",">=")
+      .replaceAll("≈","~=").replaceAll("≠","!=").replaceAll("∝","proportional to")
+      .replaceAll("∞","infinity").replaceAll("°"," deg")
+      .replaceAll("“",'"').replaceAll("”",'"').replaceAll("‘","'").replaceAll("’","'")
+      .replace(/[^\x20-\x7E\n\r\t]/g,"?");
     const wrap=(line,max=92)=>{const out=[];let rest=line;while(rest.length>max){let cut=rest.lastIndexOf(" ",max);if(cut<1)cut=max;out.push(rest.slice(0,cut));rest=rest.slice(cut).trimStart();}out.push(rest);return out;};
     const lines=safe.split("\n").flatMap(line=>line?wrap(line):[""]);
     const perPage=58;const pages=[];for(let i=0;i<lines.length;i+=perPage)pages.push(lines.slice(i,i+perPage));
