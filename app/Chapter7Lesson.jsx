@@ -72,7 +72,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
       <div className="lesson-step">
         <span className="kicker">{current.label}</span>
         <h2>{current.title}</h2>
-        <p>{current.body}</p>
+        <p><ScientificText value={current.body} /></p>
         {current.source && <a className="source-link" href={lesson.externalReferences?.[0]?.url} target="_blank" rel="noreferrer">Source: {current.source} ↗</a>}
 
         {step === 4 && (
@@ -99,7 +99,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
         {step === 7 && (
           <div className="checkpoint-box">
             <button onClick={() => setCheckpointRevealed(true)}>{checkpointRevealed ? "Checkpoint revealed" : "Reveal checkpoint answer"}</button>
-            {checkpointRevealed && <div><span>ANSWER</span><p>{lesson.checkpoint.answer}</p></div>}
+            {checkpointRevealed && <div><span>ANSWER</span><p><ScientificText value={lesson.checkpoint.answer} /></p></div>}
           </div>
         )}
       </div>
