@@ -32,7 +32,7 @@ const chapter4Derivations = [
   {
     "title": "3. Third kinematic equation: v² = u² + 2as",
     "mode": "paper",
-    "setup": "Eliminate time t using the first two kinematic equations.",
+    "setup": "Eliminate time t using the first two kinematic equations. This algebraic route divides by a, so it is shown for a ≠ 0; the final relation also holds for a = 0 because then v = u.",
     "steps": [
       "From v = u + at, t = (v − u) / a.",
       "Start with s = ut + 1/2 at².",
@@ -73,7 +73,7 @@ const chapter4Derivations = [
       "Geometrically, this is the slope of the line joining the two points."
     ],
     "result": "a_avg = slope of the velocity–time line between the two points",
-    "graph": "Positive slope means velocity is increasing; negative slope means velocity is decreasing in the textbook's sign convention.",
+    "graph": "Positive slope means velocity increases algebraically; negative slope means velocity decreases algebraically. Speed may increase or decrease depending on the sign of velocity.",
     "graphType": "velocity-time-line"
   },
   {
