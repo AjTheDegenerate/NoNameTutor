@@ -25,7 +25,7 @@ Section A — Concepts
 Section B — Numericals
 6. [3] A cyclist travels 180 m in 30 s. Calculate average speed.
 7. [3] A car changes velocity from 8 m/s to 20 m/s in 4 s. Calculate average acceleration.
-8. [2] Convert 72 km/h into m/s.
+8. [1] Convert 72 km/h into m/s.
 9. [3] A runner goes 100 m east and then 40 m west. Find distance and displacement, taking east as positive.
 
 Section C — Graphs & Formula Skills
