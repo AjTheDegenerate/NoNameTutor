@@ -2,7 +2,7 @@ const chapter6Derivations = [
 {title:"1. Newton's second law: a = F/m → F = ma",mode:"paper",setup:"The chapter establishes acceleration proportional to net force and inversely proportional to mass.",
 steps:["Write the proportional relation a ∝ F for fixed mass.","Include the inverse mass dependence: a ∝ F/m.","Use the chapter's mathematical form a = F/m.","Multiply by m to obtain F = ma."],
 result:"F = ma",
-graph:"For fixed mass, a graph of acceleration against net force represents a direct relationship; increasing slope in a v-t graph also means increasing acceleration."},
+graph:"For fixed mass, acceleration is directly proportional to net force.",graphType:"acceleration-force-line"},
 {title:"2. The newton from F = ma",mode:"paper",setup:"Use the definitions of one kilogram and one metre per second squared.",
 steps:["Take m = 1 kg.","Take a = 1 m s⁻².","Substitute into F = ma.","F = (1 kg)(1 m s⁻²) = 1 kg m s⁻².","By definition this is 1 N."],
 result:"1 N = 1 kg m s⁻²",
@@ -14,15 +14,15 @@ graph:"The direction is downward toward Earth in the chapter's examples; g is tr
 {title:"4. Force from a velocity-time graph",mode:"graph",setup:"The sports-car example combines the graph slope with F = ma.",
 steps:["Read two velocity values v1 and v2 over times t1 and t2.","Compute acceleration from the slope: a = (v2 − v1)/(t2 − t1).","Use Newton's second law: F = ma.","Keep the sign to retain direction."],
 result:"F = m(Δv/Δt)",
-graph:"The v-t slope is the key graphical step. In Example 6.6, a positive slope gives eastward force and a negative slope gives westward force."},
+graph:"The v-t slope is the key graphical step. In Example 6.6, a positive slope gives eastward force and a negative slope gives westward force.",graphType:"velocity-time-line"},
 {title:"5. Acceleration of the two-box system",mode:"paper",setup:"Two masses m1 and m2 are connected on a frictionless horizontal surface and pulled by external force F.",
 steps:["Treat both boxes and string as one system.","Internal tension is omitted from the system's net-force calculation.","The external horizontal force is F.","Total mass is m1 + m2.","Apply F = ma to the system: F = (m1 + m2)a.","Rearrange."],
 result:"a = F/(m1 + m2)",
-graph:"A system diagram groups both masses under one common acceleration while internal tension remains inside the system boundary."},
+graph:"A system diagram groups both masses under one common acceleration while internal tension remains inside the system boundary.",graphType:"system-diagram"},
 {title:"6. Stopping a moving object: force route",mode:"graph",setup:"Use the velocity change and time interval, then Newton's second law.",
 steps:["Start with average acceleration a = (v − u)/t.","For a stopping object, v may be zero, so the acceleration is negative relative to the initial direction.","Use F = ma.","Therefore F = m(v − u)/t."],
 result:"F = m(v − u)/t",
-graph:"On a v-t graph, stopping is represented by a negative slope. A shorter stopping interval means a steeper negative slope and therefore a larger force magnitude for the same mass."},
+graph:"On a v-t graph, stopping is represented by a negative slope. A shorter stopping interval means a steeper negative slope and therefore a larger force magnitude for the same mass.",graphType:"velocity-time-line"},
 {title:"7. Equal forces, unequal accelerations",mode:"paper",setup:"Use Newton's third law plus F = ma for two interacting objects with different masses.",
 steps:["Newton's third law gives equal force magnitudes on the two interacting objects.","For object 1, a1 = F/m1.","For object 2, a2 = F/m2.","If m1 and m2 differ, the accelerations differ even though the force magnitudes are equal."],
 result:"a1/a2 = m2/m1 for equal force magnitude",
@@ -30,6 +30,6 @@ graph:"The force-pair arrows are equal and opposite on different objects; the ac
 {title:"8. No-net-force graph interpretation",mode:"graph",setup:"Translate Newton's first law into position-time and velocity-time graph behaviour.",
 steps:["Set net force to zero.","Newton's second law then gives a = 0.","Zero acceleration means velocity is constant.","If velocity is zero, position is constant.","If velocity is non-zero, position changes linearly with constant slope."],
 result:"F_net = 0 → a = 0 → constant velocity",
-graph:"Rest: horizontal x-t and v=0. Constant velocity: straight x-t line and horizontal v-t line."}
+graph:"Rest is a horizontal position-time line; constant velocity is a straight position-time line with constant slope.",graphType:"rest-constant-velocity"}
 ];
 export default chapter6Derivations;
