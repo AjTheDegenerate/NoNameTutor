@@ -41,11 +41,6 @@ function normalisePhysicsAnswer(value) {
     .trim()
     .toLowerCase()
     .replace(/[−–]/g, "-")
-    .replace(/\bv\s*=\s*u\s*\+\s*at\b/g, "v = u + a t")
-    .replace(/\bs\s*=\s*ut\b/g, "s = u t")
-    .replace(/\bs\s*=\s*vt\b/g, "s = v t")
-    .replace(/\bma\b/g, "m a")
-    .replace(/\bmgh\b/g, "m g h")
     .replace(/m\s*s[⁻−-]¹/g, "m/s")
     .replace(/m\s*s[⁻−-]²/g, "m/s^2")
     .replace(/m\/s[⁻−-]²/g, "m/s^2")
@@ -128,12 +123,12 @@ function GraphSketch({ type }) {
   const tangentGraph = type === "position-time-tangent";
   const axisLabel = positionGraph ? "position x (m)" : "velocity v (m/s)";
   const ariaLabel = areaGraph
-    ? "Velocity-time graph with positive area under an increasing velocity line shaded; axes show velocity in metres per second and time in seconds"
+    ? "Schematic velocity-time graph with positive area under an increasing velocity line shaded; axes show velocity in metres per second and time in seconds"
     : tangentGraph
-      ? "Position-time curve with a tangent touching the curve at the marked point; axes show position in metres and time in seconds"
+      ? "Schematic position-time curve with a tangent touching the curve at the marked point; axes show position in metres and time in seconds"
       : positionGraph
-        ? "Position-time graph with a straight rising line; axes show position in metres and time in seconds"
-        : "Velocity-time graph with a straight rising line; axes show velocity in metres per second and time in seconds";
+        ? "Schematic position-time graph with a straight rising line; axes show position in metres and time in seconds"
+        : "Schematic velocity-time graph with a straight rising line; axes show velocity in metres per second and time in seconds";
   return (
     <svg className="graph-sketch-svg" viewBox="0 0 360 210" role="img" aria-label={ariaLabel}>
       <line x1="52" y1="25" x2="52" y2="166" stroke="#71857b" strokeWidth="1.5" />
