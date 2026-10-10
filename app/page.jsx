@@ -82,7 +82,7 @@ function toMathMarkup(value) {
     .replace(/²/g, "^{2}").replace(/³/g, "^{3}")
     .replace(/⁻¹/g, "^{-1}").replace(/⁻²/g, "^{-2}")
     .replace(/½/g, "\\frac{1}{2}").replace(/\b1\/2\b/g, "\\frac{1}{2}")
-    .replace(/π/g, "{\\\\pi}").replace(/×/g, "\\\\times ").replace(/·/g, "\\\\cdot ")
+    .replace(/π/g, "{\\pi}").replace(/×/g, "\\times ").replace(/·/g, "\\cdot ")
     .replace(/[−–]/g, "-").replace(/Δ/g, "\\Delta ")
     .replace(/≤/g, "\\le ").replace(/≥/g, "\\ge ")
     .replace(/≠/g, "\\ne ").replace(/≈/g, "\\approx ")
