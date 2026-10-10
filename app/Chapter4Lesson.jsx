@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ScientificText from "./ScientificText";
 
 function normaliseAnswer(value) {
   return String(value ?? "")
@@ -143,10 +144,10 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, onComp
       <div className="lesson-progress"><i style={{ width: ((step + 1) / steps.length * 100) + "%" }} /></div>
       <article className={"teaching-card teaching-" + current.label.toLowerCase().replaceAll(" ", "-")}>
         <div className="teaching-label">{current.label}</div>
-        <h3>{current.title}</h3>
+        <h3><ScientificText value={current.title} /></h3>
         <div className="teaching-copy">
           {String(current.body || "").split(/\n\n+/).filter(Boolean).map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
+            <p key={i}><ScientificText value={paragraph} /></p>
           ))}
         </div>
         {current.source && <div className="source-ref">📖 {current.source}</div>}
