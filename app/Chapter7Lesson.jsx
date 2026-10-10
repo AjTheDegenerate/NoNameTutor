@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ScientificText from "./ScientificText";
 
 export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComplete }) {
@@ -27,6 +27,13 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
     { label:"CHECKPOINT", title:lesson.checkpoint.prompt, body:"Reveal the checkpoint answer, then finish the lesson." }
   ];
   const current = steps[step];
+
+  useEffect(() => {
+    const root = document.querySelector(".lesson-modal");
+    if (!root || !window.MathJax?.typesetPromise) return;
+    window.MathJax.typesetClear?.([root]);
+    window.MathJax.typesetPromise([root]).catch(() => {});
+  }, [step, selected, input, feedback, checkpointRevealed]);
 
   function checkInteraction() {
     if (interaction.type === "choice") {
@@ -71,7 +78,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
 
       <div className="lesson-step">
         <span className="kicker">{current.label}</span>
-        <h2>{current.title}</h2>
+        <h2><ScientificText value={current.title} /></h2>
         <p><ScientificText value={current.body} /></p>
         {current.source && <a className="source-link" href={lesson.externalReferences?.[0]?.url} target="_blank" rel="noreferrer">Source: {current.source} ↗</a>}
 
@@ -81,7 +88,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
               <div className="lesson-choices">
                 {interaction.options.map((option, index) => (
                   <button key={option} className={selected === index ? "choice-selected" : ""} onClick={() => { setSelected(index); setFeedback(null); }}>
-                    <span>{String.fromCharCode(65 + index)}</span>{option}
+                    <span>{String.fromCharCode(65 + index)}</span><ScientificText value={option} />
                   </button>
                 ))}
               </div>
