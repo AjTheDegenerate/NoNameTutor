@@ -5,7 +5,15 @@ import React from "react";
 const scientificPattern = /(?:\b[A-Za-zΔπ][A-Za-z0-9_₀-₉²³⁻¹⁻²]*\s*(?:=|∝|→|≤|≥|≠|≈)\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻².+\-−×*/()^]+(?:\s*[+−×/]\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻².+\-−×*/()^]+)*)|(?:\b\d+(?:\.\d+)?\s?(?:m\/s²|m\/s|m s⁻²|m s⁻¹|km\/h|kg|m|s|N|J|W|cm|mm|kW)\b)/g;
 
 function toMathMarkup(value) {
-  const source = String(value ?? "")
+  const known = new Set(["MA", "F_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
+  const expression = String(value ?? "")
+    .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
+      if (token === "MA") return "\\mathrm{MA}";
+      if (/^[A-Za-z][0-9]+$/.test(token)) return token[0] + "_{" + token.slice(1) + "}";
+      if (known.has(token)) return token.replace(/_([A-Za-z0-9]+)/g, "_{\\mathrm{$1}}");
+      if (token.length === 1) return token;
+      return "\\text{" + token + "}";
+    })
     .replace(/[₀-₉]/g, (digit) => "_{" + "₀₁₂₃₄₅₆₇₈₉".indexOf(digit) + "}")
     .replace(/²/g, "^{2}").replace(/³/g, "^{3}")
     .replace(/⁻¹/g, "^{-1}").replace(/⁻²/g, "^{-2}")
@@ -14,16 +22,7 @@ function toMathMarkup(value) {
     .replace(/[−–]/g, "-").replace(/Δ/g, "\\Delta ")
     .replace(/≤/g, "\\le ").replace(/≥/g, "\\ge ")
     .replace(/≠/g, "\\ne ").replace(/≈/g, "\\approx ")
-    .replace(/→/g, "\\to ");
-  const known = new Set(["MA", "F_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
-  const expression = source
-    .replace(/([A-Za-z]+(?:_[A-Za-z0-9]+)?)/g, (token) => {
-      if (token === "MA") return "\\mathrm{MA}";
-      if (/^[A-Za-z][0-9]+$/.test(token)) return token[0] + "_{" + token.slice(1) + "}";
-      if (known.has(token)) return token.replace(/_([A-Za-z0-9]+)/g, "_{\\mathrm{$1}}");
-      if (token.length === 1) return token;
-      return "\\text{" + token + "}";
-    })
+    .replace(/→/g, "\\to ")
     .replace(/ /g, "\\ ");
   return "\\(" + expression + "\\)";
 }
