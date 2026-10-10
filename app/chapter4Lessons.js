@@ -316,11 +316,11 @@ const chapter4Lessons = [
   },
   {
     "key": "scalars-vectors",
-    "title": "Scalars and vectors",
-    "section": "4.1.2 Distance travelled and displacement",
+    "title": "Scalars and vectors (optional preview)",
+    "section": "4.1.2 Distance travelled and displacement · Next Level Up",
     "pages": "50–51",
-    "hook": "Scalars have magnitude only; vectors include direction.",
-    "textbook": "Distance is scalar. Displacement and velocity are vector quantities in the chapter's treatment.",
+    "hook": "Optional next-level preview: scalars have magnitude only; vectors include direction.",
+    "textbook": "The current NCERT text introduces scalar and vector terminology in a “Next Level Up” note and says the formal treatment is for higher grades. Treat this lesson as an optional preview, not a core requirement for this chapter.",
     "teacher": "A scalar needs magnitude only; a vector needs magnitude and direction. “Speed is 5 m/s” tells how fast, while “velocity is 5 m/s east” also tells which way. Distance is scalar, but displacement is vector because the direction from start to finish matters.",
     "example": "Two students each walk 10 m, one east and one west. Their distances are equal, but their displacements point in opposite directions.",
     "interaction": {
