@@ -74,7 +74,7 @@ const chapter4Formulas = [
     topic: "Gravity / free fall",
     numeric: [
       ["Acceleration due to gravity", "g ≈ 9.8 m/s²", "The chapter uses 9.8 m/s² for free-fall examples."],
-      ["Free-fall substitution", "a = g", "For an object falling under gravity, use the acceleration due to gravity with the chosen sign convention."]
+      ["Free-fall substitution", "a = ±g", "Use +g when downward is positive and −g when upward is positive; keep the same sign convention throughout the calculation."]
     ],
     graphical: [
       ["Velocity–time under constant g", "straight line with slope ±g", "The sign depends on the chosen positive direction."]
