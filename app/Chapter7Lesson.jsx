@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import ScientificText from "./ScientificText";
 
 export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComplete }) {
   const [step, setStep] = useState(0);
@@ -70,8 +71,8 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
 
       <div className="lesson-step">
         <span className="kicker">{current.label}</span>
-        <h2>{current.title}</h2>
-        <p>{current.body}</p>
+        <h2><ScientificText value={current.title} /></h2>
+        <p><ScientificText value={current.body} /></p>
         {current.source && <a className="source-link" href={lesson.externalReferences?.[0]?.url} target="_blank" rel="noreferrer">Source: {current.source} ↗</a>}
 
         {step === 4 && (
@@ -80,7 +81,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
               <div className="lesson-choices">
                 {interaction.options.map((option, index) => (
                   <button key={option} className={selected === index ? "choice-selected" : ""} onClick={() => { setSelected(index); setFeedback(null); }}>
-                    <span>{String.fromCharCode(65 + index)}</span>{option}
+                    <span>{String.fromCharCode(65 + index)}</span><ScientificText value={option} />
                   </button>
                 ))}
               </div>
@@ -98,7 +99,7 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
         {step === 7 && (
           <div className="checkpoint-box">
             <button onClick={() => setCheckpointRevealed(true)}>{checkpointRevealed ? "Checkpoint revealed" : "Reveal checkpoint answer"}</button>
-            {checkpointRevealed && <div><span>ANSWER</span><p>{lesson.checkpoint.answer}</p></div>}
+            {checkpointRevealed && <div><span>ANSWER</span><p><ScientificText value={lesson.checkpoint.answer} /></p></div>}
           </div>
         )}
       </div>
