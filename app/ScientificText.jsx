@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const scientificPattern = /(?:\b[A-Za-zΔπ][A-Za-z0-9_₀-₉²³⁻¹⁻²]*\s*(?:=|∝|→|≤|≥|≠|≈)\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻².+\-−×*/()^]+(?:\s*[+−×/]\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻².+\-−×*/()^]+)*)|(?:\b\d+(?:\.\d+)?\s?(?:m\/s²|m\/s|m s⁻²|m s⁻¹|km\/h|kg|m|s|N|J|W|cm|mm|kW)\b)/g;
+const scientificPattern = /(?:\b[A-Za-zΔπ][A-Za-z0-9_₀-₉²³⁻¹⁻²]*\s*(?:=|∝|→|≤|≥|≠|≈)\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻²½√.+\-−×*/()^]+(?:\s*[+−×/]\s*[A-Za-z0-9Δπ₀-₉²³⁻¹⁻²½√.+\-−×*/()^]+)*)|(?:\b\d+(?:\.\d+)?(?:\s*[×*/+\-]\s*\d+(?:\.\d+)?)*\s*=\s*[\dA-Za-zΔπ₀-₉²³⁻¹⁻²½√.+\-−×*/()^ ]+)|(?:\b\d+(?:\.\d+)?\s?(?:m\/s²|m\/s|m s⁻²|m s⁻¹|km\/h|kg|m|s|N|J|W|cm|mm|kW)\b)/g;
 
 function toMathMarkup(value) {
   const known = new Set(["MA", "F_net", "m_system", "v_avg", "a_avg", "K1", "U1", "K2", "U2", "T1", "T2", "F1", "F2", "m1", "m2", "v1", "v2", "u1", "u2", "x1", "x2", "t1", "t2"]);
