@@ -1,90 +1,544 @@
 const chapter4QuestionBank = [
-  {type:"one-word", q:"What is the simplest kind of motion discussed in this chapter?", answer:"Linear motion", explanation:"Motion along a straight line is called linear motion."},
-  {type:"one-word", q:"What fixed point is chosen to describe an object's position?", answer:"Reference point", explanation:"Position is described using distance and direction from a fixed reference point."},
-  {type:"one-word", q:"What is the SI unit of displacement?", answer:"metre (m)", explanation:"Displacement is a length quantity, so its SI unit is metre."},
-  {type:"one-word", q:"What is the SI unit of velocity?", answer:"m s⁻¹", explanation:"Velocity is displacement divided by time."},
-  {type:"one-word", q:"What is the SI unit of acceleration?", answer:"m s⁻²", explanation:"Acceleration is change in velocity per unit time."},
-  {type:"one-word", q:"What does the slope of a position-time graph represent?", answer:"Velocity", explanation:"The slope gives change in position divided by time."},
-  {type:"one-word", q:"What does the slope of a velocity-time graph represent?", answer:"Acceleration", explanation:"Slope = change in velocity / change in time."},
-  {type:"one-word", q:"What does the area under a velocity-time graph represent?", answer:"Displacement", explanation:"Velocity × time gives displacement; for changing velocity, the area gives the same result."},
-
-  {type:"mcq", q:"A passenger stays in the same seat while a bus moves along the road. Which statement best describes the passenger's motion?", options:["At rest relative to the seat, moving relative to a roadside tree","Moving relative to the seat, at rest relative to the road","At rest relative to both seat and road","Moving relative to both seat and bus"], answer:"At rest relative to the seat, moving relative to a roadside tree", explanation:"Rest and motion are relative to a reference point. The passenger's position is fixed relative to the seat but changes relative to the tree."},
-  {type:"mcq", q:"A cyclist travels 60 m in 10 s and then 40 m in 10 s. How should average speed for the whole 20 s be found?", options:["Average the two distances","Divide the total distance by the total time","Divide total time by total distance","Use only the faster part of the trip"], answer:"Divide the total distance by the total time", explanation:"Average speed = (60 m + 40 m) / (10 s + 10 s) = 5 m/s."},
-  {type:"mcq", q:"A student starts at position +2 m and finishes at position −3 m on a straight line. What is the displacement?", options:["+5 m","−1 m","−5 m","+1 m"], answer:"−5 m", explanation:"Displacement = final position − initial position = −3 m − (+2 m) = −5 m."},
-  {type:"mcq", q:"On a horizontal position-time graph, what does the zero slope tell you?", options:["The object is at rest relative to the chosen reference point","The object is moving at a constant non-zero velocity","The object's position must be zero","The object has a non-zero constant acceleration"], answer:"The object is at rest relative to the chosen reference point", explanation:"The slope of a position-time graph is velocity. A horizontal line has zero slope, so its velocity is zero; the object's position can still be non-zero."},
-  {type:"mcq", q:"For straight-line motion with constant acceleration, which equation relates u, v, a, and s without using time t?", options:["v = u + at","s = ut + ½at²","v² = u² + 2as","a = (v − u)/t"], answer:"v² = u² + 2as", explanation:"This equation links initial velocity, final velocity, acceleration and displacement without requiring time."},
-  {type:"mcq", q:"A car travels around a circular track at a steady 8 m/s. Which statement is correct?", options:["Its velocity stays constant because its speed is constant","Its direction stays constant","Its speed is constant, but its velocity changes direction","Its acceleration must be zero"], answer:"Its speed is constant, but its velocity changes direction", explanation:"Velocity includes direction. Turning changes velocity even when speed remains the same."},
-  {type:"mcq", q:"Which statement best describes when an object's velocity changes?", options:["Only when its speed changes","Only when it changes direction","When speed changes, direction changes, or both change","Only when speed and direction change together"], answer:"When speed changes, direction changes, or both change", explanation:"Velocity depends on both magnitude (speed) and direction, so either kind of change changes velocity."},
-  {type:"mcq", q:"Which graph's signed area gives displacement, including direction when velocity is negative?", options:["Position-time graph","Acceleration-time graph","Velocity-time graph","Speed-time graph in every possible journey"], answer:"Velocity-time graph", explanation:"Signed velocity multiplied by time gives displacement. A speed-time graph uses non-negative speed and normally gives distance, not signed displacement."},
-
-  {type:"assertion-reasoning", q:"Assertion: An object can have constant speed and still be accelerating. Reason: In uniform circular motion, the direction of velocity changes continuously.", answer:"Both Assertion and Reason are true, and the Reason correctly explains the Assertion.", explanation:"Acceleration occurs whenever velocity changes. In circular motion, its direction changes even when speed is constant."},
-  {type:"assertion-reasoning", q:"Assertion: Distance can be non-zero while displacement is zero. Reason: An object can return to its starting position.", answer:"Both Assertion and Reason are true, and the Reason correctly explains the Assertion.", explanation:"A round trip has travelled distance but zero net change in position."},
-  {type:"assertion-reasoning", q:"Assertion: The slope of a velocity-time graph gives displacement. Reason: Displacement is represented by the area under a velocity-time graph.", answer:"Assertion is false, but Reason is true.", explanation:"Slope gives acceleration; area gives displacement."},
-  {type:"assertion-reasoning", q:"Assertion: Kinematic equations can be used for every kind of motion. Reason: The equations in this chapter are derived for straight-line motion with constant acceleration.", answer:"Assertion is false, but Reason is true.", explanation:"The chapter explicitly restricts these equations to straight-line motion with constant acceleration."},
-  {type:"assertion-reasoning", q:"Assertion: A curved position-time graph can indicate changing velocity. Reason: The slope of a position-time graph represents velocity.", answer:"Both Assertion and Reason are true, and the Reason correctly explains the Assertion.", explanation:"A changing slope means changing velocity."},
-
-  {type:"very-short", q:"Define position.", answer:"Position is described by the distance and direction of an object from a reference point at a given instant.", explanation:"Both distance and direction are needed to describe position."},
-  {type:"very-short", q:"What is displacement?", answer:"The net change in position between two given instants of time.", explanation:"It depends only on initial and final positions."},
-  {type:"very-short", q:"What is average speed?", answer:"Total distance travelled divided by the time interval.", explanation:"Average speed uses distance, not displacement."},
-  {type:"very-short", q:"What is average velocity?", answer:"Displacement divided by the time interval.", explanation:"Average velocity uses the change in position."},
-  {type:"very-short", q:"What is average acceleration?", answer:"Change in velocity divided by the time interval.", explanation:"a_avg = (v-u)/t."},
-  {type:"very-short", q:"What is uniform motion?", answer:"Motion in which equal distances are covered in equal intervals of time.", explanation:"The chapter contrasts this with non-uniform motion."},
-  {type:"very-short", q:"What is non-uniform motion?", answer:"Motion in which equal distances are not covered in equal intervals of time.", explanation:"The speed or velocity changes with time."},
-  {type:"very-short", q:"Why is a reference point necessary?", answer:"It provides the fixed point relative to which position and motion are described.", explanation:"Motion is defined by change in position relative to a reference point."},
-  {type:"very-short", q:"What is the meaning of g in the chapter?", answer:"Acceleration due to gravity; the chapter uses approximately 9.8 m s⁻².", explanation:"Near Earth's surface, the textbook uses g ≈ 9.8 m s⁻²."},
-  {type:"very-short", q:"What is a tangent to a circle?", answer:"A straight line that meets the circle at one and only one point.", explanation:"The chapter uses the tangent to describe the instantaneous direction of velocity in circular motion."},
-
-  {type:"short", q:"Differentiate between distance and displacement.", answer:"Distance is the total length of the path travelled. Displacement is the net change in position from initial to final position. Distance has no direction; displacement includes direction. Distance is always non-negative, while displacement can be positive, negative, or zero in a chosen one-dimensional sign convention.", explanation:"Use path length for distance and initial-to-final position change for displacement."},
-  {type:"short", q:"Differentiate between speed and velocity.", answer:"Speed tells how fast distance is covered and uses distance/time. Velocity tells how fast position changes and uses displacement/time. Speed has magnitude only; velocity has magnitude and direction.", explanation:"This distinction is essential for choosing the correct formula in numericals."},
-  {type:"short", q:"Explain why a vehicle moving around a circular track at constant speed can be accelerating.", answer:"Acceleration depends on change in velocity, not only change in speed. During circular motion, the direction of velocity changes continuously, so velocity changes and acceleration is non-zero even though speed remains constant.", explanation:"The chapter explicitly uses uniform circular motion as this example."},
-  {type:"short", q:"How do you read the axes of a graph before solving a numerical?", answer:"Identify the quantity on the horizontal axis, its unit and scale; then identify the quantity on the vertical axis, its unit and scale. Check the interval being asked about before reading values or calculating slope/area.", explanation:"Units and scale determine what every graph value actually means."},
-  {type:"short", q:"How is velocity found from a position-time graph?", answer:"Calculate the slope: change in position divided by change in time. For a straight line this gives constant velocity; for a changing slope, velocity changes with time.", explanation:"Slope is the key operation, not the height of the graph alone."},
-  {type:"short", q:"How is acceleration found from a velocity-time graph?", answer:"Calculate the slope: change in velocity divided by change in time.", explanation:"a = (v-u)/t for the relevant interval."},
-  {type:"short", q:"How is displacement found from a velocity-time graph?", answer:"Find the area between the velocity-time graph and the time axis over the required interval. For simple shapes, split the region into rectangles and triangles if necessary.", explanation:"The chapter demonstrates this method for constant and changing velocity."},
-  {type:"short", q:"Why must units be checked before substituting values into a formula?", answer:"A formula only gives a meaningful physical result when compatible units are used. Unit checking can reveal conversion errors and also confirms that the final quantity has the correct unit.", explanation:"For example, km/h must be converted to m/s when the calculation is being done in SI units."},
-  {type:"short", q:"What does 'rate of change' mean in motion?", answer:"It describes how quickly one physical quantity changes with another. Velocity is the rate of change of position with time, while acceleration is the rate of change of velocity with time.", explanation:"This is the conceptual bridge to the derivative idea introduced in the learning path."},
-
-  {type:"long", q:"Explain a reliable method for solving a motion numerical.", answer:"1. Write the given values with units. 2. Identify what is asked. 3. Choose a formula whose variables match the known and unknown quantities. 4. Convert units if necessary. 5. Substitute carefully with signs and units. 6. Calculate. 7. State the answer with its unit. 8. Check whether the magnitude and direction/sign are physically sensible.", explanation:"This workflow prevents formula-selection, unit, substitution and interpretation mistakes."},
-  {type:"long", q:"Explain the three kinematic equations and when they can be used.", answer:"For straight-line motion with constant acceleration: v = u + at; s = ut + ½at²; and v² = u² + 2as. The first connects velocity and time, the second connects displacement and time, and the third avoids time. They should not be applied blindly to motion whose acceleration is not constant.", explanation:"The chapter derives these equations specifically for constant acceleration."},
-  {type:"long", q:"Explain how graphs turn motion into measurable information.", answer:"A position-time graph shows how position changes with time; its slope gives velocity. A velocity-time graph shows how velocity changes with time; its slope gives acceleration and its area gives displacement. Therefore graphs allow motion to be interpreted using slope, area, axes, scale and units rather than words alone.", explanation:"The chapter deliberately presents graphs as another way to describe motion numerically."},
-  {type:"long", q:"Explain distance, displacement, speed, velocity and acceleration as a connected chain.", answer:"Distance measures path length. Displacement measures net change in position. Speed describes distance covered per unit time. Velocity describes displacement per unit time. Acceleration describes change in velocity per unit time. Each step adds information about how motion changes.", explanation:"Thinking in this chain helps choose the correct quantity and formula."},
-
-  {type:"numerical", q:"A car starts from rest and reaches 24 m s⁻¹ in 6 s. Find its average acceleration.", answer:"4 m s⁻²", explanation:"u = 0, v = 24 m s⁻¹, t = 6 s. a = (v-u)/t = 24/6 = 4 m s⁻²."},
-  {type:"numerical", q:"A runner covers 200 m in 25 s. Find the average speed.", answer:"8 m s⁻¹", explanation:"Average speed = distance/time = 200/25 = 8 m s⁻¹."},
-  {type:"numerical", q:"An object travels 30 m east and then 10 m west. Find distance and displacement.", answer:"Distance = 40 m; displacement = 20 m east.", explanation:"Distance adds the path: 30 + 10. Taking east as positive, displacement = 30 - 10 = 20 m east."},
-  {type:"numerical", q:"A car moving at 10 m s⁻¹ accelerates uniformly at 2 m s⁻² for 5 s. Find its final velocity.", answer:"20 m s⁻¹", explanation:"v = u + at = 10 + (2)(5) = 20 m s⁻¹."},
-  {type:"numerical", q:"An object starts from rest and accelerates at 2 m s⁻² for 5 s. Find its displacement.", answer:"25 m", explanation:"s = ut + ½at² = 0 + ½(2)(25) = 25 m."},
-  {type:"numerical", q:"A motorbike moving at 28 m s⁻¹ stops after travelling 98 m with constant acceleration. Find its acceleration.", answer:"−4 m s⁻²", explanation:"v² = u² + 2as. 0 = 28² + 2a(98), so a = −784/196 = −4 m s⁻²."},
-  {type:"numerical", q:"A car moves with constant velocity 20 m s⁻¹ for 6 s. Find its displacement.", answer:"120 m", explanation:"For constant velocity, displacement = vt = 20 × 6 = 120 m."},
-  {type:"numerical", q:"Convert 72 km h⁻¹ into m s⁻¹.", answer:"20 m s⁻¹", explanation:"Multiply by 5/18: 72 × 5/18 = 20 m s⁻¹."},
-  {type:"numerical", q:"An object has initial velocity 5 m s⁻¹ and final velocity 15 m s⁻¹ after 5 s. Find average acceleration.", answer:"2 m s⁻²", explanation:"a = (15-5)/5 = 2 m s⁻²."},
-  {type:"numerical", q:"A body completes one full revolution of a circle of radius R. State its distance and displacement.", answer:"Distance = 2πR; displacement = 0.", explanation:"The path length is the circumference, but initial and final positions coincide."},
-
-  {type:"graph", q:"A position-time graph is a straight line rising uniformly. What does it tell you?", answer:"The object has constant positive velocity.", explanation:"A constant positive slope means position increases at a constant rate."},
-  {type:"graph", q:"A position-time graph becomes steeper with time. What does that suggest?", answer:"The magnitude of velocity is increasing if the slope is increasing in the positive direction.", explanation:"Velocity is the slope, so a changing slope indicates changing velocity."},
-  {type:"graph", q:"A velocity-time graph is horizontal above the time axis. What does it mean?", answer:"Constant positive velocity and zero acceleration.", explanation:"Horizontal v-t graph means zero slope; the area still gives displacement."},
-  {type:"graph", q:"A velocity-time graph is a straight line with positive slope. What does it mean?", answer:"Constant positive acceleration.", explanation:"A straight line has constant slope, and v-t slope is acceleration."},
-  {type:"graph", q:"Why is the scale on a graph important in a numerical question?", answer:"Because the plotted position or velocity must be read using the correct numerical intervals and units.", explanation:"Misreading scale produces incorrect slope, area and values."},
-
-  {type:"derivative", q:"In simple language, what does a derivative represent in motion?", answer:"A rate of change.", explanation:"For motion, the derivative of position with respect to time corresponds to velocity, and the derivative of velocity with respect to time corresponds to acceleration."},
-  {type:"derivative", q:"If position changes by 20 m in 4 s at a constant rate, what is the corresponding velocity?", answer:"5 m s⁻¹", explanation:"Rate of change of position = 20/4 = 5 m s⁻¹."},
-  {type:"derivative", q:"What physical quantity is the rate of change of velocity with time?", answer:"Acceleration", explanation:"Acceleration measures how velocity changes with time."},
-
-  {type:"case", q:"CASE: A student walks 120 m east from the school gate in 60 s, then walks 40 m west in 20 s. Answer: (a) total distance, (b) displacement, (c) average speed, (d) average velocity.", answer:"(a) 160 m; (b) 80 m east; (c) 2 m s⁻¹; (d) 1 m s⁻¹ east.", explanation:"Distance = 120+40. Displacement = 120-40 = 80 m east. Total time = 80 s. Average speed = 160/80 = 2 m s⁻¹. Average velocity = 80/80 = 1 m s⁻¹ east."},
-  {type:"case", q:"CASE: A car starts from rest and accelerates uniformly at 3 m s⁻² for 4 s. Find (a) final velocity, (b) displacement, (c) the most suitable kinematic equations.", answer:"(a) 12 m s⁻¹; (b) 24 m; (c) v=u+at and s=ut+½at².", explanation:"With u=0, a=3 and t=4: v=12 m s⁻¹ and s=24 m. These equations directly use the known variables."},
-  {type:"case", q:"CASE: A cyclist moves around a circular track at constant speed. Answer: (a) Is speed constant? (b) Is velocity constant? (c) Is acceleration zero? (d) Why?", answer:"(a) Yes. (b) No. (c) No. (d) The direction of velocity changes continuously.", explanation:"Uniform circular motion has constant speed but changing velocity direction, so it is accelerated motion."},
-  {type:"case", q:"CASE: A velocity-time graph is a rectangle of height 10 m s⁻¹ from 0 to 8 s. Find (a) acceleration, (b) displacement.", answer:"(a) 0 m s⁻²; (b) 80 m.", explanation:"The horizontal graph has zero slope, so acceleration is zero. Rectangle area = 10 × 8 = 80 m."},
-
-  {type:"differentiate", q:"Differentiate: uniform motion and non-uniform motion.", answer:"Uniform: equal distances in equal time intervals. Non-uniform: unequal distances in equal time intervals, or changing rate of motion.", explanation:"The distinction is about how the distance covered changes with time."},
-  {type:"differentiate", q:"Differentiate: scalar and vector quantities using motion examples.", answer:"A scalar is described by magnitude only; a vector requires magnitude and direction. Distance and speed are scalar examples; displacement and velocity are vector examples.", explanation:"Direction is the key discriminator."},
-  {type:"differentiate", q:"Differentiate: position-time graph and velocity-time graph.", answer:"A position-time graph plots position against time; its slope gives velocity. A velocity-time graph plots velocity against time; its slope gives acceleration and its area gives displacement.", explanation:"Remember the quantity on the vertical axis before interpreting a graph."},
-
-  {type:"revision", q:"What is the safest order for a last-minute numerical revision?", answer:"Given → Required → Unit conversion → Formula → Substitute → Calculate → Unit → Sense-check.", explanation:"This creates a repeatable method and reduces avoidable mistakes."},
-  {type:"revision", q:"What should you write before substituting numbers into a formula?", answer:"The known quantities, their units, the unknown quantity, and the selected formula.", explanation:"Writing the structure first makes the calculation auditable."},
-  {type:"revision", q:"When should you use v² = u² + 2as?", answer:"When the motion has constant acceleration and time is not needed or is not given.", explanation:"It eliminates t from the calculation."},
-  {type:"revision", q:"What are the three graph facts to memorise for Chapter 4?", answer:"Position-time slope → velocity; velocity-time slope → acceleration; velocity-time area → displacement.", explanation:"These three relationships unlock most graph questions in the chapter."},
-  {type:"revision", q:"What is the biggest conceptual trap in uniform circular motion?", answer:"Confusing constant speed with constant velocity.", explanation:"Speed can remain constant while velocity changes because direction changes."},
-  {type:"revision", q:"What is the biggest conceptual trap in distance versus displacement?", answer:"Thinking displacement is the total path travelled.", explanation:"Displacement is only the net change from initial to final position."}
+  {
+    "type": "one-word",
+    "q": "What is the simplest kind of motion discussed in this chapter?",
+    "answer": "Linear motion",
+    "explanation": "Motion along a straight line is called linear motion."
+  },
+  {
+    "type": "one-word",
+    "q": "What fixed point is chosen to describe an object's position?",
+    "answer": "Reference point",
+    "explanation": "Position is described using distance and direction from a fixed reference point."
+  },
+  {
+    "type": "one-word",
+    "q": "What is the SI unit of displacement?",
+    "answer": "metre (m)",
+    "explanation": "Displacement is a length quantity, so its SI unit is metre."
+  },
+  {
+    "type": "one-word",
+    "q": "What is the SI unit of velocity?",
+    "answer": "m s⁻¹",
+    "explanation": "Velocity is displacement divided by time."
+  },
+  {
+    "type": "one-word",
+    "q": "What is the SI unit of acceleration?",
+    "answer": "m s⁻²",
+    "explanation": "Acceleration is change in velocity per unit time."
+  },
+  {
+    "type": "one-word",
+    "q": "What does the slope of a position-time graph represent?",
+    "answer": "Velocity",
+    "explanation": "The slope gives change in position divided by time."
+  },
+  {
+    "type": "one-word",
+    "q": "What does the slope of a velocity-time graph represent?",
+    "answer": "Acceleration",
+    "explanation": "Slope = change in velocity / change in time."
+  },
+  {
+    "type": "one-word",
+    "q": "What does the area under a velocity-time graph represent?",
+    "answer": "Displacement",
+    "explanation": "Velocity × time gives displacement; for changing velocity, the area gives the same result."
+  },
+  {
+    "type": "mcq",
+    "q": "A passenger stays in the same seat while a bus moves along the road. Which statement best describes the passenger's motion?",
+    "options": [
+      "At rest relative to the seat, moving relative to a roadside tree",
+      "Moving relative to the seat, at rest relative to the road",
+      "At rest relative to both seat and road",
+      "Moving relative to both seat and bus"
+    ],
+    "answer": "At rest relative to the seat, moving relative to a roadside tree",
+    "explanation": "Rest and motion are relative to a reference point. The passenger's position is fixed relative to the seat but changes relative to the tree."
+  },
+  {
+    "type": "mcq",
+    "q": "A cyclist travels 60 m in 10 s and then 40 m in 10 s. How should average speed for the whole 20 s be found?",
+    "options": [
+      "Average the two distances",
+      "Divide the total distance by the total time",
+      "Divide total time by total distance",
+      "Use only the faster part of the trip"
+    ],
+    "answer": "Divide the total distance by the total time",
+    "explanation": "Average speed = (60 m + 40 m) / (10 s + 10 s) = 5 m/s."
+  },
+  {
+    "type": "mcq",
+    "q": "A student starts at position +2 m and finishes at position −3 m on a straight line. What is the displacement?",
+    "options": [
+      "+5 m",
+      "−1 m",
+      "−5 m",
+      "+1 m"
+    ],
+    "answer": "−5 m",
+    "explanation": "Displacement = final position − initial position = −3 m − (+2 m) = −5 m."
+  },
+  {
+    "type": "mcq",
+    "q": "On a horizontal position-time graph, what does the zero slope tell you?",
+    "options": [
+      "The object is at rest relative to the chosen reference point",
+      "The object is moving at a constant non-zero velocity",
+      "The object's position must be zero",
+      "The object has a non-zero constant acceleration"
+    ],
+    "answer": "The object is at rest relative to the chosen reference point",
+    "explanation": "The slope of a position-time graph is velocity. A horizontal line has zero slope, so its velocity is zero; the object's position can still be non-zero."
+  },
+  {
+    "type": "mcq",
+    "q": "For straight-line motion with constant acceleration, which equation relates u, v, a, and s without using time t?",
+    "options": [
+      "v = u + at",
+      "s = ut + ½at²",
+      "v² = u² + 2as",
+      "a = (v − u)/t"
+    ],
+    "answer": "v² = u² + 2as",
+    "explanation": "This equation links initial velocity, final velocity, acceleration and displacement without requiring time."
+  },
+  {
+    "type": "mcq",
+    "q": "A car travels around a circular track at a steady 8 m/s. Which statement is correct?",
+    "options": [
+      "Its velocity stays constant because its speed is constant",
+      "Its direction stays constant",
+      "Its speed is constant, but its velocity changes direction",
+      "Its acceleration must be zero"
+    ],
+    "answer": "Its speed is constant, but its velocity changes direction",
+    "explanation": "Velocity includes direction. Turning changes velocity even when speed remains the same."
+  },
+  {
+    "type": "mcq",
+    "q": "Which statement best describes when an object's velocity changes?",
+    "options": [
+      "Only when its speed changes",
+      "Only when it changes direction",
+      "When speed changes, direction changes, or both change",
+      "Only when speed and direction change together"
+    ],
+    "answer": "When speed changes, direction changes, or both change",
+    "explanation": "Velocity depends on both magnitude (speed) and direction, so either kind of change changes velocity."
+  },
+  {
+    "type": "mcq",
+    "q": "Which graph's signed area gives displacement, including direction when velocity is negative?",
+    "options": [
+      "Position-time graph",
+      "Acceleration-time graph",
+      "Velocity-time graph",
+      "Speed-time graph in every possible journey"
+    ],
+    "answer": "Velocity-time graph",
+    "explanation": "Signed velocity multiplied by time gives displacement. A speed-time graph uses non-negative speed and normally gives distance, not signed displacement."
+  },
+  {
+    "type": "assertion-reasoning",
+    "q": "Assertion: An object can have constant speed and still be accelerating. Reason: In uniform circular motion, the direction of velocity changes continuously.",
+    "answer": "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+    "explanation": "Acceleration occurs whenever velocity changes. In circular motion, its direction changes even when speed is constant.",
+    "options": [
+      "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+      "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+      "Assertion is true, but Reason is false.",
+      "Assertion is false, but Reason is true."
+    ]
+  },
+  {
+    "type": "assertion-reasoning",
+    "q": "Assertion: Distance can be non-zero while displacement is zero. Reason: An object can return to its starting position.",
+    "answer": "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+    "explanation": "A round trip has travelled distance but zero net change in position.",
+    "options": [
+      "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+      "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+      "Assertion is true, but Reason is false.",
+      "Assertion is false, but Reason is true."
+    ]
+  },
+  {
+    "type": "assertion-reasoning",
+    "q": "Assertion: The slope of a velocity-time graph gives displacement. Reason: Displacement is represented by the area under a velocity-time graph.",
+    "answer": "Assertion is false, but Reason is true.",
+    "explanation": "Slope gives acceleration; area gives displacement.",
+    "options": [
+      "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+      "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+      "Assertion is true, but Reason is false.",
+      "Assertion is false, but Reason is true."
+    ]
+  },
+  {
+    "type": "assertion-reasoning",
+    "q": "Assertion: Kinematic equations can be used for every kind of motion. Reason: The equations in this chapter are derived for straight-line motion with constant acceleration.",
+    "answer": "Assertion is false, but Reason is true.",
+    "explanation": "The chapter explicitly restricts these equations to straight-line motion with constant acceleration.",
+    "options": [
+      "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+      "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+      "Assertion is true, but Reason is false.",
+      "Assertion is false, but Reason is true."
+    ]
+  },
+  {
+    "type": "assertion-reasoning",
+    "q": "Assertion: A curved position-time graph can indicate changing velocity. Reason: The slope of a position-time graph represents velocity.",
+    "answer": "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+    "explanation": "A changing slope means changing velocity.",
+    "options": [
+      "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+      "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+      "Assertion is true, but Reason is false.",
+      "Assertion is false, but Reason is true."
+    ]
+  },
+  {
+    "type": "very-short",
+    "q": "Define position.",
+    "answer": "Position is described by the distance and direction of an object from a reference point at a given instant.",
+    "explanation": "Both distance and direction are needed to describe position."
+  },
+  {
+    "type": "very-short",
+    "q": "What is displacement?",
+    "answer": "The net change in position between two given instants of time.",
+    "explanation": "It depends only on initial and final positions."
+  },
+  {
+    "type": "very-short",
+    "q": "What is average speed?",
+    "answer": "Total distance travelled divided by the time interval.",
+    "explanation": "Average speed uses distance, not displacement."
+  },
+  {
+    "type": "very-short",
+    "q": "What is average velocity?",
+    "answer": "Displacement divided by the time interval.",
+    "explanation": "Average velocity uses the change in position."
+  },
+  {
+    "type": "very-short",
+    "q": "What is average acceleration?",
+    "answer": "Change in velocity divided by the time interval.",
+    "explanation": "a_avg = (v-u)/t."
+  },
+  {
+    "type": "very-short",
+    "q": "What is uniform motion?",
+    "answer": "Motion in which equal distances are covered in equal intervals of time.",
+    "explanation": "The chapter contrasts this with non-uniform motion."
+  },
+  {
+    "type": "very-short",
+    "q": "What is non-uniform motion?",
+    "answer": "Motion in which equal distances are not covered in equal intervals of time.",
+    "explanation": "The speed or velocity changes with time."
+  },
+  {
+    "type": "very-short",
+    "q": "Why is a reference point necessary?",
+    "answer": "It provides the fixed point relative to which position and motion are described.",
+    "explanation": "Motion is defined by change in position relative to a reference point."
+  },
+  {
+    "type": "very-short",
+    "q": "What is the meaning of g in the chapter?",
+    "answer": "Acceleration due to gravity; the chapter uses approximately 9.8 m s⁻².",
+    "explanation": "Near Earth's surface, the textbook uses g ≈ 9.8 m s⁻²."
+  },
+  {
+    "type": "very-short",
+    "q": "What is a tangent to a circle?",
+    "answer": "A straight line that meets the circle at one and only one point.",
+    "explanation": "The chapter uses the tangent to describe the instantaneous direction of velocity in circular motion."
+  },
+  {
+    "type": "short",
+    "q": "Differentiate between distance and displacement.",
+    "answer": "Distance is the total length of the path travelled. Displacement is the net change in position from initial to final position. Distance has no direction; displacement includes direction. Distance is always non-negative, while displacement can be positive, negative, or zero in a chosen one-dimensional sign convention.",
+    "explanation": "Use path length for distance and initial-to-final position change for displacement."
+  },
+  {
+    "type": "short",
+    "q": "Differentiate between speed and velocity.",
+    "answer": "Speed tells how fast distance is covered and uses distance/time. Velocity tells how fast position changes and uses displacement/time. Speed has magnitude only; velocity has magnitude and direction.",
+    "explanation": "This distinction is essential for choosing the correct formula in numericals."
+  },
+  {
+    "type": "short",
+    "q": "Explain why a vehicle moving around a circular track at constant speed can be accelerating.",
+    "answer": "Acceleration depends on change in velocity, not only change in speed. During circular motion, the direction of velocity changes continuously, so velocity changes and acceleration is non-zero even though speed remains constant.",
+    "explanation": "The chapter explicitly uses uniform circular motion as this example."
+  },
+  {
+    "type": "short",
+    "q": "How do you read the axes of a graph before solving a numerical?",
+    "answer": "Identify the quantity on the horizontal axis, its unit and scale; then identify the quantity on the vertical axis, its unit and scale. Check the interval being asked about before reading values or calculating slope/area.",
+    "explanation": "Units and scale determine what every graph value actually means."
+  },
+  {
+    "type": "short",
+    "q": "How is velocity found from a position-time graph?",
+    "answer": "Calculate the slope: change in position divided by change in time. For a straight line this gives constant velocity; for a changing slope, velocity changes with time.",
+    "explanation": "Slope is the key operation, not the height of the graph alone."
+  },
+  {
+    "type": "short",
+    "q": "How is acceleration found from a velocity-time graph?",
+    "answer": "Calculate the slope: change in velocity divided by change in time.",
+    "explanation": "a = (v-u)/t for the relevant interval."
+  },
+  {
+    "type": "short",
+    "q": "How is displacement found from a velocity-time graph?",
+    "answer": "Find the area between the velocity-time graph and the time axis over the required interval. For simple shapes, split the region into rectangles and triangles if necessary.",
+    "explanation": "The chapter demonstrates this method for constant and changing velocity."
+  },
+  {
+    "type": "short",
+    "q": "Why must units be checked before substituting values into a formula?",
+    "answer": "A formula only gives a meaningful physical result when compatible units are used. Unit checking can reveal conversion errors and also confirms that the final quantity has the correct unit.",
+    "explanation": "For example, km/h must be converted to m/s when the calculation is being done in SI units."
+  },
+  {
+    "type": "short",
+    "q": "What does 'rate of change' mean in motion?",
+    "answer": "It describes how quickly one physical quantity changes with another. Velocity is the rate of change of position with time, while acceleration is the rate of change of velocity with time.",
+    "explanation": "This is the conceptual bridge to the derivative idea introduced in the learning path."
+  },
+  {
+    "type": "long",
+    "q": "Explain a reliable method for solving a motion numerical.",
+    "answer": "1. Write the given values with units. 2. Identify what is asked. 3. Choose a formula whose variables match the known and unknown quantities. 4. Convert units if necessary. 5. Substitute carefully with signs and units. 6. Calculate. 7. State the answer with its unit. 8. Check whether the magnitude and direction/sign are physically sensible.",
+    "explanation": "This workflow prevents formula-selection, unit, substitution and interpretation mistakes."
+  },
+  {
+    "type": "long",
+    "q": "Explain the three kinematic equations and when they can be used.",
+    "answer": "For straight-line motion with constant acceleration: v = u + at; s = ut + ½at²; and v² = u² + 2as. The first connects velocity and time, the second connects displacement and time, and the third avoids time. They should not be applied blindly to motion whose acceleration is not constant.",
+    "explanation": "The chapter derives these equations specifically for constant acceleration."
+  },
+  {
+    "type": "long",
+    "q": "Explain how graphs turn motion into measurable information.",
+    "answer": "A position-time graph shows how position changes with time; its slope gives velocity. A velocity-time graph shows how velocity changes with time; its slope gives acceleration and its area gives displacement. Therefore graphs allow motion to be interpreted using slope, area, axes, scale and units rather than words alone.",
+    "explanation": "The chapter deliberately presents graphs as another way to describe motion numerically."
+  },
+  {
+    "type": "long",
+    "q": "Explain distance, displacement, speed, velocity and acceleration as a connected chain.",
+    "answer": "Distance measures path length. Displacement measures net change in position. Speed describes distance covered per unit time. Velocity describes displacement per unit time. Acceleration describes change in velocity per unit time. Each step adds information about how motion changes.",
+    "explanation": "Thinking in this chain helps choose the correct quantity and formula."
+  },
+  {
+    "type": "numerical",
+    "q": "A car starts from rest and reaches 24 m s⁻¹ in 6 s. Find its average acceleration.",
+    "answer": "4 m s⁻²",
+    "explanation": "u = 0, v = 24 m s⁻¹, t = 6 s. a = (v-u)/t = 24/6 = 4 m s⁻²."
+  },
+  {
+    "type": "numerical",
+    "q": "A runner covers 200 m in 25 s. Find the average speed.",
+    "answer": "8 m s⁻¹",
+    "explanation": "Average speed = distance/time = 200/25 = 8 m s⁻¹."
+  },
+  {
+    "type": "numerical",
+    "q": "An object travels 30 m east and then 10 m west. Find distance and displacement.",
+    "answer": "Distance = 40 m; displacement = 20 m east.",
+    "explanation": "Distance adds the path: 30 + 10. Taking east as positive, displacement = 30 - 10 = 20 m east."
+  },
+  {
+    "type": "numerical",
+    "q": "A car moving at 10 m s⁻¹ accelerates uniformly at 2 m s⁻² for 5 s. Find its final velocity.",
+    "answer": "20 m s⁻¹",
+    "explanation": "v = u + at = 10 + (2)(5) = 20 m s⁻¹."
+  },
+  {
+    "type": "numerical",
+    "q": "An object starts from rest and accelerates at 2 m s⁻² for 5 s. Find its displacement.",
+    "answer": "25 m",
+    "explanation": "s = ut + ½at² = 0 + ½(2)(25) = 25 m."
+  },
+  {
+    "type": "numerical",
+    "q": "A motorbike moving at 28 m s⁻¹ stops after travelling 98 m with constant acceleration. Find its acceleration.",
+    "answer": "−4 m s⁻²",
+    "explanation": "v² = u² + 2as. 0 = 28² + 2a(98), so a = −784/196 = −4 m s⁻²."
+  },
+  {
+    "type": "numerical",
+    "q": "A car moves with constant velocity 20 m s⁻¹ for 6 s. Find its displacement.",
+    "answer": "120 m",
+    "explanation": "For constant velocity, displacement = vt = 20 × 6 = 120 m."
+  },
+  {
+    "type": "numerical",
+    "q": "Convert 72 km h⁻¹ into m s⁻¹.",
+    "answer": "20 m s⁻¹",
+    "explanation": "Multiply by 5/18: 72 × 5/18 = 20 m s⁻¹."
+  },
+  {
+    "type": "numerical",
+    "q": "An object has initial velocity 5 m s⁻¹ and final velocity 15 m s⁻¹ after 5 s. Find average acceleration.",
+    "answer": "2 m s⁻²",
+    "explanation": "a = (15-5)/5 = 2 m s⁻²."
+  },
+  {
+    "type": "numerical",
+    "q": "A body completes one full revolution of a circle of radius R. State its distance and displacement.",
+    "answer": "Distance = 2πR; displacement = 0.",
+    "explanation": "The path length is the circumference, but initial and final positions coincide."
+  },
+  {
+    "type": "graph",
+    "q": "A position-time graph is a straight line rising uniformly. What does it tell you?",
+    "answer": "The object has constant positive velocity.",
+    "explanation": "A constant positive slope means position increases at a constant rate."
+  },
+  {
+    "type": "graph",
+    "q": "A position-time graph becomes steeper with time. What does that suggest?",
+    "answer": "The magnitude of velocity is increasing if the magnitude of the graph's slope increases.",
+    "explanation": "Velocity is the slope of a position-time graph. A larger absolute slope means greater speed; keep the slope's sign to determine direction."
+  },
+  {
+    "type": "graph",
+    "q": "A velocity-time graph is horizontal above the time axis. What does it mean?",
+    "answer": "Constant positive velocity and zero acceleration.",
+    "explanation": "Horizontal v-t graph means zero slope; the area still gives displacement."
+  },
+  {
+    "type": "graph",
+    "q": "A velocity-time graph is a straight line with positive slope. What does it mean?",
+    "answer": "Constant positive acceleration.",
+    "explanation": "A straight line has constant slope, and v-t slope is acceleration."
+  },
+  {
+    "type": "graph",
+    "q": "Why is the scale on a graph important in a numerical question?",
+    "answer": "Because the plotted position or velocity must be read using the correct numerical intervals and units.",
+    "explanation": "Misreading scale produces incorrect slope, area and values."
+  },
+  {
+    "type": "derivative",
+    "q": "In simple language, what does a derivative represent in motion?",
+    "answer": "A rate of change.",
+    "explanation": "For motion, the derivative of position with respect to time corresponds to velocity, and the derivative of velocity with respect to time corresponds to acceleration."
+  },
+  {
+    "type": "derivative",
+    "q": "If position changes by 20 m in 4 s at a constant rate, what is the corresponding velocity?",
+    "answer": "5 m s⁻¹",
+    "explanation": "Rate of change of position = 20/4 = 5 m s⁻¹."
+  },
+  {
+    "type": "derivative",
+    "q": "What physical quantity is the rate of change of velocity with time?",
+    "answer": "Acceleration",
+    "explanation": "Acceleration measures how velocity changes with time."
+  },
+  {
+    "type": "case",
+    "q": "CASE: A student walks 120 m east from the school gate in 60 s, then walks 40 m west in 20 s. Answer: (a) total distance, (b) displacement, (c) average speed, (d) average velocity.",
+    "answer": "(a) 160 m; (b) 80 m east; (c) 2 m s⁻¹; (d) 1 m s⁻¹ east.",
+    "explanation": "Distance = 120+40. Displacement = 120-40 = 80 m east. Total time = 80 s. Average speed = 160/80 = 2 m s⁻¹. Average velocity = 80/80 = 1 m s⁻¹ east."
+  },
+  {
+    "type": "case",
+    "q": "CASE: A car starts from rest and accelerates uniformly at 3 m s⁻² for 4 s. Find (a) final velocity, (b) displacement, (c) the most suitable kinematic equations.",
+    "answer": "(a) 12 m s⁻¹; (b) 24 m; (c) v=u+at and s=ut+½at².",
+    "explanation": "With u=0, a=3 and t=4: v=12 m s⁻¹ and s=24 m. These equations directly use the known variables."
+  },
+  {
+    "type": "case",
+    "q": "CASE: A cyclist moves around a circular track at constant speed. Answer: (a) Is speed constant? (b) Is velocity constant? (c) Is acceleration zero? (d) Why?",
+    "answer": "(a) Yes. (b) No. (c) No. (d) The direction of velocity changes continuously.",
+    "explanation": "Uniform circular motion has constant speed but changing velocity direction, so it is accelerated motion."
+  },
+  {
+    "type": "case",
+    "q": "CASE: A velocity-time graph is a rectangle of height 10 m s⁻¹ from 0 to 8 s. Find (a) acceleration, (b) displacement.",
+    "answer": "(a) 0 m s⁻²; (b) 80 m.",
+    "explanation": "The horizontal graph has zero slope, so acceleration is zero. Rectangle area = 10 × 8 = 80 m."
+  },
+  {
+    "type": "differentiate",
+    "q": "Differentiate: uniform motion and non-uniform motion.",
+    "answer": "Uniform: equal distances in equal time intervals. Non-uniform: unequal distances in equal time intervals, or changing rate of motion.",
+    "explanation": "The distinction is about how the distance covered changes with time."
+  },
+  {
+    "type": "differentiate",
+    "q": "Differentiate: scalar and vector quantities using motion examples.",
+    "answer": "A scalar is described by magnitude only; a vector requires magnitude and direction. Distance and speed are scalar examples; displacement and velocity are vector examples.",
+    "explanation": "Direction is the key discriminator."
+  },
+  {
+    "type": "differentiate",
+    "q": "Differentiate: position-time graph and velocity-time graph.",
+    "answer": "A position-time graph plots position against time; its slope gives velocity. A velocity-time graph plots velocity against time; its slope gives acceleration and its area gives displacement.",
+    "explanation": "Remember the quantity on the vertical axis before interpreting a graph."
+  },
+  {
+    "type": "revision",
+    "q": "What is the safest order for a last-minute numerical revision?",
+    "answer": "Given → Required → Unit conversion → Formula → Substitute → Calculate → Unit → Sense-check.",
+    "explanation": "This creates a repeatable method and reduces avoidable mistakes."
+  },
+  {
+    "type": "revision",
+    "q": "What should you write before substituting numbers into a formula?",
+    "answer": "The known quantities, their units, the unknown quantity, and the selected formula.",
+    "explanation": "Writing the structure first makes the calculation auditable."
+  },
+  {
+    "type": "revision",
+    "q": "When should you use v² = u² + 2as?",
+    "answer": "When the motion has constant acceleration and time is not needed or is not given.",
+    "explanation": "It eliminates t from the calculation."
+  },
+  {
+    "type": "revision",
+    "q": "What are the three graph facts to memorise for Chapter 4?",
+    "answer": "Position-time slope → velocity; velocity-time slope → acceleration; velocity-time area → displacement.",
+    "explanation": "These three relationships unlock most graph questions in the chapter."
+  },
+  {
+    "type": "revision",
+    "q": "What is the biggest conceptual trap in uniform circular motion?",
+    "answer": "Confusing constant speed with constant velocity.",
+    "explanation": "Speed can remain constant while velocity changes because direction changes."
+  },
+  {
+    "type": "revision",
+    "q": "What is the biggest conceptual trap in distance versus displacement?",
+    "answer": "Thinking displacement is the total path travelled.",
+    "explanation": "Displacement is only the net change from initial to final position."
+  },
+  {
+    "type": "long",
+    "q": "Derive s = vt − ½at² for straight-line motion with constant acceleration.",
+    "answer": "From v = u + at, rearrange to u = v − at. Substitute into s = ut + ½at²: s = (v − at)t + ½at² = vt − at² + ½at² = vt − ½at².",
+    "explanation": "This is one of the additional equations suggested in the chapter's end-of-chapter derivation exercise. It assumes constant acceleration."
+  },
+  {
+    "type": "long",
+    "q": "Derive s = ½(u + v)t using a velocity-time graph for constant acceleration.",
+    "answer": "Displacement is the area under the velocity-time graph. With a straight line from u to v over time t, the area is a trapezium: s = ½(u + v)t.",
+    "explanation": "The trapezium's parallel sides are u and v, and its height is t. This form applies to straight-line motion with constant acceleration."
+  }
 ];
 
 export default chapter4QuestionBank;

@@ -193,8 +193,8 @@ const chapter4Lessons = [
       "prompt": "A student walks 24 m forward and then 9 m back. What total distance has the student walked?",
       "answer": "33 m",
       "acceptedAnswers": [
-        "33",
-        "33m"
+        "33m",
+        "33 m"
       ],
       "hint": "Add both lengths. The turn does not remove distance already travelled.",
       "explain": "Distance = 24 m + 9 m = 33 m."
@@ -238,9 +238,9 @@ const chapter4Lessons = [
       "answer": "+18 m",
       "acceptedAnswers": [
         "18m",
-        "+18",
         "+18m",
-        "18"
+        "18 m",
+        "+18 m"
       ],
       "hint": "Use +25 m for east and −7 m for west, then add the signed changes.",
       "explain": "Displacement = +25 − 7 = +18 m, or 18 m east."
@@ -316,11 +316,11 @@ const chapter4Lessons = [
   },
   {
     "key": "scalars-vectors",
-    "title": "Scalars and vectors",
-    "section": "4.1.2 Distance travelled and displacement",
+    "title": "Scalars and vectors (optional preview)",
+    "section": "4.1.2 Distance travelled and displacement · Next Level Up",
     "pages": "50–51",
-    "hook": "Scalars have magnitude only; vectors include direction.",
-    "textbook": "Distance is scalar. Displacement and velocity are vector quantities in the chapter's treatment.",
+    "hook": "Optional next-level preview: scalars have magnitude only; vectors include direction.",
+    "textbook": "The current NCERT text introduces scalar and vector terminology in a “Next Level Up” note and says the formal treatment is for higher grades. Treat this lesson as an optional preview, not a core requirement for this chapter.",
     "teacher": "A scalar needs magnitude only; a vector needs magnitude and direction. “Speed is 5 m/s” tells how fast, while “velocity is 5 m/s east” also tells which way. Distance is scalar, but displacement is vector because the direction from start to finish matters.",
     "example": "Two students each walk 10 m, one east and one west. Their distances are equal, but their displacements point in opposite directions.",
     "interaction": {
@@ -373,8 +373,8 @@ const chapter4Lessons = [
       "prompt": "A runner covers 150 m in 25 s. Calculate the average speed.",
       "answer": "6 m/s",
       "acceptedAnswers": [
-        "6",
-        "6m/s"
+        "6m/s",
+        "6 m/s"
       ],
       "hint": "Use average speed = total distance ÷ total time.",
       "explain": "150 m ÷ 25 s = 6 m/s."
@@ -508,7 +508,6 @@ const chapter4Lessons = [
       "answer": "−5 m/s",
       "acceptedAnswers": [
         "-5 m/s",
-        "-5",
         "−5m/s",
         "-5m/s"
       ],
@@ -598,7 +597,6 @@ const chapter4Lessons = [
       "prompt": "A scooter's velocity increases from 4 m/s to 16 m/s in 6 s. Calculate average acceleration.",
       "answer": "2 m/s²",
       "acceptedAnswers": [
-        "2",
         "2m/s^2",
         "2m/s²",
         "2 m/s²"
@@ -779,8 +777,8 @@ const chapter4Lessons = [
       "prompt": "Convert 90 km/h into m/s.",
       "answer": "25 m/s",
       "acceptedAnswers": [
-        "25",
-        "25m/s"
+        "25m/s",
+        "25 m/s"
       ],
       "hint": "Multiply 90 by 5/18.",
       "explain": "90 × 5/18 = 25 m/s. Keep the unit conversion with the calculation so the answer is not just a number."
@@ -958,8 +956,8 @@ const chapter4Lessons = [
       "prompt": "Position changes from 10 m to 34 m between 2 s and 6 s. Find the graph's slope.",
       "answer": "6 m/s",
       "acceptedAnswers": [
-        "6",
-        "6m/s"
+        "6m/s",
+        "6 m/s"
       ],
       "hint": "Divide the position change (34 − 10) by the time change (6 − 2).",
       "explain": "24 m ÷ 4 s = 6 m/s."
@@ -1092,7 +1090,6 @@ const chapter4Lessons = [
       "prompt": "Velocity rises from 3 m/s to 15 m/s in 4 s. Find average acceleration.",
       "answer": "3 m/s²",
       "acceptedAnswers": [
-        "3",
         "3m/s^2",
         "3m/s²",
         "3 m/s²"
@@ -1138,8 +1135,8 @@ const chapter4Lessons = [
       "prompt": "A cart travels at constant +7 m/s for 6 s. Find displacement using the velocity-time graph.",
       "answer": "42 m",
       "acceptedAnswers": [
-        "42",
-        "42m"
+        "42m",
+        "42 m"
       ],
       "hint": "Find the rectangle area: velocity × time.",
       "explain": "7 m/s × 6 s = +42 m."

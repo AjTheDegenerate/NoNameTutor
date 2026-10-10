@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import ScientificText from "./ScientificText";
 
 function normaliseAnswer(value) {
   return String(value ?? "")
     .trim()
     .toLowerCase()
     .replace(/[−–]/g, "-")
+    .replace(/m\s*s[⁻−-]¹/g, "m/s")
+    .replace(/m\s*s[⁻−-]²/g, "m/s^2")
+    .replace(/m\/s[⁻−-]²/g, "m/s^2")
+    .replace(/m\/s²/g, "m/s^2")
+    .replace(/m\s*s\^-1/g, "m/s")
+    .replace(/m\s*s\^-2/g, "m/s^2")
     .replace(/²/g, "^2")
     .replace(/³/g, "^3")
     .replace(/[×·]/g, "*")
@@ -24,22 +31,20 @@ function ChoiceQuestion({ question, selected, onSelect, passed }) {
     <div className="interaction-options">
       {question.options.map((option, i) => {
         const isSelected = selected === i;
-        const showCorrect = selected !== null && i === question.answer;
-        const className = isSelected
-          ? (passed ? "correct" : "wrong")
-          : (showCorrect ? "correct" : "");
+        const className = isSelected ? (passed ? "correct" : "wrong") : "";
         return (
-          <button key={option} className={className} onClick={() => onSelect(i)}>
+          <button key={option} className={className} disabled={passed} onClick={() => onSelect(i)}>
             {String.fromCharCode(65 + i)}. {option}
           </button>
         );
       })}
       {selected !== null && (
         <div className={passed ? "feedback good" : "feedback bad"}>
-          {passed
-            ? "✓ Correct. "
-            : `Not quite. Correct answer: ${question.options[question.answer]}. `}
-          {question.explain}
+          {passed ? (
+            <>✓ Correct. {question.explain}</>
+          ) : (
+            <>Not quite — try another option.</>
+          )}
         </div>
       )}
     </div>
@@ -139,10 +144,10 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, onComp
       <div className="lesson-progress"><i style={{ width: ((step + 1) / steps.length * 100) + "%" }} /></div>
       <article className={"teaching-card teaching-" + current.label.toLowerCase().replaceAll(" ", "-")}>
         <div className="teaching-label">{current.label}</div>
-        <h3>{current.title}</h3>
+        <h3><ScientificText value={current.title} /></h3>
         <div className="teaching-copy">
           {String(current.body || "").split(/\n\n+/).filter(Boolean).map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
+            <p key={i}><ScientificText value={paragraph} /></p>
           ))}
         </div>
         {current.source && <div className="source-ref">📖 {current.source}</div>}
