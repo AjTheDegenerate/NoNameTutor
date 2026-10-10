@@ -42,3 +42,7 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 
 /* Chapter 4 assessment progress */
 .quiz-score{display:flex;align-items:baseline;gap:7px;margin:14px 0 22px;padding:13px 16px;background:#0b211b;border:1px solid #285447;border-radius:12px;color:#9fc7b8}.quiz-score b{font-size:24px;color:var(--cyan)}.quiz-score span{font-size:12px;font-weight:800}
+
+
+/* Chapter 4 derivation graphs use graph-specific SVGs instead of generic placeholder lines. */
+.graph-sketch.graph-sketch-accurate:before,.graph-sketch.graph-sketch-accurate:after{display:none}.graph-sketch-svg{display:block;width:100%;height:100%}
