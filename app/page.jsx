@@ -113,8 +113,8 @@ function GraphSketch({ type }) {
       <path d="M52 166 L316 166 L316 58 Z" fill="rgba(67,245,195,0.08)" stroke="#71857b" strokeWidth="1.5" />
       <path d="M52 166 L316 58" stroke="#43f5c3" strokeWidth="4" strokeLinecap="round" />
       <rect x="250" y="70" width="26" height="22" rx="2" transform="rotate(-22.3 263 81)" fill="#f0c674" stroke="#070b0a" strokeWidth="1.5" />
-      <line x1="290" y1="83" x2="252" y2="99" stroke="#f0c674" strokeWidth="2" />
-      <path d="M260 96 L252 99 L257 91" fill="none" stroke="#f0c674" strokeWidth="2" />
+      <line x1="252" y1="99" x2="290" y2="83" stroke="#f0c674" strokeWidth="2" />
+      <path d="M281 82 L291 83 L286 92" fill="none" stroke="#f0c674" strokeWidth="2" />
       <line x1="328" y1="166" x2="328" y2="58" stroke="#a7b9af" strokeDasharray="4 4" />
       <text x="337" y="116" fill="#a7b9af" fontSize="12">h</text>
       <text x="170" y="128" fill="#43f5c3" fontSize="12">L</text>
@@ -128,10 +128,10 @@ function GraphSketch({ type }) {
       <path d="M48 111 L316 111" stroke="#43f5c3" strokeWidth="5" strokeLinecap="round" />
       <path d="M164 145 L188 111 L212 145 Z" fill="#71857b" stroke="#a7b9af" strokeWidth="1.5" />
       <circle cx="188" cy="111" r="4" fill="#f0c674" />
-      <line x1="83" y1="110" x2="83" y2="56" stroke="#f0c674" strokeWidth="2.5" />
-      <path d="M77 64 L83 54 L89 64" fill="none" stroke="#f0c674" strokeWidth="2.5" />
-      <line x1="288" y1="110" x2="288" y2="56" stroke="#f0c674" strokeWidth="2.5" />
-      <path d="M282 64 L288 54 L294 64" fill="none" stroke="#f0c674" strokeWidth="2.5" />
+      <line x1="83" y1="56" x2="83" y2="110" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M77 100 L83 110 L89 100" fill="none" stroke="#f0c674" strokeWidth="2.5" />
+      <line x1="288" y1="56" x2="288" y2="110" stroke="#f0c674" strokeWidth="2.5" />
+      <path d="M282 100 L288 110 L294 100" fill="none" stroke="#f0c674" strokeWidth="2.5" />
       <text x="65" y="43" fill="#f0c674" fontSize="11">Effort</text>
       <text x="270" y="43" fill="#f0c674" fontSize="11">Load</text>
       <text x="175" y="164" fill="#a7b9af" fontSize="10">fulcrum</text>
