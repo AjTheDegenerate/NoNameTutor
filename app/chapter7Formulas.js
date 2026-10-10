@@ -17,7 +17,8 @@ const chapter7Formulas = [
 ["Sign of work","same direction: +; opposite: −","Use labelled force and displacement arrows to determine sign."]
 ],use:"Name the force and object first; then compare the force direction with the displacement."},
 {topic:"Work–energy theorem",numeric:[
-["Work–energy theorem","W = change in energy","The chapter states work done on an object equals the change in its energy."],
+["NCERT chapter wording","W = change in energy","This is the supplied chapter’s wording for its energy-transfer discussion. In standard mechanics, the net-work theorem is W_net = ΔK (change in kinetic energy)."],
+["Standard work–energy theorem","W_net = ΔK","Net work done on an object equals its change in kinetic energy. Keep this distinct from the chapter’s broader energy-transfer wording."],
 ["Kinetic-energy change","ΔK = ½m(v² − u²)","From the chapter's constant-force derivation, where u and v are initial/final speeds along the modelled motion."]
 ],graphical:[
 ["Energy state comparison","work input → energy change","Compare initial and final energy rather than analysing every point in between."]
