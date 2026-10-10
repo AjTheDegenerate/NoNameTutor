@@ -8,7 +8,7 @@ const chapter4Papers = [
     year: "Generated",
     status: "Generated · source-linked",
     modes: ["solved"],
-    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "CBSE Class 9 Science — Competency-Based Test Items", url: "https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf" }],
+    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "Official NCERT Exemplar — Motion (legacy Class IX unit)", url: "https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep108.pdf" }],
 
     description: "Solved Chapter 4 paper generated from the supplied NCERT chapter. Includes worked solutions for concepts, numericals, graphs, formula skills and application.",
     pages: 1,
@@ -66,7 +66,7 @@ Worked Solutions
     year: "Generated",
     status: "Generated · source-linked",
     modes: ["unsolved"],
-    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "CBSE Class 9 Science — Competency-Based Test Items", url: "https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf" }],
+    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "Official NCERT Exemplar — Motion (legacy Class IX unit)", url: "https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep108.pdf" }],
 
     description: "Unsolved Chapter 4 paper generated from the supplied NCERT chapter, covering core understanding, numericals, graphs, kinematics and challenge questions.",
     pages: 1,
@@ -114,7 +114,7 @@ Section E — Challenge
     year: "Generated",
     status: "Generated · source-linked",
     modes: ["practice"],
-    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "CBSE Class 9 Science — Competency-Based Test Items", url: "https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf" }],
+    sources: [{ label: "Official NCERT Class 9 Science — Chapter 4", url: "https://ncert.nic.in/textbook/pdf/iesc104.pdf" }, { label: "Official NCERT Exemplar — Motion (legacy Class IX unit)", url: "https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/science/ieep108.pdf" }],
 
     description: "Practice Chapter 4 paper generated from the supplied NCERT chapter, with quick checks, calculations, graph thinking, formula selection and higher-order practice.",
     pages: 1,
