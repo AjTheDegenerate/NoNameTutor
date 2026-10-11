@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "NoNameTutor — Class 9 Physics",
-  description: "A focused study workspace for Class 9 Physics.",
+  title: "NoNameTutor — Your NCERT Study Space",
+  description: "Choose your class and subject to learn, practise and revise with NoNameTutor.",
 };
 
 export default function RootLayout({ children }) {
