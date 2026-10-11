@@ -252,6 +252,9 @@ export default function Home(){
   const [questionMode,setQuestionMode]=useState("all");
   const [questionAnswers,setQuestionAnswers]=useState({});
   const [formulaTopic,setFormulaTopic]=useState("all");
+  const [hubStage,setHubStage]=useState("classes");
+  const [selectedClass,setSelectedClass]=useState("9");
+  const [selectedSubject,setSelectedSubject]=useState(null);
 
   useEffect(() => {
     const root = appRoot.current;
@@ -339,9 +342,64 @@ export default function Home(){
   }
 
   const chapterData=featureData;
+  const classOptions=[
+    {id:"9",label:"Class 9",detail:"Build strong foundations",status:"available"},
+    {id:"10",label:"Class 10",detail:"Board exam preparation",status:"planned"},
+    {id:"11",label:"Class 11",detail:"Explore deeper concepts",status:"planned"},
+    {id:"12",label:"Class 12",detail:"Master your final-year syllabus",status:"planned"}
+  ];
+  const subjectOptions=[
+    {id:"physics",label:"Physics",detail:"Motion, forces, energy and more",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
+    {id:"biology",label:"Biology",detail:"Life, living systems and the natural world",icon:"✳",available:false,tag:"COMING SOON"},
+    {id:"chemistry",label:"Chemistry",detail:"Matter, reactions and the world around us",icon:"⚗",available:false,tag:"PLANNED"},
+    {id:"mathematics",label:"Mathematics",detail:"Patterns, problem-solving and proof",icon:"∑",available:false,tag:"PLANNED"}
+  ];
+  function chooseSubject(subject){
+    setSelectedSubject(subject);
+    if(subject.id==="physics"&&selectedClass==="9"){setHubStage("workspace");selectChapter(chapters[0]);setTab("learn");}
+    else setHubStage("subject-preview");
+  }
+  if(hubStage!=="workspace") return <main className="app-shell hub-shell">
+    <header className="hub-topbar">
+      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Study smarter. One concept at a time.</small></span></button>
+      <span className="hub-top-note"><span className="status-dot" /> NCERT-ALIGNED LEARNING</span>
+    </header>
+    {hubStage==="classes"&&<section className="hub-hero">
+      <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> YOUR STUDY SPACE</div>
+      <h1>Big goals.<br/><em>One chapter at a time.</em></h1>
+      <p className="hub-intro">Pick your class and we’ll take you to the subjects, lessons and practice material made for you.</p>
+      <div className="hub-step"><span>01</span><div><b>Which class are you in?</b><small>Choose your current NCERT class</small></div></div>
+      <div className="class-grid">{classOptions.map((item,index)=><button key={item.id} className={"class-card "+(item.status==="available"?"class-card-ready":"class-card-planned")} onClick={()=>{setSelectedClass(item.id);setHubStage("subjects");setSelectedSubject(null);}}>
+        <span className="class-card-index">0{index+1}</span><span className="class-card-label">{item.label}</span><span className="class-card-detail">{item.detail}</span><span className="class-card-bottom">{item.status==="available"?"EXPLORE SUBJECTS":"IN DEVELOPMENT"} <b>↗</b></span>
+      </button>)}</div>
+      <div className="hub-footnote"><span>BUILT AROUND THE NCERT CURRICULUM</span><span>MADE FOR REAL UNDERSTANDING <b>✳</b></span></div>
+    </section>}
+    {hubStage==="subjects"&&<section className="hub-hero hub-subject-view">
+      <button className="hub-back" onClick={()=>setHubStage("classes")}>← All classes</button>
+      <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> CLASS {selectedClass} WORKSPACE</div>
+      <h1>What do you want<br/><em>to study today?</em></h1>
+      <p className="hub-intro">Choose a subject. Available study tools will open straight into your learning workspace.</p>
+      <div className="hub-step"><span>02</span><div><b>Choose a subject</b><small>Class {selectedClass} · Subject library</small></div></div>
+      <div className="subject-grid">{subjectOptions.map(subject=><button key={subject.id} className={"subject-card "+(subject.available?"subject-card-ready":"subject-card-planned")} onClick={()=>chooseSubject(subject)}>
+        <span className="subject-card-top"><span className="subject-symbol">{subject.icon}</span><span className={"subject-tag "+(subject.available?"tag-ready":"")}>{subject.tag}</span></span>
+        <span className="subject-card-title">{subject.label}</span><span className="subject-card-detail">{subject.detail}</span><span className="subject-card-bottom">{subject.available?"OPEN SUBJECT":"VIEW STATUS"} <b>↗</b></span>
+      </button>)}</div>
+      <div className="hub-footnote"><span>MORE SUBJECTS ARE ON THE WAY</span><span>YOUR NEXT CHAPTER STARTS HERE <b>✳</b></span></div>
+    </section>}
+    {hubStage==="subject-preview"&&<section className="hub-hero hub-preview-view">
+      <button className="hub-back" onClick={()=>setHubStage("subjects")}>← Class {selectedClass} subjects</button>
+      <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> THE NEXT CHAPTER OF NONAMETUTOR</div>
+      <div className="preview-symbol">{selectedSubject?.icon||"✳"}</div>
+      <h1>{selectedSubject?.label||"Subject"}<br/><em>is on our roadmap.</em></h1>
+      <p className="hub-intro">We’re building this subject with the same focus on clear explanations, useful practice, accurate formulas and revision tools. It isn’t available yet, and we won’t pretend it is.</p>
+      <div className="preview-status"><span className="status-dot" /> {selectedSubject?.tag==="COMING SOON"?"COMING SOON":"IN DEVELOPMENT"} <span>·</span> CLASS {selectedClass}</div>
+      <button className="hub-primary" onClick={()=>setHubStage("subjects")}>Explore other subjects <span>→</span></button>
+    </section>}
+    <footer className="hub-footer"><span>NONAMETUTOR ©</span><span>LEARN IT. PRACTISE IT. OWN IT.</span></footer>
+  </main>;
   return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
-      <button className="brand" onClick={()=>setTab("learn")} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class 9 · Physics</small></span></button>
+      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class {selectedClass} · Physics</small></span></button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
         <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
