@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "NoNameTutor — Your NCERT Study Space",
-  description: "Choose your class and subject to learn, practise and revise with NoNameTutor.",
+  title: "No Name Tutor",
+  description: "I spent over 70 hours making this website so y'all could study with ease.",
 };
 
 export default function RootLayout({ children }) {
