@@ -349,9 +349,9 @@ export default function Home(){
     {id:"12",label:"Class 12",detail:"Master your final-year syllabus",status:"planned"}
   ];
   const subjectOptions=[
-    {id:"physics",label:"Physics",detail:"Motion, forces, energy and more",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
-    {id:"biology",label:"Biology",detail:"Life, living systems and the natural world",icon:"✳",available:false,tag:"COMING SOON"},
-    {id:"chemistry",label:"Chemistry",detail:"Matter, reactions and the world around us",icon:"⚗",available:false,tag:"PLANNED"},
+    {id:"physics",label:"Physics",detail:"move stuff",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
+    {id:"biology",label:"Biology",detail:"living stuff",icon:"✳",available:false,tag:"COMING SOON"},
+    {id:"chemistry",label:"Chemistry",detail:"walter white type shi",icon:"⚗",available:false,tag:"PLANNED"},
     {id:"mathematics",label:"Mathematics",detail:"Patterns, problem-solving and proof",icon:"∑",available:false,tag:"PLANNED"}
   ];
   function chooseSubject(subject){
@@ -361,13 +361,13 @@ export default function Home(){
   }
   if(hubStage!=="workspace") return <main className="app-shell hub-shell">
     <header className="hub-topbar">
-      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Study smarter. One concept at a time.</small></span></button>
+      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-name"><b>No Name Tutor</b></span></button>
       <span className="hub-top-note"><span className="status-dot" /> NCERT-ALIGNED LEARNING</span>
     </header>
     {hubStage==="classes"&&<section className="hub-hero">
       <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> YOUR STUDY SPACE</div>
-      <h1>Big goals.<br/><em>One chapter at a time.</em></h1>
-      <p className="hub-intro">Pick your class and we’ll take you to the subjects, lessons and practice material made for you.</p>
+      <h1>Study without<br/><em>the extra nonsense.</em></h1>
+      <p className="hub-intro">I spent over 70 hours making this website so y’all could study with ease.</p>
       <div className="hub-step"><span>01</span><div><b>Which class are you in?</b><small>Choose your current NCERT class</small></div></div>
       <div className="class-grid">{classOptions.map((item,index)=><button key={item.id} className={"class-card "+(item.status==="available"?"class-card-ready":"class-card-planned")} onClick={()=>{setSelectedClass(item.id);setHubStage("subjects");setSelectedSubject(null);}}>
         <span className="class-card-index">0{index+1}</span><span className="class-card-label">{item.label}</span><span className="class-card-detail">{item.detail}</span><span className="class-card-bottom">{item.status==="available"?"EXPLORE SUBJECTS":"IN DEVELOPMENT"} <b>↗</b></span>
@@ -395,11 +395,11 @@ export default function Home(){
       <div className="preview-status"><span className="status-dot" /> {selectedSubject?.tag==="COMING SOON"?"COMING SOON":"IN DEVELOPMENT"} <span>·</span> CLASS {selectedClass}</div>
       <button className="hub-primary" onClick={()=>setHubStage("subjects")}>Explore other subjects <span>→</span></button>
     </section>}
-    <footer className="hub-footer"><span>NONAMETUTOR ©</span><span>LEARN IT. PRACTISE IT. OWN IT.</span></footer>
+    <footer className="hub-footer"><span>Built by Akshaj Pradhan</span></footer>
   </main>;
   return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
-      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-mark">NN</span><span><b>NoNameTutor</b><small>Class {selectedClass} · Physics</small></span></button>
+      <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-name"><b>No Name Tutor</b></span></button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
         <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
@@ -468,6 +468,6 @@ export default function Home(){
 
     </div></section>}
 
-    <footer><span>NoNameTutor · Class 9 Physics</span><span>Chapter {chapter.number} study pack integrated</span></footer>
+    <footer><span>Built by Akshaj Pradhan</span></footer>
   </main>;
 }
