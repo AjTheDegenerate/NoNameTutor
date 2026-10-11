@@ -367,7 +367,7 @@ export default function Home(){
     {hubStage==="classes"&&<section className="hub-hero">
       <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> YOUR STUDY SPACE</div>
       <h1>Study without<br/><em>the extra nonsense.</em></h1>
-      <p className="hub-intro">I spent over 70 hours making this website so y’all could study with ease.</p>
+      <p className="hub-intro">I spent over 70 hours making this website so y'all could study with ease.</p>
       <div className="hub-step"><span>01</span><div><b>Which class are you in?</b><small>Choose your current NCERT class</small></div></div>
       <div className="class-grid">{classOptions.map((item,index)=><button key={item.id} className={"class-card "+(item.status==="available"?"class-card-ready":"class-card-planned")} onClick={()=>{setSelectedClass(item.id);setHubStage("subjects");setSelectedSubject(null);}}>
         <span className="class-card-index">0{index+1}</span><span className="class-card-label">{item.label}</span><span className="class-card-detail">{item.detail}</span><span className="class-card-bottom">{item.status==="available"?"EXPLORE SUBJECTS":"IN DEVELOPMENT"} <b>↗</b></span>
