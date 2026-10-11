@@ -248,6 +248,7 @@ export default function Home(){
   const [quizAnswers,setQuizAnswers]=useState({});
   const [mindFilter,setMindFilter]=useState("All");
   const [activeLesson,setActiveLesson]=useState(null);
+  const [skipLessonKey,setSkipLessonKey]=useState("");
   const [paperMode,setPaperMode]=useState("all");
   const [questionMode,setQuestionMode]=useState("all");
   const [questionAnswers,setQuestionAnswers]=useState({});
@@ -422,6 +423,7 @@ export default function Home(){
       <section className="path-panel">
         <div className="path-head"><div><span className="kicker">PHYSICS PATH</span><h2>{chapter.title}</h2></div><span className="progress-chip">{progress}% complete</span></div>
         <div className="chapter-tabs">{chapters.map(c=><button key={c.id} className={chapter.id===c.id?"chapter-tab active":"chapter-tab"} onClick={()=>selectChapter(c)}><span>{c.number}</span>{c.short}</button>)}</div>
+        <div className="skip-lesson-control" style={{display:"flex",gap:"0.75rem",alignItems:"end",flexWrap:"wrap",margin:"1rem 0",padding:"1rem",border:"1px solid #23342d",borderRadius:"12px",background:"#0b100e"}}><label style={{display:"grid",gap:"0.4rem",flex:"1 1 240px",color:"#a7b9af",fontSize:"0.85rem"}}><span>Skip to this lesson</span><select value={content.some(x=>x.key===skipLessonKey)?skipLessonKey:(content[0]?.key||"")} onChange={e=>setSkipLessonKey(e.target.value)} style={{width:"100%",minHeight:"42px",padding:"0.65rem",borderRadius:"8px",border:"1px solid #34483e",background:"#101815",color:"#f2f7f4"}}>{content.map((lesson,i)=><option key={lesson.key} value={lesson.key}>Lesson {i+1}: {lesson.title}</option>)}</select></label><button onClick={()=>{const target=content.find(x=>x.key===(content.some(x=>x.key===skipLessonKey)?skipLessonKey:content[0]?.key));if(target){setActiveLesson(target.key);setTab("learn");}}} style={{minHeight:"42px",padding:"0.7rem 1rem",borderRadius:"8px",border:"1px solid #43f5c3",background:"#43f5c3",color:"#07100c",fontWeight:700,cursor:"pointer"}}>Go to lesson →</button></div>
 
         {chapter.id==="motion"&&<div className="asset-bar"><button onClick={()=>openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={()=>openTab("practice")}>🧠 28-Question Quiz</button><button onClick={()=>setTab("mindmap")}>🗺️ Mind Map</button><button onClick={()=>setTab("papers")}>📚 Papers</button><button onClick={()=>setTab("revision")}>✍️ Q&A Revision</button><button onClick={()=>setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={()=>setTab("derivations")}>∫ Derivations</button></div>}
         {chapter.id==="force"&&<div className="asset-bar"><button onClick={()=>openTab("flashcards")}>🃏 80 Flashcards</button><button onClick={()=>openTab("practice")}>🧠 27-Question Quiz</button><button onClick={()=>setTab("mindmap")}>🗺️ Mind Map</button><button onClick={()=>setTab("papers")}>📚 Papers</button><button onClick={()=>setTab("revision")}>✍️ 81-Question Revision</button><button onClick={()=>setTab("formulas")}>∑ Formulas + Graphs</button><button onClick={()=>setTab("derivations")}>∫ Derivations</button></div>}
