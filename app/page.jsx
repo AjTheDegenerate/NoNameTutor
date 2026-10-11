@@ -352,7 +352,7 @@ export default function Home(){
     {id:"physics",label:"Physics",detail:"move stuff",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
     {id:"biology",label:"Biology",detail:"living stuff",icon:"✳",available:false,tag:"COMING SOON"},
     {id:"chemistry",label:"Chemistry",detail:"walter white type shi",icon:"⚗",available:false,tag:"PLANNED"},
-    {id:"mathematics",label:"Mathematics",detail:"Patterns, problem-solving and proof",icon:"∑",available:false,tag:"PLANNED"}
+    {id:"mathematics",label:"Mathematics",detail:"this, is elon musk.",icon:"∑",available:false,tag:"PLANNED"}
   ];
   function chooseSubject(subject){
     setSelectedSubject(subject);
@@ -366,7 +366,7 @@ export default function Home(){
     </header>
     {hubStage==="classes"&&<section className="hub-hero">
       <div className="hub-eyebrow"><span className="hub-eyebrow-line" /> YOUR STUDY SPACE</div>
-      <h1>Study without<br/><em>the extra nonsense.</em></h1>
+      <h1>Study without<br/><em>the AI slop.</em></h1>
       <p className="hub-intro">I spent over 70 hours making this website so y'all could study with ease.</p>
       <div className="hub-step"><span>01</span><div><b>Which class are you in?</b><small>Choose your current NCERT class</small></div></div>
       <div className="class-grid">{classOptions.map((item,index)=><button key={item.id} className={"class-card "+(item.status==="available"?"class-card-ready":"class-card-planned")} onClick={()=>{setSelectedClass(item.id);setHubStage("subjects");setSelectedSubject(null);}}>
