@@ -25,7 +25,7 @@ function makePaperPdf(text) {
   .replaceAll("•","-").replaceAll("×","*").replaceAll("·","*")
   .replaceAll("√","sqrt").replaceAll("π","pi").replaceAll("Δ","Delta")
   .replaceAll("→","->").replaceAll("≤","<=").replaceAll("≥",">=")
-  .replaceAll("≈","~=").replaceAll("≠","!=").replaceAll("°"," deg")
+  .replaceAll("≈","~=").replaceAll("≠","!=").replaceAll("µm","micrometres").replaceAll("µ","micro").replaceAll("°"," deg")
   .replaceAll("“",'"').replaceAll("”",'"').replaceAll("‘","'").replaceAll("’","'")
   .replace(/[^\x20-\x7E\n\r\t]/g,"?");
  const wrap=(line,max=92)=>{const out=[];let rest=line;while(rest.length>max){let cut=rest.lastIndexOf(" ",max);if(cut<1)cut=max;out.push(rest.slice(0,cut));rest=rest.slice(cut).trimStart();}out.push(rest);return out;};
