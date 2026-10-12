@@ -352,7 +352,7 @@ export default function Home(){
   ];
   const subjectOptions=[
     {id:"physics",label:"Physics",detail:"move stuff",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
-    {id:"biology",label:"Biology",detail:"cells, life & tiny stuff",icon:"✳",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
+    {id:"biology",label:"Biology",detail:"living stuff",icon:"✳",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
     {id:"chemistry",label:"Chemistry",detail:"walter white type shi",icon:"⚗",available:false,tag:"PLANNED"},
     {id:"mathematics",label:"Mathematics",detail:"this, is elon musk.",icon:"∑",available:false,tag:"PLANNED"}
   ];
