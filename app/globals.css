@@ -106,3 +106,50 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 .hub-footer{display:flex;justify-content:space-between;padding:20px clamp(20px,6vw,96px);border-top:1px solid var(--line);color:#718178;font-size:9px;font-weight:900;letter-spacing:.14em}
 @media(max-width:800px){.class-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-hero{padding-top:54px}.class-card{min-height:180px}}
 @media(max-width:520px){.hub-topbar{height:68px;padding:0 18px}.hub-top-note{font-size:8px;letter-spacing:.07em}.hub-topbar .brand small{max-width:180px}.hub-hero{width:calc(100% - 36px);padding-top:40px}.hub-hero h1{font-size:44px}.hub-intro{font-size:14px;margin:18px 0 30px}.class-grid,.subject-grid{grid-template-columns:1fr 1fr;gap:8px}.class-card{padding:15px;min-height:165px}.class-card-label{font-size:23px;margin-top:20px}.class-card-detail,.subject-card-detail{font-size:11px}.class-card-bottom,.subject-card-bottom{font-size:8px;letter-spacing:.07em}.subject-card{padding:15px;min-height:190px}.subject-card-title{font-size:20px}.subject-symbol{width:36px;height:36px}.subject-tag{font-size:7px;padding:6px}.hub-footnote{font-size:8px;line-height:1.6}.hub-footer{font-size:8px;letter-spacing:.07em;padding:18px}.hub-preview-view{min-height:65vh}}
+/* Class 9 Biology workspace */
+.bio-back{border:1px solid var(--line);background:var(--surface);color:var(--cyan);border-radius:10px;padding:10px 14px;font-weight:900}
+.bio-layout{max-width:1180px;margin:0 auto 70px;padding:0 24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;align-items:start}
+.bio-nav{position:sticky;top:92px;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:4px}
+.bio-nav button{border:0;background:transparent;text-align:left;color:#94a59d;border-radius:9px;padding:11px 12px;font-size:13px;font-weight:800}
+.bio-nav button.active,.bio-nav button:hover{background:#0e2c24;color:var(--cyan)}
+.bio-source-note{padding:10px;color:#73847c;font-size:11px;line-height:1.55}
+.bio-content{min-width:0}
+.bio-content h2{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:8px 0 14px}
+.bio-card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:24px;margin:16px 0;color:#c2d0c9;line-height:1.75}
+.bio-card>p{font-size:16px}
+.bio-source-label{color:var(--cyan);font-size:12px;font-weight:900}
+.bio-muted{color:var(--muted);line-height:1.65;font-size:13px}
+.bio-check{margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+.bio-check>b{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.bio-answer{background:#0d2c24;border-left:3px solid var(--cyan);padding:12px 14px;border-radius:8px;color:#c9f3e5}
+.bio-check button,.bio-controls button{border:0;border-bottom:3px solid var(--cyan-dark);background:var(--cyan);color:#06100d;border-radius:10px;padding:10px 14px;font-weight:900}
+.bio-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:16px 0;color:var(--muted);font-size:12px}
+.bio-controls button:disabled{opacity:.35;cursor:not-allowed}
+.bio-lesson-list{display:grid;gap:8px;margin-top:22px}
+.bio-lesson-list button{display:flex;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;color:#aab8b1;font-weight:800}
+.bio-lesson-list button.selected{border-color:var(--cyan);color:var(--cyan)}
+.bio-lesson-list span{color:#65756d;font-size:11px}
+.bio-content svg{display:block;width:100%;height:auto;max-height:360px;margin:8px auto}
+.bio-process{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bio-process>div,.bio-glossary article{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:18px}
+.bio-process span{display:block;color:var(--cyan);font-size:11px;margin-bottom:8px}
+.bio-process p,.bio-glossary p{color:#9ba9a3;font-size:13px;line-height:1.6;margin-bottom:0}
+.bio-table{display:grid;grid-template-columns:1.1fr 1fr 1fr;overflow:hidden;border:1px solid var(--line);border-radius:12px}
+.bio-table>div{padding:13px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;color:#b6c4bd}
+.bio-table>div:nth-child(-n+3){background:#0e2c24;color:var(--cyan);font-weight:900}
+.bio-tree{display:grid;justify-items:center;gap:20px;padding:24px}
+.bio-tree>div:first-child{padding:13px 32px;border:2px solid var(--cyan);border-radius:12px;color:var(--cyan);font-weight:900;background:#0e2c24}
+.bio-tree-branches{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;position:relative}
+.bio-tree-branches article{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:18px}
+.bio-tree-branches b{color:var(--cyan)}
+.bio-tree-branches p{color:var(--muted);font-size:13px}
+.bio-search{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:#090e0c;color:var(--ink);margin:6px 0 16px}
+.bio-glossary{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bio-flashcard{width:100%;min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;padding:28px;background:var(--surface);border:2px solid #28483d;border-radius:18px;color:var(--ink);text-align:center}
+.bio-flashcard small{font-size:10px;letter-spacing:.1em;color:var(--cyan);font-weight:900}
+.bio-flashcard b{font-size:23px;line-height:1.4}
+.bio-options{display:grid;gap:8px;margin-top:16px}
+.bio-options button{padding:12px;border:1px solid var(--line);border-radius:9px;background:#0b110f;color:#c9d5d0;text-align:left}
+.bio-options button.correct{border-color:var(--cyan);background:#0d2c24;color:var(--cyan)}
+.bio-options button.wrong{border-color:#704c3d;background:#251813;color:#e5a98d}
+@media(max-width:800px){.bio-layout{grid-template-columns:1fr;padding:0 14px}.bio-nav{position:static;display:flex;flex-direction:row;overflow-x:auto;white-space:nowrap}.bio-nav button{flex-shrink:0}.bio-source-note{display:none}.bio-process,.bio-glossary{grid-template-columns:1fr}.bio-card{padding:18px}.bio-content h2{font-size:28px}.bio-controls span{display:none}.bio-table>div{padding:9px;font-size:11px}}
