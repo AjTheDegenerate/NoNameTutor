@@ -3,91 +3,91 @@ const chapter2BiologyQuestionBank = [
     "type": "one-word",
     "q": "What is the basic structural and functional unit of life?",
     "answer": "Cell",
-    "explanation": "Cell is the term used in the supplied chapter."
+    "explanation": "The textbook defines the cell as the basic unit of structure and function in living beings."
   },
   {
     "type": "one-word",
     "q": "What is the term for an organism made of one cell?",
     "answer": "Unicellular",
-    "explanation": "Unicellular is the term used in the supplied chapter."
+    "explanation": "A unicellular organism consists of a single cell that carries out its life processes."
   },
   {
     "type": "one-word",
     "q": "What is the term for a group of similar cells performing similar functions?",
     "answer": "Tissue",
-    "explanation": "Tissue is the term used in the supplied chapter."
+    "explanation": "The chapter explains that similar cells performing similar functions form a tissue."
   },
   {
     "type": "one-word",
     "q": "Who named cells after observing cork in 1665?",
     "answer": "Robert Hooke",
-    "explanation": "Robert Hooke is the term used in the supplied chapter."
+    "explanation": "The textbook credits Robert Hooke with naming the box-like compartments he observed in cork in 1665."
   },
   {
     "type": "one-word",
     "q": "What is the human eye's limit of resolution given in the chapter?",
     "answer": "0.1 mm",
-    "explanation": "0.1 mm is the term used in the supplied chapter."
+    "explanation": "The chapter gives the unaided human eye's limit of resolution as about 0.1 mm at a viewing distance of about 25 cm."
   },
   {
     "type": "one-word",
     "q": "What is the SI-scale prefix unit conversion given for microscope activity?",
     "answer": "1 mm = 1000 µm",
-    "explanation": "1 mm = 1000 µm is the term used in the supplied chapter."
+    "explanation": "For estimating cell size, convert millimetres to micrometres: each 1 mm equals 1000 µm."
   },
   {
     "type": "one-word",
     "q": "What is the net movement of particles from higher to lower concentration called?",
     "answer": "Diffusion",
-    "explanation": "Diffusion is the term used in the supplied chapter."
+    "explanation": "Diffusion is the net movement of particles from a region of higher concentration to lower concentration; it does not require a membrane."
   },
   {
     "type": "one-word",
     "q": "What is the diffusion of water across a selectively permeable membrane called?",
     "answer": "Osmosis",
-    "explanation": "Osmosis is the term used in the supplied chapter."
+    "explanation": "Osmosis is the diffusion of water across a selectively permeable membrane."
   },
   {
     "type": "one-word",
     "q": "What is the prokaryotic region containing genetic material called?",
     "answer": "Nucleoid",
-    "explanation": "Nucleoid is the term used in the supplied chapter."
+    "explanation": "Prokaryotes lack a well-defined nucleus; their genetic material is found in a region called the nucleoid."
   },
   {
     "type": "one-word",
     "q": "What are functional segments of DNA called?",
     "answer": "Genes",
-    "explanation": "Genes is the term used in the supplied chapter."
+    "explanation": "Genes are functional segments of DNA that contain genetic information."
   },
   {
     "type": "one-word",
     "q": "What are the folds of the inner mitochondrial membrane called?",
     "answer": "Cristae",
-    "explanation": "Cristae is the term used in the supplied chapter."
+    "explanation": "The inner mitochondrial membrane folds into cristae, increasing surface area for chemical reactions and helping energy production."
   },
   {
     "type": "one-word",
     "q": "What is the watery fluid inside a vacuole called?",
     "answer": "Cell sap",
-    "explanation": "Cell sap is the term used in the supplied chapter."
+    "explanation": "The fluid stored inside a vacuole is called cell sap; in plant cells it can contain water and dissolved substances."
   },
   {
     "type": "one-word",
     "q": "What is the process of growing cells outside the body in controlled conditions called?",
     "answer": "Cell culture",
-    "explanation": "Cell culture is the term used in the supplied chapter."
+    "explanation": "Cell culture means growing cells outside an organism in a nutrient-rich medium under controlled, sterile conditions."
   },
   {
     "type": "one-word",
     "q": "What is genetically regulated selective cell destruction called?",
     "answer": "Programmed cell death (PCD)",
-    "explanation": "Programmed cell death (PCD) is the term used in the supplied chapter."
+    "explanation": "Programmed cell death (PCD) is an organised, genetically regulated process that helps development and cellular quality control."
   },
   {
     "type": "one-word",
     "q": "What is the plant-cell capacity described in Haberlandt's note called?",
     "answer": "Totipotency",
-    "explanation": "Totipotency is the term used in the supplied chapter."
+    "explanation": "Totipotency is the capacity described in the textbook for a plant cell to develop into a complete plant under suitable conditions."
   },
   {
     "type": "mcq",
