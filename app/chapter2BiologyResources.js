@@ -681,6 +681,36 @@ const chapter2BiologyResources = {
       ]
     },
     {
+      "title": "Build and transport cell-membrane components",
+      "type": "pathway",
+      "steps": [
+        [
+          "Make proteins",
+          "Ribosomes are sites of protein synthesis; rough ER supports protein synthesis and secretion."
+        ],
+        [
+          "Make lipids",
+          "Smooth ER is involved in synthesis and storage of fats and hormones."
+        ],
+        [
+          "ER network",
+          "The ER participates in synthesis and transport of proteins and fats."
+        ],
+        [
+          "Golgi processing",
+          "Golgi modifies, sorts and packages proteins and/or lipids into vesicles for transport."
+        ],
+        [
+          "Vesicle route",
+          "Vesicles provide a route for transporting processed components toward the cell membrane."
+        ],
+        [
+          "Source note",
+          "The textbook's final review question asks learners to trace the synthesis and transport path of proteins and lipids to the cell membrane; this sequence organises the named organelle roles into a study pathway."
+        ]
+      ]
+    },
+    {
       "title": "Cellular respiration and ATP",
       "type": "process",
       "steps": [
