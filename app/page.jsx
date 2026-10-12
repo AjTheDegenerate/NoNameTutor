@@ -404,6 +404,7 @@ export default function Home(){
   return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
       <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-name"><b>No Name Tutor</b></span></button>
+      <button className="workspace-back" onClick={()=>{setHubStage("subjects");setSelectedSubject(null);setActiveLesson(null);}} aria-label="Back to subjects">← Subjects</button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
         <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
