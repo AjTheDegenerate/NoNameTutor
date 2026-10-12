@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import ScientificText from "./ScientificText";
+import BiologyWorkspace from "./BiologyWorkspace";
 import flash1 from "./chapter4Flashcards1";
 import flash2 from "./chapter4Flashcards2";
 import flash3 from "./chapter4Flashcards3";
@@ -351,13 +352,14 @@ export default function Home(){
   ];
   const subjectOptions=[
     {id:"physics",label:"Physics",detail:"move stuff",icon:"◉",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
-    {id:"biology",label:"Biology",detail:"living stuff",icon:"✳",available:false,tag:"COMING SOON"},
+    {id:"biology",label:"Biology",detail:"cells, life & tiny stuff",icon:"✳",available:selectedClass==="9",tag:selectedClass==="9"?"READY":"PLANNED"},
     {id:"chemistry",label:"Chemistry",detail:"walter white type shi",icon:"⚗",available:false,tag:"PLANNED"},
     {id:"mathematics",label:"Mathematics",detail:"this, is elon musk.",icon:"∑",available:false,tag:"PLANNED"}
   ];
   function chooseSubject(subject){
     setSelectedSubject(subject);
     if(subject.id==="physics"&&selectedClass==="9"){setHubStage("workspace");selectChapter(chapters[0]);setTab("learn");}
+    else if(subject.id==="biology"&&selectedClass==="9"){setHubStage("workspace");setTab("learn");}
     else setHubStage("subject-preview");
   }
   if(hubStage!=="workspace") return <main className="app-shell hub-shell">
@@ -398,6 +400,7 @@ export default function Home(){
     </section>}
     <footer className="hub-footer"><span>Built by Akshaj Pradhan</span></footer>
   </main>;
+  if(selectedSubject?.id==="biology"&&selectedClass==="9") return <BiologyWorkspace onBack={()=>{setHubStage("subjects");setSelectedSubject(null);}} />;
   return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
       <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-name"><b>No Name Tutor</b></span></button>
