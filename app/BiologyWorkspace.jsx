@@ -66,6 +66,17 @@ function BioCellSketch({kind}) {
   <rect x="72" y="42" width="395" height="96" rx="48" fill="#14281f" stroke="#43f5c3" strokeWidth="7"/><rect x="81" y="51" width="377" height="78" rx="39" fill="none" stroke="#9ddfc8" strokeWidth="2"/><path d="M200 80 q25 -32 50 0 t50 0 t50 0" fill="none" stroke="#f0c674" strokeWidth="4"/>{[0,1,2,3,4,5,6,7,8].map(i=><circle key={i} cx={145+(i%3)*108} cy={65+Math.floor(i/3)*28} r="3" fill="#a8b8ff"/>)}
   <text x="12" y="25" fill="#a7b9af" fontSize="12">Cell wall / membrane</text><path d="M125 28 L130 49" stroke="#a7b9af"/><text x="355" y="165" fill="#a7b9af" fontSize="12">Nucleoid</text><path d="M380 151 L324 88" stroke="#a7b9af"/>
  </svg>;
+ if(kind.toLowerCase().includes("plant cell")) return <svg className="bio-sketch" viewBox="0 0 540 180" role="img" aria-label="Schematic plant cell with outer cell wall, membrane, large central vacuole, nucleus and chloroplasts">
+  <rect x="55" y="22" width="430" height="136" rx="16" fill="#132a21" stroke="#43f5c3" strokeWidth="7"/><rect x="64" y="31" width="412" height="118" rx="10" fill="none" stroke="#9ddfc8" strokeWidth="2"/>
+  <rect x="145" y="48" width="190" height="88" rx="18" fill="#123c30" stroke="#73bea5" strokeWidth="2"/><circle cx="112" cy="85" r="22" fill="#183e32" stroke="#9db4ff" strokeWidth="3"/><circle cx="115" cy="84" r="7" fill="#f0c674"/>
+  {[0,1,2,3].map(i=><g key={i}><ellipse cx={377+(i%2)*42} cy={60+Math.floor(i/2)*58} rx="14" ry="7" fill="#43f5c3" stroke="#b7f1df" strokeWidth="1.5"/></g>)}
+  <text x="70" y="15" fill="#a7b9af" fontSize="11">Cell wall + membrane</text><text x="180" y="96" fill="#bcebdd" fontSize="12">Large central vacuole</text><text x="77" y="125" fill="#a7b9af" fontSize="11">Nucleus</text><text x="370" y="151" fill="#a7b9af" fontSize="11">Chloroplasts</text>
+ </svg>;
+ if(kind.toLowerCase().includes("animal cell")) return <svg className="bio-sketch" viewBox="0 0 540 180" role="img" aria-label="Schematic animal cell with membrane, nucleus, mitochondrion, Golgi apparatus and lysosome">
+  <path d="M48 94 C41 46 105 22 175 34 C234 10 305 26 343 38 C417 21 483 54 481 96 C479 137 419 157 353 143 C274 170 200 146 150 151 C87 154 46 129 48 94Z" fill="#10251e" stroke="#43f5c3" strokeWidth="4"/>
+  <circle cx="157" cy="91" r="35" fill="#183e32" stroke="#9db4ff" strokeWidth="3"/><circle cx="164" cy="91" r="9" fill="#f0c674"/><ellipse cx="278" cy="63" rx="35" ry="13" fill="#183e32" stroke="#f0c674" strokeWidth="3"/><path d="M253 61 q12 -18 22 0 t22 0" fill="none" stroke="#f0c674" strokeWidth="2"/><ellipse cx="355" cy="106" rx="26" ry="11" fill="#183e32" stroke="#9db4ff" strokeWidth="3"/><circle cx="407" cy="69" r="10" fill="#b4a0ff"/>
+  <text x="117" y="143" fill="#a7b9af" fontSize="11">Nucleus</text><text x="265" y="37" fill="#a7b9af" fontSize="11">Golgi</text><text x="337" y="132" fill="#a7b9af" fontSize="11">Mitochondrion</text><text x="395" y="53" fill="#a7b9af" fontSize="11">Lysosome</text>
+ </svg>;
  return <svg className="bio-sketch" viewBox="0 0 540 180" role="img" aria-label="Schematic eukaryotic cell with membrane, nucleus, organelles and vacuole">
   <ellipse cx="270" cy="90" rx="220" ry="67" fill="#10251e" stroke="#43f5c3" strokeWidth="4"/><circle cx="190" cy="87" r="35" fill="#183e32" stroke="#8ad7bd" strokeWidth="3"/><circle cx="198" cy="89" r="9" fill="#f0c674"/>
   <ellipse cx="330" cy="73" rx="40" ry="12" fill="#183e32" stroke="#f0c674" strokeWidth="3"/><path d="M305 69 q12 -18 22 0 t22 0" fill="none" stroke="#f0c674" strokeWidth="2"/><ellipse cx="350" cy="112" rx="25" ry="10" fill="#183e32" stroke="#9db4ff" strokeWidth="3"/><ellipse cx="270" cy="117" rx="38" ry="16" fill="#14352a" stroke="#43f5c3" strokeWidth="2"/>
@@ -110,7 +121,7 @@ export default function BiologyWorkspace({onBack}) {
  function openTab(next){setTab(next);if(next==="flashcards"){setCard(0);setShowAnswer(false);}}
  function launchLesson(key){setActiveLesson(key);setTab("learn");}
  function openPaperPdf(paper,download=false){if(!paper.text)return;const url=URL.createObjectURL(makePaperPdf(paper.text));if(download){const a=document.createElement("a");a.href=url;a.download=paper.title.replaceAll(" ","_")+".pdf";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}else{window.open(url,"_blank","noopener,noreferrer");setTimeout(()=>URL.revokeObjectURL(url),60000);}}
- const coreNav=[["learn","Learn"],["practice","Quiz"],["flashcards","Flashcards"],["papers","Papers"],["revision","Revision"],["mindmap","Mind map"],["diagrams","Diagrams"],["processes","Processes"]];
+ const coreNav=[["learn","Learn"],["practice","Quiz"],["flashcards","Flashcards"],["papers","Papers"],["revision","Revision"],["notes","Notes"],["mindmap","Mind map"],["diagrams","Diagrams"],["processes","Processes"]];
  return <main className="app-shell bio-shell">
   <header className="topbar bio-topbar">
    <button className="brand" onClick={onBack} aria-label="Back to subjects"><span className="brand-mark">N</span><span><b>No Name Tutor</b><small>CLASS 9 · BIOLOGY</small></span></button>
