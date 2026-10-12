@@ -153,3 +153,52 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 .bio-options button.correct{border-color:var(--cyan);background:#0d2c24;color:var(--cyan)}
 .bio-options button.wrong{border-color:#704c3d;background:#251813;color:#e5a98d}
 @media(max-width:800px){.bio-layout{grid-template-columns:1fr;padding:0 14px}.bio-nav{position:static;display:flex;flex-direction:row;overflow-x:auto;white-space:nowrap}.bio-nav button{flex-shrink:0}.bio-source-note{display:none}.bio-process,.bio-glossary{grid-template-columns:1fr}.bio-card{padding:18px}.bio-content h2{font-size:28px}.bio-controls span{display:none}.bio-table>div{padding:9px;font-size:11px}}
+
+/* Biology shares the Physics workspace shell and study interaction patterns. */
+.bio-topbar{gap:16px}
+.bio-top-nav{flex:1;min-width:0;overflow-x:auto;scrollbar-width:thin}
+.bio-top-nav button{white-space:nowrap;padding:10px 12px;font-size:12px;flex:0 0 auto}
+.bio-back{border:1px solid var(--line);background:var(--surface);color:var(--cyan);border-radius:10px;padding:10px 14px;font-weight:900;white-space:nowrap}
+.bio-course-strip h1{max-width:800px}
+.bio-main-grid .path-panel{min-width:0}
+.bio-asset-bar{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bio-asset-bar button{min-width:0;line-height:1.35}
+.bio-source-note-inline{font-size:11px;color:#718079;line-height:1.55}
+.bio-diagram-card{margin-top:18px}
+.bio-sketch{display:block;width:100%;height:auto;max-height:260px;margin:12px auto 22px;background:#090e0c;border:1px solid var(--line);border-radius:14px;padding:12px}
+.bio-diagram-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:18px 0}
+.bio-diagram-labels button{display:flex;align-items:center;gap:11px;min-width:0;border:2px solid var(--line);border-radius:10px;padding:11px;background:#0b110f;color:#aab8b1;text-align:left;font-weight:800}
+.bio-diagram-labels button.selected{border-color:var(--cyan);background:#0e2c24;color:var(--cyan)}
+.bio-diagram-labels button span{font-size:10px;color:#65766e}
+.bio-checkpoint-panel{border-top:2px solid var(--line);padding-top:20px;margin-top:20px}
+.bio-checkpoint-panel h3{font-size:21px;line-height:1.4}
+.bio-checkpoint-panel>button{border:0;border-bottom:3px solid var(--cyan-dark);background:var(--cyan);color:#06100d;border-radius:10px;padding:11px 15px;font-weight:900}
+.bio-sequence{display:grid;gap:0;margin:24px 0}
+.bio-sequence-step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;position:relative;padding:0 0 24px}
+.bio-sequence-step:before{content:"";position:absolute;left:18px;top:38px;bottom:0;width:3px;border-radius:4px;background:#243a31}
+.bio-sequence-step:last-child:before{display:none}
+.bio-sequence-step>span{z-index:1;width:38px;height:38px;border:2px solid var(--cyan);border-radius:50%;display:grid;place-items:center;background:#0e2c24;color:var(--cyan);font-weight:900;font-size:11px}
+.bio-sequence-step>div{border:1px solid var(--line);background:#0b110f;padding:15px 17px;border-radius:12px}
+.bio-sequence-step b{color:#e8f4ee}
+.bio-sequence-step p{margin:7px 0 0;color:#9ba9a3;font-size:14px;line-height:1.65}
+.bio-table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.bio-data-table{width:100%;border-collapse:collapse;min-width:480px;background:var(--surface);font-size:13px;line-height:1.5}
+.bio-data-table th{background:#0e2c24;color:var(--cyan);text-align:left;font-weight:900}
+.bio-data-table th,.bio-data-table td{padding:13px 15px;vertical-align:top;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.bio-data-table td{color:#bfccc5}
+.bio-data-table tr:last-child td{border-bottom:0}
+.bio-tree-root{margin:4px auto 22px;width:max-content;max-width:100%;text-align:center;padding:13px 28px;background:#0e2c24;border:2px solid var(--cyan);border-radius:12px;color:var(--cyan);font-weight:900}
+.bio-tree-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px;position:relative}
+.bio-tree-branches article{min-width:0;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:17px}
+.bio-tree-branches h3{font-size:17px;margin:0 0 8px;color:#e4f1ea}
+.bio-tree-branches p{margin:0;color:#9ba9a3;line-height:1.6;font-size:13px}
+.bio-glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.bio-glossary article{min-width:0}
+.bio-glossary b{color:var(--cyan);line-height:1.45}
+.bio-glossary p{line-height:1.6}
+.bio-search{width:100%;border:2px solid var(--line);border-radius:11px;padding:13px 14px;outline:0;background:#090e0c;color:var(--ink);margin:10px 0}
+.bio-search:focus{border-color:var(--cyan)}
+.bio-top-nav::-webkit-scrollbar{height:4px}
+.bio-top-nav::-webkit-scrollbar-thumb{background:#28483d;border-radius:8px}
+@media(max-width:1120px){.bio-top-nav{display:none}.bio-asset-bar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:850px){.bio-asset-bar{grid-template-columns:1fr}.bio-asset-bar button{width:100%}.bio-diagram-labels,.bio-glossary,.bio-tree-branches{grid-template-columns:1fr}.bio-sketch{max-height:200px}.bio-sequence-step{grid-template-columns:38px minmax(0,1fr);gap:10px}.bio-sequence-step>span{width:34px;height:34px}.bio-sequence-step:before{left:15px;top:35px}.bio-sequence-step p{font-size:13px}.bio-data-table{font-size:12px}}
