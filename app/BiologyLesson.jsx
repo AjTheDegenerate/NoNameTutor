@@ -41,6 +41,7 @@ export default function BiologyLesson({ lesson, lessonNumber, completed, onCompl
    <h3><ScientificText value={current.title}/></h3>
    <div className="teaching-copy">{String(current.body||"").split(/\n\n+/).filter(Boolean).map((paragraph,i)=><p key={i}><ScientificText value={paragraph}/></p>)}</div>
    {current.source&&<div className="source-ref">📖 {current.source}</div>}
+   {step===2&&lesson.externalReferences?.length>0&&<div className="source-ref" style={{marginTop:"1rem"}}><strong>Want another explanation?</strong><ul style={{margin:"0.5rem 0 0",paddingLeft:"1.25rem"}}>{lesson.externalReferences.map(ref=><li key={ref.url}><a href={ref.url} target="_blank" rel="noreferrer" style={{color:"#43f5c3",textDecoration:"underline"}}>{ref.title} ↗</a></li>)}</ul><small>Optional extra reading; your supplied NCERT chapter remains the main syllabus source.</small></div>
    {current.label==="YOUR TURN"&&<Choice question={interaction} selected={selected} onSelect={setSelected} passed={interactionPassed}/>}
    {current.label==="CHECKPOINT"&&<Choice question={checkpoint} selected={checkpointSelected} onSelect={setCheckpointSelected} passed={checkpointPassed}/>}
    {step===7&&checkpointPassed&&<div className="mastery-note">✓ Checkpoint passed — ready to complete this lesson</div>}
