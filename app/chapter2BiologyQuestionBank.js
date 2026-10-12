@@ -283,6 +283,30 @@ const chapter2BiologyQuestionBank = [
   },
   {
     "type": "mcq",
+    "q": "Which option correctly places a structure present in plant cells alongside one absent in animal cells?",
+    "options": [
+      "Leucoplast — cell wall",
+      "Mitochondria — ribosome",
+      "Cell wall — Golgi apparatus",
+      "Lysosome — endoplasmic reticulum"
+    ],
+    "answer": "Leucoplast — cell wall",
+    "explanation": "Plant cells can contain leucoplasts and have a cell wall; animal cells lack the cell wall. Ribosomes, Golgi apparatus and endoplasmic reticulum are present in animal cells too."
+  },
+  {
+    "type": "mcq",
+    "q": "Which organelle-function pair is incorrectly matched in the supplied textbook review list?",
+    "options": [
+      "Ribosome — protein synthesis",
+      "SER — lipid and cellulose synthesis",
+      "Lysosome — digestion of foreign agents",
+      "Golgi apparatus — packaging materials"
+    ],
+    "answer": "SER — lipid and cellulose synthesis",
+    "explanation": "The supplied chapter says smooth ER is involved in synthesis and storage of fats and hormones; it does not assign cellulose synthesis to SER."
+  },
+  {
+    "type": "mcq",
     "q": "Which plastid absorbs sunlight via chlorophyll for photosynthesis?",
     "answer": "Chloroplast",
     "explanation": "Chloroplasts contain chlorophyll.",
