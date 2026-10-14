@@ -80,6 +80,11 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
         <span className="kicker">{current.label}</span>
         <h2><ScientificText value={current.title} /></h2>
         <p><ScientificText value={current.body} /></p>
+        {step === 1 && lesson.title === "Potential energy: stored by shape or position" && (
+          <figure className="potential-energy-meme">
+            <img src="/potential-energy-meme.jpg" alt="Anime meme reading: Did you say potential?" style={{display:"block",width:"100%",maxWidth:"560px",height:"auto",margin:"1.25rem auto 0",borderRadius:"12px"}} />
+          </figure>
+        )}
         {current.source && <a className="source-link" href={lesson.externalReferences?.[0]?.url} target="_blank" rel="noreferrer">Source: {current.source} ↗</a>}
 
         {step === 4 && (

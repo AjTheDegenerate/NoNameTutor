@@ -1,0 +1,5 @@
+const chapter3BiologyPaperSources = [
+ {id:"bio3-current-textbook",title:"NCERT ePathshala — Tissues in Action (Class 9, Chapter 3)",kind:"source",classLevel:"9",subject:"Science",year:"Current textbook",status:"official NCERT portal",modes:["solved","unsolved","practice","review"],description:"Official NCERT ePathshala chapter page for Tissues in Action. The supplied textbook PDF remains the primary basis for lesson wording, activities and data.",url:"https://epathshala.ncert.gov.in/topicc.php?id=0906CH03"},
+ {id:"cbse-class9-itembank",title:"CBSE / Sri Aurobindo Society — Class 9 Tissues competency items",kind:"source",classLevel:"9",subject:"Science",year:"Competency assessment resource",status:"official competency-based items",modes:["practice","unsolved"],description:"Official supplementary assessment items explicitly tagged to Grade 9 Tissues, including permanent tissue functions. These are competency-based sample items, not historical school or board past papers.",url:"https://cbseacademic.nic.in/cbe/documents/SAS_Science-Class-9.pdf"}
+];
+export default chapter3BiologyPaperSources;
