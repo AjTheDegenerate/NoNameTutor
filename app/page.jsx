@@ -404,7 +404,6 @@ export default function Home(){
   return <main className="app-shell" ref={appRoot}>
     <header className="topbar">
       <button className="brand" onClick={()=>{setHubStage("classes");setSelectedSubject(null);}} aria-label="NoNameTutor home"><span className="brand-name"><b>No Name Tutor</b></span></button>
-      <button className="workspace-back" style={{flex:"0 0 auto",display:"inline-flex",alignItems:"center",justifyContent:"center",padding:"10px 13px",border:"1px solid #2b5d4c",borderRadius:"10px",background:"#0d1914",color:"#43f5c3",fontSize:"12px",fontWeight:900,whiteSpace:"nowrap"}} onClick={()=>{setHubStage("subjects");setSelectedSubject(null);setActiveLesson(null);}} aria-label="Back to subjects">← Subjects</button>
       <nav className="top-nav">
         <button className={tab==="learn"?"nav-active":""} onClick={()=>setTab("learn")}>Learn</button>
         <button className={tab==="practice"?"nav-active":""} disabled={!["motion","force","work"].includes(chapter.id)} onClick={()=>openTab("practice")}>Practice</button>
@@ -415,6 +414,7 @@ export default function Home(){
         <button className={tab==="formulas"?"nav-active":""} onClick={()=>setTab("formulas")}>Formulas</button>
         <button className={tab==="derivations"?"nav-active":""} onClick={()=>setTab("derivations")}>Derivations</button>
       </nav>
+      <button className="workspace-back" style={{flex:"0 0 auto",display:"inline-flex",alignItems:"center",justifyContent:"center",padding:"10px 13px",border:"1px solid #2b5d4c",borderRadius:"10px",background:"#0d1914",color:"#43f5c3",fontSize:"12px",fontWeight:900,whiteSpace:"nowrap"}} onClick={()=>{setHubStage("subjects");setSelectedSubject(null);setActiveLesson(null);}} aria-label="Back to subjects">← Subjects</button>
       
     </header>
 
