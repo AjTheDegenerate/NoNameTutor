@@ -137,6 +137,7 @@ export default function BiologyTissuesWorkspace({onBack}) {
   {tab==="learn"&&<div className="main-grid bio-main-grid">
    <section className="path-panel">
     <div className="path-head"><div><span className="kicker">BIOLOGY LEARNING PATH</span><h2>Chapter 3 · Tissues in Action</h2></div><span className="progress-chip">{progress}% complete</span></div>
+    <div className="chapter-tabs"><button className="chapter-tab" onClick={onBack}><span>2</span>Cell Biology</button><button className="chapter-tab active" aria-current="page"><span>3</span>Tissues in Action</button></div>
     <div className="skip-lesson-control" style={{display:"flex",gap:"0.75rem",alignItems:"end",flexWrap:"wrap",margin:"1rem 0",padding:"1rem",border:"1px solid #23342d",borderRadius:"12px",background:"#0b100e"}}>
      <label style={{display:"grid",gap:".4rem",flex:"1 1 240px",color:"#a7b9af",fontSize:".85rem"}}><span>Skip to this lesson</span><select value={content.some(x=>x.key===skipLessonKey)?skipLessonKey:content[0].key} onChange={e=>setSkipLessonKey(e.target.value)} style={{width:"100%",minHeight:"42px",padding:".65rem",borderRadius:"8px",border:"1px solid #34483e",background:"#101815",color:"#f2f7f4"}}>{content.map((l,i)=><option key={l.key} value={l.key}>Lesson {i+1}: {l.title}</option>)}</select></label>
      <button onClick={()=>launchLesson(content.find(x=>x.key===skipLessonKey)?.key||content[0].key)} style={{minHeight:"42px",padding:".7rem 1rem",borderRadius:"8px",border:"1px solid #43f5c3",background:"#43f5c3",color:"#07100c",fontWeight:700}}>Go to lesson →</button>
