@@ -11,6 +11,7 @@ import chapter2BiologyQuestionBank from "./chapter2BiologyQuestionBank";
 import chapter2BiologyPapers from "./chapter2BiologyPapers";
 import chapter2BiologyPaperSources from "./chapter2BiologyPaperSources";
 import chapter2BiologyResources from "./chapter2BiologyResources";
+import BiologyTissuesWorkspace from "./BiologyTissuesWorkspace";
 
 const modes = ["all","past","solved","unsolved","practice","review"];
 const questionTypes = ["all",...Array.from(new Set(chapter2BiologyQuestionBank.map(q=>q.type)))];
@@ -86,6 +87,7 @@ function BioCellSketch({kind}) {
 }
 
 export default function BiologyWorkspace({onBack}) {
+ const [showTissues,setShowTissues]=useState(false);
  const [tab,setTab]=useState("learn");
  const [query,setQuery]=useState("");
  const [done,setDone]=useState([]);
@@ -105,6 +107,7 @@ export default function BiologyWorkspace({onBack}) {
  const [selectedDiagram,setSelectedDiagram]=useState(0);
  const [selectedDiagramPart,setSelectedDiagramPart]=useState(0);
  const [diagramRevealed,setDiagramRevealed]=useState(false);
+ if(showTissues) return <BiologyTissuesWorkspace onBack={()=>setShowTissues(false)} />;
  const content=chapter2BiologyLessons;
  const filtered=useMemo(()=>content.filter(x=>(x.title+" "+x.hook+" "+x.teacher).toLowerCase().includes(query.toLowerCase())),[content,query]);
  const completedConcepts=done.filter(x=>x.startsWith("biology:lesson:")).length;
@@ -127,7 +130,7 @@ export default function BiologyWorkspace({onBack}) {
   <header className="topbar bio-topbar">
    <button className="brand" onClick={onBack} aria-label="Back to subjects"><span className="brand-mark">N</span><span><b>No Name Tutor</b><small>CLASS 9 · BIOLOGY</small></span></button>
    <nav className="top-nav bio-top-nav">{coreNav.map(([id,label])=><button key={id} className={tab===id||(id==="practice"&&tab==="practice")?"nav-active":""} onClick={()=>openTab(id)}>{label}</button>)}</nav>
-   <button className="bio-back" onClick={onBack}>← Subjects</button>
+   <button className="bio-back" onClick={onBack}>← Subjects</button><button className="bio-back" onClick={()=>setShowTissues(true)}>Chapter 3: Tissues →</button>
   </header>
   <section className="course-strip bio-course-strip">
    <div><span className="kicker">CLASS 9 · BIOLOGY · SUPPLIED TEXTBOOK CHAPTER 2</span><h1>The Fascinating World of Cells</h1><p>Cell: The Building Block of Life · Source-grounded learning path and study tools.</p></div>
