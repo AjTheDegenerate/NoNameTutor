@@ -107,7 +107,6 @@ export default function BiologyWorkspace({onBack}) {
  const [selectedDiagram,setSelectedDiagram]=useState(0);
  const [selectedDiagramPart,setSelectedDiagramPart]=useState(0);
  const [diagramRevealed,setDiagramRevealed]=useState(false);
- if(showTissues) return <BiologyTissuesWorkspace onBack={()=>setShowTissues(false)} />;
  const content=chapter2BiologyLessons;
  const filtered=useMemo(()=>content.filter(x=>(x.title+" "+x.hook+" "+x.teacher).toLowerCase().includes(query.toLowerCase())),[content,query]);
  const completedConcepts=done.filter(x=>x.startsWith("biology:lesson:")).length;
@@ -125,6 +124,7 @@ export default function BiologyWorkspace({onBack}) {
  function openTab(next){setTab(next);if(next==="flashcards"){setCard(0);setShowAnswer(false);}}
  function launchLesson(key){setActiveLesson(key);setTab("learn");}
  function openPaperPdf(paper,download=false){if(!paper.text)return;const url=URL.createObjectURL(makePaperPdf(paper.text));if(download){const a=document.createElement("a");a.href=url;a.download=paper.title.replaceAll(" ","_")+".pdf";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}else{window.open(url,"_blank","noopener,noreferrer");setTimeout(()=>URL.revokeObjectURL(url),60000);}}
+ if(showTissues) return <BiologyTissuesWorkspace onBack={()=>setShowTissues(false)} />;
  const coreNav=[["learn","Learn"],["practice","Quiz"],["flashcards","Flashcards"],["papers","Papers"],["revision","Revision"],["notes","Notes"],["mindmap","Mind map"],["diagrams","Diagrams"],["processes","Processes"]];
  return <main className="app-shell bio-shell">
   <header className="topbar bio-topbar">
