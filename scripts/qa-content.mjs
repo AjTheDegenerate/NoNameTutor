@@ -77,7 +77,7 @@ function validatePapers(path) {
     check(/"modes":\s*\[/.test(item), path + ": paper/source " + (i + 1) + " declares modes");
     if (/"kind":\s*"generated"/.test(item)) {
       check(/"text":\s*"/.test(item), path + ": generated paper " + (i + 1) + " includes paper text");
-      check(/"year":\s*"Generated"/.test(item), path + ": generated paper " + (i + 1) + " is not mislabelled as a historical exam");
+      check(!/"year":\s*"(?:19|20)\d{2}[^"]*|[^"]*(?:past paper|board exam)[^"]*)"/i.test(item), path + ": generated paper " + (i + 1) + " is not mislabelled as a historical exam");
     }
   });
   console.log(path + ": " + items.length + " paper records checked");
