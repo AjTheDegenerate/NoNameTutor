@@ -169,15 +169,15 @@ const chapter3BiologyQuestionBank = [
   },
   {
     "type": "assertion-reasoning",
-    "q": "Assertion: Tendons connect bone to bone. Reason: Ligaments connect muscle to bone.",
+    "q": "Assertion: Tendons connect muscle to bone. Reason: Ligaments connect bone to bone.",
     "options": [
       "Both true; reason explains assertion",
       "Both true; reason does not explain assertion",
       "Assertion true, reason false",
       "Assertion false, reason true"
     ],
-    "answer": "Assertion false, reason true",
-    "explanation": "The two attachment definitions are reversed in the assertion and reason."
+    "answer": "Both true; reason does not explain assertion",
+    "explanation": "Both statements are correct, but the ligament’s role in connecting bones and stabilising joints does not explain the tendon’s role in transmitting force from muscle to bone."
   },
   {
     "type": "assertion-reasoning",
