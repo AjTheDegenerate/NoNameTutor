@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - chapter4-accuracy-assessment
+      - revamp/home-subject-navigation
   pull_request:
     branches:
       - main
@@ -21,5 +22,7 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Validate chapter content and UI invariants
+        run: npm run qa:content
       - name: Build production app
         run: npm run build
