@@ -87,7 +87,7 @@ mjx-container[display="true"] { margin: .85em 0 !important; }
 
 
 /* NoNameTutor subject-first home revamp */
-.hub-shell{min-height:100vh;background:radial-gradient(ellipse at 82% 4%,rgba(67,245,195,.055),transparent 34%),var(--bg);display:flex;flex-direction:column}
+.hub-shell{min-height:100vh;background:var(--bg);display:flex;flex-direction:column}
 .hub-topbar{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,6vw,96px);border-bottom:1px solid var(--line);background:rgba(7,11,10,.92)}
 .hub-top-note,.hub-footnote,.class-card-bottom,.subject-card-bottom,.subject-tag,.preview-status{font-size:10px;letter-spacing:.13em;font-weight:900;color:var(--muted)}
 .hub-top-note{display:flex;align-items:center;gap:9px}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);display:inline-block;box-shadow:0 0 14px rgba(67,245,195,.35)}
