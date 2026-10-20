@@ -160,6 +160,10 @@ const chapter3BiologyFlashcards = [
     "The capacity of a cell to develop into a complete plant under suitable conditions."
   ],
   [
+    "Which researchers are credited in the chapter with a breakthrough in plant tissue culture through anther culture?",
+    "Sipra Guha Mukherjee, in collaboration with S. C. Maheshwari; the chapter describes development of a complete plant using an artificial nutrient medium under controlled laboratory conditions."
+  ],
+  [
     "Who demonstrated carrot plant regeneration from cultured phloem cells in 1958?",
     "F. C. Steward and his team."
   ],
