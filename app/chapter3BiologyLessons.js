@@ -1214,7 +1214,7 @@ const chapter3BiologyLessons = [
     "section": "Chapter 3",
     "pages": "28–47",
     "hook": "Start with a real question: Totipotency and plant tissue culture.",
-    "textbook": "The textbook describes F. C. Steward's 1958 work: carrot phloem cells cultured under suitable nutrient and environmental conditions formed a cell mass and eventually regenerated plants. Totipotency is capacity to develop into a complete organism under suitable conditions.",
+    "textbook": "The textbook describes F. C. Steward's 1958 work: carrot phloem cells cultured under suitable nutrient and environmental conditions formed a cell mass and eventually regenerated plants. It separately highlights Sipra Guha Mukherjee and S. C. Maheshwari for their breakthrough in plant tissue culture through anther culture. Totipotency is the capacity to develop into a complete organism under suitable conditions.",
     "teacher": "Cells may dedifferentiate, divide and redifferentiate during culture. Results depend on cell type, hormones, nutrients and sterile conditions.",
     "example": "Plant tissue culture can propagate plants and support crop improvement.",
     "interaction": {
