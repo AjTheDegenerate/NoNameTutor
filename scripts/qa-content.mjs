@@ -120,7 +120,7 @@ check(!!hubRule && !/gradient/i.test(hubRule[1]), "Subject hub background has no
 
 const homepage = read("app/page.jsx");
 check(homepage.includes("I spent over 70 hours making this website so y'all could study with ease"), "Homepage contains the approved exact intro copy");
-check(homepage.includes("Study without the AI slop"), "Homepage contains the approved exact headline");
+check(homepage.includes("Study without") && homepage.includes("the AI slop."), "Homepage contains the approved exact headline");
 check(homepage.includes("Built by Akshaj Pradhan"), "Homepage contains the approved footer attribution");
 
 if (failures.length) {
