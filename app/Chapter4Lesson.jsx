@@ -162,7 +162,7 @@ export default function Chapter4Lesson({ lesson, lessonNumber, completed, onComp
           <div className="web-references">
             <b>Official source</b>
             {lesson.externalReferences.map((ref) => (
-              <a key={ref.url} href={ref.url} target="_blank" rel="noreferrer">{ref.label} ↗</a>
+              <a key={ref.url} href={ref.url} target="_blank" rel="noreferrer">{ref.label || ref.title || ref.url} ↗</a>
             ))}
           </div>
         )}
