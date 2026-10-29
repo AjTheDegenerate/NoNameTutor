@@ -70,18 +70,34 @@ export default function Chapter6Lesson({ lesson, lessonNumber, completed, onComp
   }
 
   return (
-    <article className="lesson-modal">
-      <div className="lesson-progress">
-        <div><span>LESSON {lessonNumber}</span><b>{step + 1} / {steps.length}</b></div>
-        <i style={{width: ((step + 1) / steps.length * 100) + "%"}} />
+    <div className="lesson-modal">
+      <div className="lesson-modal-head">
+        <div>
+          <span className="kicker">LESSON {lessonNumber} · {lesson.section}</span>
+          <h2><ScientificText value={lesson.title} /></h2>
+          <small>Textbook pages {lesson.pages}</small>
+        </div>
+        <div className="lesson-step-count">{step + 1} / {steps.length}</div>
       </div>
-
-      <div className="lesson-step">
-        <span className="kicker">{current.label}</span>
-        <h2><ScientificText value={current.title} /></h2>
-        <p><ScientificText value={current.body} /></p>
-        {current.source && <a className="source-link" href={lesson.externalReferences?.[0]?.url} target="_blank" rel="noreferrer">Source: {current.source} ↗</a>}
-
+      <div className="lesson-progress"><i style={{width: ((step + 1) / steps.length * 100) + "%"}} /></div>
+      <article className={"teaching-card teaching-" + current.label.toLowerCase().replaceAll(" ", "-")}>
+        <div className="teaching-label">{current.label}</div>
+        <h3><ScientificText value={current.title} /></h3>
+        <div className="teaching-copy">
+          {String(current.body || "").split(/\n\n+/).filter(Boolean).map((paragraph, i) => (
+            <p key={i}><ScientificText value={paragraph} /></p>
+          ))}
+        </div>
+        
+        {current.source && <div className="source-ref">📖 {current.source}</div>}
+        {step === 1 && lesson.externalReferences?.length > 0 && (
+          <div className="web-references">
+            <b>Official / supplementary source</b>
+            {lesson.externalReferences.map((ref) => (
+              <a key={ref.url} href={ref.url} target="_blank" rel="noreferrer">{ref.label || ref.title || ref.url} ↗</a>
+            ))}
+          </div>
+        )}
         {step === 4 && (
           <div className="lesson-interaction">
             {interaction.type === "choice" ? (
@@ -102,19 +118,17 @@ export default function Chapter6Lesson({ lesson, lessonNumber, completed, onComp
             {feedback && <div className={"lesson-feedback " + (feedback.ok ? "is-correct" : "is-wrong")}>{feedback.text}</div>}
           </div>
         )}
-
         {step === 7 && (
           <div className="checkpoint-box">
             <button onClick={() => setCheckpointRevealed(true)}>{checkpointRevealed ? "Checkpoint revealed" : "Reveal checkpoint answer"}</button>
             {checkpointRevealed && <div><span>ANSWER</span><p><ScientificText value={lesson.checkpoint.answer} /></p></div>}
           </div>
         )}
-      </div>
-
+      </article>
       <div className="lesson-nav">
         <button disabled={step === 0} onClick={() => { setStep(step - 1); setFeedback(null); }}>← Back</button>
         <button disabled={!canAdvance()} onClick={next}>{step === steps.length - 1 ? (completed ? "Close lesson" : "Complete lesson") : "Continue →"}</button>
       </div>
-    </article>
+    </div>
   );
 }
