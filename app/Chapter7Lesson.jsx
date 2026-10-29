@@ -65,8 +65,9 @@ export default function Chapter7Lesson({ lesson, lessonNumber, completed, onComp
   }
 
   function canAdvance() {
-    if (step !== 4) return true;
-    return Boolean(feedback?.ok);
+    if (step === 4) return Boolean(feedback?.ok);
+    if (step === 7) return checkpointRevealed;
+    return true;
   }
 
   return (
