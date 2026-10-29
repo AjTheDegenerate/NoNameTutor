@@ -6,6 +6,7 @@ on:
       - main
       - chapter4-accuracy-assessment
       - revamp/home-subject-navigation
+      - refactor/unified-lesson-structure
   pull_request:
     branches:
       - main
