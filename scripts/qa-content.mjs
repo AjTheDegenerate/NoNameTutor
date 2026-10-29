@@ -113,6 +113,19 @@ const labels = [...lessonUi.matchAll(/label:"([^"]+)"/g)].map((m) => m[1]);
 const expected = ["HOOK", "TEXTBOOK", "TEACHER", "EXAMPLE", "YOUR TURN", "COMMON MISTAKE", "TEXTBOOK ACTIVITY", "CHECKPOINT"];
 check(JSON.stringify(labels) === JSON.stringify(expected), "Biology lesson flow matches the required eight-step sequence exactly");
 
+const expectedLessonSteps = ["HOOK", "TEXTBOOK", "TEACHER", "EXAMPLE", "YOUR TURN", "COMMON MISTAKE", "TEXTBOOK ACTIVITY", "CHECKPOINT"];
+for (const path of ["app/Chapter4Lesson.jsx", "app/Chapter6Lesson.jsx", "app/Chapter7Lesson.jsx", "app/BiologyLesson.jsx"]) {
+  const source = read(path);
+  const labels = [...source.matchAll(/label:\s*"([^"]+)"/g)].map((m) => m[1]);
+  check(JSON.stringify(labels) === JSON.stringify(expectedLessonSteps), path + ": uses the exact shared eight-step lesson order");
+  for (const className of ["lesson-modal-head", "lesson-step-count", "lesson-progress", "teaching-card", "teaching-label", "teaching-copy", "lesson-nav"]) {
+    check(source.includes(className), path + ": includes shared lesson layout element " + className);
+  }
+}
+check(read("app/Chapter6Lesson.jsx").includes("web-references"), "Chapter 6 keeps its official source links inside the shared lesson card");
+check(read("app/Chapter7Lesson.jsx").includes("potential-energy-meme"), "Chapter 7 retains the potential-energy lesson image after layout normalization");
+check(read("app/Chapter4Lesson.jsx").includes("ref.label || ref.title || ref.url"), "Shared lesson source links support both Physics and Biology reference schemas");
+
 const css = read("app/globals.css");
 const hubRule = css.match(/\.hub-shell\s*\{([^}]*)\}/);
 check(!!hubRule, "Subject hub has a dedicated style rule");
