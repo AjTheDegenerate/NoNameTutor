@@ -113,6 +113,13 @@ const labels = [...lessonUi.matchAll(/label:"([^"]+)"/g)].map((m) => m[1]);
 const expected = ["HOOK", "TEXTBOOK", "TEACHER", "EXAMPLE", "YOUR TURN", "COMMON MISTAKE", "TEXTBOOK ACTIVITY", "CHECKPOINT"];
 check(JSON.stringify(labels) === JSON.stringify(expected), "Biology lesson flow matches the required eight-step sequence exactly");
 
+for (const path of ["app/page.jsx", "app/BiologyWorkspace.jsx", "app/BiologyTissuesWorkspace.jsx"]) {
+  const source = read(path);
+  for (const className of ["course-strip", "main-grid", "path-panel", "right-rail", "overlay-panel", "overlay-inner"]) {
+    check(source.includes(className), path + ": follows the shared workspace and tool-panel shell (" + className + ")");
+  }
+}
+
 const expectedLessonSteps = ["HOOK", "TEXTBOOK", "TEACHER", "EXAMPLE", "YOUR TURN", "COMMON MISTAKE", "TEXTBOOK ACTIVITY", "CHECKPOINT"];
 for (const path of ["app/Chapter4Lesson.jsx", "app/Chapter6Lesson.jsx", "app/Chapter7Lesson.jsx", "app/BiologyLesson.jsx"]) {
   const source = read(path);
